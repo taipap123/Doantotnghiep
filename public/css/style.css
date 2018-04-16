@@ -26,14 +26,19 @@ a{text-decoration:none;}
 .underline{	padding-bottom:5px;	border-bottom: 1px solid #eee; margin:0 0 20px 0;}/* Add 5px bottom padding and a underline */
 nav.vertical ul li{	display:block;}/* vertical menu */
 nav.horizontal ul li{	display: inline-block;}/* horizontal menu */
+
 img{max-width:100%;}
 /*end reset*/
+
 body{
 	font-family:Arial, Helvetica, sans-serif;
+	background-color: #63B8FF;
 }
 .wrap{
 	width:1000px;
 	margin:0 auto;
+	background-color: #E0FFFF;
+
 }
 .logo{
 	float:left;
@@ -549,6 +554,8 @@ form label{
 	.wrap {
 		width: 899px;
 		margin: 0 auto;
+		
+
 	}
 	.menu li a {
 		font-size: 13px;
@@ -592,6 +599,7 @@ form label{
 		.wrap {
 			width: 760px;
 			margin: 0 auto;
+			
 		}
 	.menu li a {
 		font-size: 13px;
@@ -657,6 +665,7 @@ form label{
 	.wrap {
 		width: 680px;
 		margin: 0 auto;
+		
 	}
 	.menu li a {
 		font-size: 13px;
@@ -722,6 +731,7 @@ form label{
 	.wrap {
 		width: 565px;
 		margin: 0 auto;
+		
 	}
 	.content_top_data h2 span {
 		font-size: 19px;
@@ -735,6 +745,7 @@ form label{
 	.wrap {
 		width: 480px;
 		margin: 0 auto;
+		
 	}
 	.menu {
 		float: none;
@@ -768,6 +779,7 @@ form label{
 	.wrap {
 		width: 385px;
 		margin: 0 auto;
+		
 	}
 
 }
@@ -778,6 +790,7 @@ form label{
 	.wrap {
 		width: 316px;
 		margin: 0 auto;
+		
 	}
 	.side_nav li {
 		display: inline-block;
@@ -794,6 +807,7 @@ form label{
 	.wrap {
 		width: 279px;
 		margin: 0 auto;
+		
 	}
 
 	.logo img {

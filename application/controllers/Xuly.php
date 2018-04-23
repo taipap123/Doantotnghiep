@@ -8,15 +8,9 @@ class Xuly extends CI_Controller {
 		
 		$this->load->helper('url');
 
-		//view admin
-		$this->admin['header'] = $this->load->view('admin/home/header', null, true);
-		$this->admin['footer'] = $this->load->view('admin/home/footer', null, true);
-		$this->admin['menu'] = $this->load->view('admin/home/menu', null, true);
-
 		//view design
-		$this->design['header'] = $this->load->view('design/home/header', null, true);
-		$this->design['footer'] = $this->load->view('design/home/footer', null, true);
-		$this->design['menuleft'] = $this->load->view('design/home/menuleft', null, true);
+		$this->design['header'] = $this->load->view('giaodien/home/header', null, true);
+		$this->design['footer'] = $this->load->view('giaodien/home/footer', null, true);
 	}
 	
 	public function index()
@@ -26,8 +20,8 @@ class Xuly extends CI_Controller {
 
 	public function loadViewDesign()
 	{
-		$this->design['content1'] = $this->load->view('design/page/content1',null,true);
-		$this->load->view('design/home/master',$this->design);
+		//$this->design['content1'] = $this->load->view('design/page/index',null,true);
+		$this->load->view('giaodien/home/master',$this->design);
 	}
 
 	// public function themdata()

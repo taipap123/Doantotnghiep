@@ -2,7 +2,7 @@
 				<div class="footer-inner">
 					<div class="footer-content">
 						<span class="bigger-120">
-							<span class="blue bolder">Hung Minh</span>
+							<span class="blue bolder">HT</span>
 							Application &copy; 2018
 						</span>
 

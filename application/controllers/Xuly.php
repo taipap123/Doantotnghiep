@@ -24,12 +24,6 @@ class Xuly extends CI_Controller {
 		
 	}
 
-	public function loadViewAdmin()
-	{
-		//$this->admin['content1'] = $this->load->view('admin/page/content1',null,true);
-		$this->load->view('admin/home/master',$this->admin);
-	}
-
 	public function loadViewDesign()
 	{
 		$this->design['content1'] = $this->load->view('design/page/content1',null,true);

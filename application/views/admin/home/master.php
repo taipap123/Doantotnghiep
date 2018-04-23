@@ -3,7 +3,7 @@
 	<head>
 		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 		<meta charset="utf-8" />
-		<title>Dashboard - Ace Admin</title>
+		<title>ITTC Admin</title>
 
 		<meta name="description" content="overview &amp; stats" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
@@ -11,7 +11,7 @@
 		<!-- bootstrap & fontawesome -->
 		<link rel="stylesheet" href="<?php echo base_url() ?>public/css/bootstrap.min.css" />
 		<link rel="stylesheet" href="<?php echo base_url() ?>public/font-awesome/4.5.0/css/font-awesome.min.css" />
-
+		<link rel="stylesheet" href="<?php echo base_url() ?>public/blue.css" />
 		<!-- page specific plugin styles -->
 
 		<!-- text fonts -->

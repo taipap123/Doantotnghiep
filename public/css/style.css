@@ -45,9 +45,9 @@ body{
 }
 .menu{
 	float:left;
-	padding:36px 0 35px;
+	padding:20px 0 20px;
 	background:#F1900B;
-	margin-left:2px;
+	margin-left:3px;
 	border-bottom:7px solid #EA6904;
 	font-family:'Duru Sans', sans-serif;
 }
@@ -56,9 +56,9 @@ body{
 	float:left;	
 }
 .menu li a{
-	font-size:13px;
+	font-size:18px;
 	color:#FFF;
-	padding:38px 47px 38px 48px ;
+	padding:20px 48px 20px 48px ;
 	border-right:1px solid #db5d2c;
 }
 .menu li.active a{
@@ -115,6 +115,7 @@ body{
 	background:#00B5F9;
 }
 .header_bottom_img{
+	margin-left: 2px;
 	float:left;
 }
 .sidebar{

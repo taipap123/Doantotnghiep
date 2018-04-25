@@ -20,7 +20,7 @@ class Xuly extends CI_Controller {
 
 	public function loadViewDesign()
 	{
-		//$this->design['content1'] = $this->load->view('design/page/index',null,true);
+		$this->design['index'] = $this->load->view('giaodien/page/index',null,true);
 		$this->load->view('giaodien/home/master',$this->design);
 	}
 

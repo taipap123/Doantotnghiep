@@ -21,7 +21,7 @@ Licensed under MIT
 .tabbable-line > .nav-tabs > li > a {
   border: 0;
   margin-right: 0;
-  color: #333333;
+  color: #FFF;
 }
 .tabbable-line > .nav-tabs > li > a > i {
   color: #a6a6a6;
@@ -96,3 +96,7 @@ Licensed under MIT
     box-shadow: 3px 3px 0px transparent;
     transition: 0.5s;
     }
+.color{
+  color: #FFF;
+    background: #337ab7;
+}

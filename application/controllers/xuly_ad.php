@@ -34,5 +34,10 @@ class Xuly_ad extends CI_Controller {
 		$this->admin['main'] = $this->load->view('admin/page/thongbao',null,true);
 		$this->load->view('admin/home/master',$this->admin);
 	}
+	public function qladmin()
+	{
+		$this->admin['main'] = $this->load->view('admin/page/ad',null,true);
+		$this->load->view('admin/home/master',$this->admin);
+	}
 }
 ?>

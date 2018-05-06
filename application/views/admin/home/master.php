@@ -25,6 +25,7 @@
 		<![endif]-->
 		<link rel="stylesheet" href="<?php echo base_url() ?>public/ace-skins.min.css" />
 		<link rel="stylesheet" href="<?php echo base_url() ?>public/ace-rtl.min.css" />
+	
 
 		<!--[if lte IE 9]>
 		  <link rel="stylesheet" href="<?php echo base_url() ?>public/css/ace-ie.min.css" />
@@ -34,6 +35,7 @@
 
 		<!-- ace settings handler -->
 		<script src="<?php echo base_url() ?>public/js/ace-extra.min.js"></script>
+		
 
 		<!-- HTML5shiv and Respond.js for IE8 to support HTML5 elements and media queries -->
 
@@ -43,7 +45,7 @@
 		<![endif]-->
 	</head>
 
-	<body class="no-skin">
+	<body class="no-skin" style="font-family: timesnewroman;">
 		<?php echo isset($header)? $header: " "; ?>
 		<div class="main-container ace-save-state" id="main-container">
 			<script type="text/javascript">
@@ -64,7 +66,9 @@
 		<!-- basic scripts -->
 
 		<!--[if !IE]> -->
+		<link rel="stylesheet" type="text/css" href="//cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css"/>
 		<script src="<?php echo base_url() ?>public/js/jquery-2.1.4.min.js"></script>
+						<script type="text/javascript" src="https://cdn.datatables.net/1.10.8/js/jquery.dataTables.min.js"></script>
 
 		<!-- <![endif]-->
 
@@ -92,8 +96,10 @@
 		<!-- ace scripts -->
 		<script src="<?php echo base_url() ?>public/js/ace-elements.min.js"></script>
 		<script src="<?php echo base_url() ?>public/js/ace.min.js"></script>
-
+		
+		   
 		<!-- inline scripts related to this page -->
+
 		<script type="text/javascript">
 			jQuery(function($) {
 				$('.easy-pie-chart.percentage').each(function(){
@@ -312,5 +318,6 @@
 			
 			})
 		</script>
+
 	</body>
 </html>

@@ -12,51 +12,33 @@
               <a href="#tab_default_2" data-toggle="tab">
               Đề tài hướng dẫn- Phản biện </a>
             </li>
+            <li>
+              <a href="#tab_default_3" data-toggle="tab">
+              Điểm của sinh viên</a>
+            </li>
           </ul>
           <div class="tab-content">
             <div class="tab-pane active" id="tab_default_1">
               <div>
                 <h3><strong>Yêu cầu tạo đề tài</strong></h3>
-              <!-- <table class="table table-striped custab">
-                <tr>
-                  <td>News</td>
-                  <td>
-                    <input type="checkbox" name="">
-                  </td>
-                  <td class="text-center"><a class='btn btn-info btn-xs' href="#"><span class="glyphicon glyphicon-edit"></span> Edit</a> <a href="#" class="btn btn-danger btn-xs"><span class="glyphicon glyphicon-remove"></span> Del</a> </td>
-
-                </tr>
-                <tr>
-                  <td>Products</td>
-                  <td>Main Products</td>
-                  <td class="text-center"><a class='btn btn-info btn-xs' href="#"><span class="glyphicon glyphicon-edit"></span> Edit</a> <a href="#" class="btn btn-danger btn-xs"><span class="glyphicon glyphicon-remove"></span> Del</a></td>
-                </tr>
-                <tr>
-                  <td>Blogs</td>
-                  <td>Parent Blogs</td>
-                  <td class="text-center"><a class='btn btn-info btn-xs' href="#"><span class="glyphicon glyphicon-edit"></span> Edit</a> <a href="#" class="btn btn-danger btn-xs"><span class="glyphicon glyphicon-remove"></span> Del</a></td>
-                </tr>
-              </table> -->
               <table class="table table-bordered">
                 <thead>
                   <tr>
-                    <th scope="col">Mã đề bắt đầu</th>
-                    <th scope="col">Mã đề kết thúc</th>
-                    <th scope="col">Bộ môn</th>
-                    <th scope="col">Số lần tạo đề tài</th>
+                    <th class="color" scope="col">Bộ môn</th>
+                    <th class="color" scope="col">Số lần tạo đề tài</th>
                   </tr>
                 </thead>
                 <tbody>
                   <tr>
-                    <th scope="row">1</th>
-                    <td>2</td>
                     <td>Mạng máy tính</td>
                     <td>1</td>
                   </tr>
                   <tr>
-                    <th scope="row">2</th>
-                    <td>5</td>
                     <td>Công nghệ phần mềm</td>
+                    <td>1</td>
+                  </tr>
+                   <tr>
+                    <td>Hệ Thống Thông Tin</td>
                     <td>1</td>
                   </tr>
                 </tbody>
@@ -87,7 +69,7 @@
                   <select id="simple-colorpicker-1" class="col-xs-12 col-sm-7" style="margin-left: 10px; width: 479px;">
                     <option value="#ac725e">Công nghệ phần mềm</option>
                     <option value="#d06b64">Mạng máy tính</option>
-                    <option value="#d06b64">hệ thống thông tin</option>
+                    <option value="#d06b64">Hệ thống thông tin</option>
                   </select>
                 </div>
                 <div class="col-md-offset-3 col-md-9">
@@ -110,11 +92,11 @@
               <table class="table table-bordered">
                 <thead>
                   <tr>
-                    <th scope="col">Mã đề</th>
-                    <th scope="col">Nội dung</th>
-                    <th scope="col">Bộ môn</th>
-                    <th scope="col">GV hướng dẫn</th>
-                    <th scope="col">GV phản biện</th>
+                    <th class="color" scope="col">Mã đề tài</th>
+                    <th class="color" scope="col">Tên đề tài</th>
+                    <th class="color" scope="col">Bộ môn</th>
+                    <th class="color" scope="col">GV hướng dẫn</th>
+                    <th class="color" scope="col">GV phản biện</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -131,6 +113,48 @@
                     <td>Công nghệ phần mềm</td>
                     <td><input type="checkbox" name=""></td>
                     <td><input type="checkbox" name=""></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+                 <div class="tab-pane" id="tab_default_3">
+              <h3><strong>Danh sách đề tài</strong></h3>
+              <table class="table table-bordered">
+                <thead>
+                  <tr>
+                    <th class="color" scope="col">Mã đề tài</th>
+                    <th class="color" scope="col">Tên đề tài</th>
+                    <th class="color" scope="col">Mã Nhóm</th>
+                    <th class="color" scope="col">Mã sinh viên</th>
+                    <th class="color" scope="col">Tên sinh viên</th>
+                    <th class="color" scope="col">Điểm GV-HD</th>
+                    <th class="color" scope="col">Điểm GVPB</th>
+                    <th class="color" scope="col">Điểm PK</th>
+                    <th class="color" scope="col">Tổng điểm</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <th scope="row">DA0001</th>
+                    <td>Phân tích hệ thống đăng ký khóa luận cho sinh viên...</td>
+                    <td>N0001</td>
+                    <td>2001140096</td>
+                    <td>Nguyễn Văn A</td>
+                    <td>8</td>
+                    <td>8</td>
+                    <td>0</td>
+                    <td>8</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">DA0001</th>
+                    <td>Phân tích hệ thống đăng ký khóa luận cho sinh viên...</td>
+                    <td>N0001</td>
+                    <td>2001140096</td>
+                    <td>Nguyễn Văn b</td>
+                    <td>8</td>
+                    <td>9</td>
+                    <td>0</td>
+                    <td>8.5</td>
                   </tr>
                 </tbody>
               </table>

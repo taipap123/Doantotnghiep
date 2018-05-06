@@ -1,6 +1,6 @@
 <!--Header-->
 	<div class="header">
-	<div class="top">
+		<div class="top">
 					<div class="container">
 						
 							<div class="col-md-9 top-left">
@@ -23,9 +23,10 @@
 						
 					</div>
 				</div>
+
 		<!--top-bar-w3layouts-->
 		<div class="top-bar-w3layouts">
-			<div class="container">
+			<div class="container_header">
 				<nav class="navbar navbar-default">
 					<div class="navbar-header">
 						<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
@@ -34,22 +35,24 @@
 							<span class="icon-bar"></span>
 							<span class="icon-bar"></span>
 						</button>
-						<h1><a href="index.html">Bettering</a></h1>
+						<h1><a href="index.html">ITTC-Khoa CNTT</a></h1>
 					</div>
 					<!-- navbar-header -->
 					<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 
 						<ul class="nav navbar-nav navbar-right">
-							<li><a href="index.html" class="active">Home</a></li>
-							<li><a href="about.html">About</a></li>
-							<li><a href="gallery.html">Gallery</a></li>
-							<li><a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Pages <span class="caret"></span></a>
+							<li><a href="index.html" class="active">Thông báo</a></li>
+							<li><a href="about.html">Đăng ký đề tài</a></li>
+							<li><a href="contact.html">Tài khoản</a></li>
+							
+							<li><a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Liên kết<span class="caret"></span></a>
 										<ul class="dropdown-menu">
-											<li><a href="icons.html">Web Icons</a></li>
-											<li><a href="codes.html">Short Codes</a></li>
+											<li><a href="codes.html">Thông tin giảng viên</a></li>
+											<li><a href="icons.html">Sinhvien.hufi.edu.vn</a></li>
+											<li><a href="codes.html">Fit.hufi.edu.vn</a></li>
 										</ul>
 							</li> 
-							<li><a href="contact.html">Contact</a></li>
+							<li><a href="contact.html">Hỗ trợ</a></li>
 						</ul>
 
 					</div>
@@ -76,41 +79,52 @@
 		</div>
 		<!--//top-bar-w3layouts-->
 		<!--Slider-->
-		<div class="slider">
-			<div class="callbacks_container">
-				<ul class="rslides callbacks callbacks1" id="slider3">
-					<li id="callbacks1_s0" class="callbacks1_on" style="display: block; float: left; position: relative; opacity: 1; z-index: 2; transition: opacity 500ms ease-in-out;">
-						<div class="slider-img1">
-							<div class="container">
-								<div class="slider_banner_info_w3ls">
-									<h4>Play, Explore &amp; <span>Learn</span></h4>
-								</div>
-							</div>
-						</div>
-					</li>
-					<li id="callbacks1_s1" class="" style="display: block; float: none; position: absolute; opacity: 0; z-index: 1; transition: opacity 500ms ease-in-out;">
-						<div class="slider-img2">
-							<div class="container">
-								<div class="slider_banner_info_w3ls">
-									<h4>Play, Explore &amp; <span>Learn</span></h4>
-								</div>
-							</div>
-						</div>
-					</li>
-					<li id="callbacks1_s2" class="" style="display: block; float: none; position: absolute; opacity: 0; z-index: 1; transition: opacity 500ms ease-in-out;">
-						<div class="slider-img3">
-							<div class="container">
-								<div class="slider_banner_info_w3ls">
-									<h4>Play, Explore &amp; <span>Learn</span></h4>
-								</div>
-							</div>
-						</div>
-					</li>
+		<center>
+		<div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+  <!-- Indicators -->
+		  <ol class="carousel-indicators">
+		    <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+		    <li data-target="#carousel-example-generic" data-slide-to="1"></li>
+		    <li data-target="#carousel-example-generic" data-slide-to="2"></li>
+		  </ol>
 
-				</ul><a href="#" class="callbacks_nav callbacks1_nav prev">Previous</a><a href="#" class="callbacks_nav callbacks1_nav next">Next</a>
-			</div>
+		  <!-- Wrapper for slides -->
+		  <div class="carousel-inner" role="listbox">
+		    <div class="item active">
+		      <img src="<?php echo base_url() ?>public/images/chucmungnammoi.png" alt="...">
+		      <div class="carousel-caption">
+		       		<h3>Chúc mừng năm mới</h3>
+    				<p>2018-2019</p>
+		      </div>
+		    </div>
+		    <div class="item">
+		      <img src="<?php echo base_url() ?>public/images/traobangtotnghiep.png" alt="...">
+		      <div class="carousel-caption">
+		        	<h3>Trao bằng tốt nghiệp khoa CNTT</h3>
+    				<p>ITTC</p>
+		      </div>
+		    </div>
+		    <div class="item">
+		      <img src="<?php echo base_url() ?>public/images/kyniem35nam.jpg" alt="...">
+		      <div class="carousel-caption">
+		        	<h3>Kỷ niệm 35 năm thành lập</h3>
+    				<p>ITTC</p>
+		      </div>
+		    </div>
+		  </div>
+
+		  <!-- Controls -->
+		  <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
+		    <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+		    <span class="sr-only">Previous</span>
+		  </a>
+		  <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
+		    <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+		    <span class="sr-only">Next</span>
+		  </a>
 		</div>
 		<div class="clearfix"> </div>
+		</center>
 		<!-- //Modal1 -->
 		<!--//Slider-->
 	</div>

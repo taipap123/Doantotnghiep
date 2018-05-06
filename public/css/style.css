@@ -10,7 +10,7 @@ body {
 	margin: 0;
 	font-size: 100%;
 	font-family: 'Lato', sans-serif;
-	background: #fff;
+	background: #E0FFFF;
 }
 
 body a {
@@ -79,7 +79,7 @@ label {
 .top-bar-w3layouts {
 	width: 100%;
 	z-index: 99999;
-	background: #fff;
+	background: #87CEFA;
 }
 
 
@@ -435,6 +435,7 @@ img.img-responsive {
     display: inline-block;
 }
 .top .top-middle, .top .top-right {
+
     padding: 0px;
 }
 .top .top-left {
@@ -443,12 +444,12 @@ img.img-responsive {
 }
 .top-left li {
     display: inline-block;
-	color:#fff;
+	color:#000000;
     margin-right: 2em;
     letter-spacing: 1px;
 }
 .top-left li a{
-	color:#fff;
+	color:#000000;
 }
 .top {
     padding: 10px 0;
@@ -1199,7 +1200,7 @@ h3.title-txt.two, p.two {
     color: #ffffff;
 }
 .testimonials {
-    padding: 5em 0;
+    padding: 1em 0;
 }
 
 /*--// Main Css --*/
@@ -2879,7 +2880,7 @@ h3.title-txt {
     width: 74%;
 }
 .ex-lt {
-    width: 25%;
+    width: 50%;
 }
 .education-info h4, .exp-info-right h4 {
     font-size: 21px;

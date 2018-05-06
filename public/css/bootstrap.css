@@ -1581,6 +1581,25 @@ pre code {
   padding-left: 15px;
   margin-right: auto;
   margin-left: auto;
+  background-color: #FFF;
+}
+.container_top {
+  margin-bottom: 10px;
+  padding-right: 15px;
+  padding-left: 15px;
+  margin-right: auto;
+  margin-left: auto;
+  background-color: #fff;
+  
+}
+
+.container_header {
+  margin-bottom: 10px;
+  padding-right: 15px;
+  padding-left: 15px;
+  margin-right: auto;
+  margin-left: auto;
+  background-color: #87CEFA;
 }
 @media (min-width: 768px) {
   .container {
@@ -6067,6 +6086,7 @@ button.close {
 }
 .carousel {
   position: relative;
+  width: 1200px;
 }
 .carousel-inner {
   position: relative;

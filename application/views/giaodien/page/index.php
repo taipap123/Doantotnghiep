@@ -141,9 +141,7 @@
 			</div>
 			<div class="clearfix"></div>
 		</div>
-	</div>
-
-	<!-- phân trang -->
+		<!-- phân trang -->
 	
 	<nav aria-label="Page navigation example">
 	  <ul class="pagination">
@@ -165,4 +163,7 @@
 	  </ul>
 	</nav>
 	</center>
+	
+	</div>
+
 </div>

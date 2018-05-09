@@ -1,8 +1,3 @@
-<script type="text/javascript">
-    $(document).ready(function() {
-        $('#tb').dataTable();  
-    });
-</script>
 <div class="container">
   <div class="row">
     <div class="col-md-12">
@@ -38,7 +33,6 @@
                      <form class="form-horizontal" role="form">
                     <div class="form-group">
                   <label class="col-sm-3 control-label no-padding-right" for="form-field-1"> <strong>Mã đợt đăng ký</strong> </label>
-
                   <div class="col-sm-9">
                     <input type="text" id="form-field-1" placeholder="Nhập mã đợt dăng ký" class="col-xs-12 col-sm-12" />
                   </div>
@@ -51,7 +45,6 @@
                 </div>
                 <div class="form-group">
                   <label class="col-sm-3 control-label no-padding-right" for="form-field-1"> <strong>Thời gian ra đề</strong> </label>
-
                   <div class="col-sm-9">
                     <input type="date" id="form-field-1" placeholder="Nhập mã đợt dăng ký" class="col-xs-12 col-sm-12" />
                   </div>
@@ -63,23 +56,18 @@
                     <input type="date" id="form-field-1" placeholder="Nhập mã đợt đăng ký" class="col-xs-12 col-sm-12" />
                   </div>
                 </div>
-
               </form>
                   </div>
                   <div class="col-md-6">
-                        <form class="form-horizontal" role="form">
-
-                
+                        <form class="form-horizontal" role="form">       
                 <div class="form-group">
                   <label class="col-sm-3 control-label no-padding-right" for="form-field-1"> <strong>Thời gian bảo vệ </strong></label>
-
                   <div class="col-sm-9">
                     <input type="date" id="form-field-1" placeholder="Nhập mã đợt đăng ký" class="col-xs-12 col-sm-10" />
                   </div>
                 </div>
                 <div class="form-group">
                   <label class="col-sm-3 control-label no-padding-right" for="form-field-1"><strong> Thời gian phúc khảo </strong></label>
-
                   <div class="col-sm-9">
                     <input type="date" id="form-field-1" placeholder="Nhập mã đợt đăng ký" class="col-xs-12 col-sm-10" />
                   </div>
@@ -87,7 +75,6 @@
                 <div class="space-4"></div>
                 <div class="form-group">
                   <label class="col-sm-3 control-label no-padding-right" for="form-field-1"><strong> Số lượng thành viên nhóm </strong></label>
-
                   <div class="col-sm-9">
                     <input type="number" id="form-field-1" placeholder="Số lượng thành viên nhóm" class="col-xs-12 col-sm-10" />
                   </div>
@@ -99,26 +86,21 @@
                     <input type="number" id="form-field-1" placeholder="Số lượng đề tài" class="col-xs-12 col-sm-10" />
                   </div>
                 </div>
-
-
                 <div class="form-group">
                   <label class="col-sm-3 control-label no-padding-right" for="form-field-1"><strong>Chấm hội đồng </strong></label>
                   <div class="radio col-sm-9">
-
                     <label>
                       <input name="form-field-radio" type="radio" class="ace" />
                       <span class="lbl">Có chấm hội đồng</span>
                     </label>
                   </div>
-
                   <div class="radio col-sm-9">
                     <label>
                       <input name="form-field-radio" type="radio" class="ace" />
                       <span class="lbl"> Không chấm hội đồng</span>
                     </label>
                   </div>
-                </div>
-                
+                </div>              
               </form>
                   </div>
                 </div>
@@ -128,7 +110,6 @@
                       <i class="ace-icon fa fa-check bigger-110"></i>
                       Submit
                     </button>
-
                     &nbsp; &nbsp; &nbsp;
                     <button class="btn" type="reset"  style="border-radius: 5px">
                       <i class="ace-icon fa fa-undo bigger-110"></i>
@@ -144,7 +125,6 @@
              <form class="form-horizontal" role="form">
               <div class="form-group">
                 <label class="col-sm-3 control-label no-padding-right" for="form-field-1"> Mã đợt đăng ký </label>
-
                 <div class="col-sm-7">
                   <select id="simple-colorpicker-1" class="" style="width: 150px;>
                     <option value="#ac725e">#ac725e</option>
@@ -155,9 +135,8 @@
             </form>
             <div class="row">
               <div class="col-sm-12" style="margin-top: 10px">
-               <h5><b>Danh sách giảng viên</b></h5>
-               
-              <table id="tb" class="table table-bordered">
+               <h5><b>Danh sách giảng viên</b></h5>              
+              <table id="datatable" class="table table-bordered">
                 <thead>
                   <tr>
                     <th class="color" scope="col">Mã giảng viên</th>
@@ -192,7 +171,6 @@
                   <i class="ace-icon fa fa-check bigger-110"></i>
                   Submit
                 </button>
-
                 &nbsp; &nbsp; &nbsp;
                 <button class="btn" type="reset"  style="border-radius: 5px">
                   <i class="ace-icon fa fa-undo bigger-110"></i>
@@ -202,7 +180,7 @@
             </div>
         </div>
         <h5><b>Thông tin yêu cầu</b></h5>
-        <table class="table table-bordered">
+        <table class="table table-bordered" id="datatb">
           <thead>
             <tr>
               <th class="color" scope="col">Mã bộ môn</th>
@@ -224,7 +202,6 @@
           </tbody>
         </table>
       </div>
-
       <div class="tab-pane" id="tab_default_3">
          <form class="form-horizontal" role="form">
               <div class="form-group">
@@ -240,7 +217,7 @@
             <div class="row">
               <div class="col-sm-12" style="margin-top: 10px">
                <h5><b>Danh sách đề tài</b></h5>
-              <table class="table table-bordered">
+              <table class="table table-bordered" id="dttb_dsdt">
                 <thead>
                   <tr>
                     <th class="color" scope="col">Mã đề tài</th>
@@ -293,11 +270,10 @@
                 </button>
             </div>
         </div>
-
       <div class="row">
               <div class="col-sm-12" style="margin-top: 10px">
                <h5><b>Danh sách phân công</b></h5>
-              <table class="table table-bordered">
+              <table class="table table-bordered" id="dttb_dspc">
                 <thead>
                   <tr>
                     <th class="color" scope="col">Mã đề tài</th>
@@ -326,7 +302,6 @@
               </table>
             </div>
         </div>
-
       </div>
        <!-- het tag 3 -->
        <!-- tab4 -->
@@ -351,7 +326,7 @@
             <div class="row">
               <div class="col-sm-12" style="margin-top: 10px">
                <h5><b>Danh sách Giảng viên</b></h5>
-              <table class="table table-bordered">
+              <table class="table table-bordered" id="dttb_dsgv">
                 <thead>
                   <tr>
                     <th class="color" scope="col">Mã Giảng viên</th>
@@ -409,9 +384,6 @@
                 </button>
             </div>
         </div>
-
-      
-
       </div>
     </div>
   </div>
@@ -467,3 +439,38 @@
     </div>
   </div>
 </div>
+<script type="text/javascript">
+  $(document).ready( function () {
+    $('#datatable').DataTable({
+       "bSort": false
+    });
+} );
+</script>
+<script type="text/javascript">
+  $(document).ready( function () {
+    $('#datatb').DataTable({
+       "bSort": false
+    });
+} );
+</script>
+<script type="text/javascript">
+  $(document).ready( function () {
+    $('#dttb_dsdt').DataTable({
+       "bSort": false
+    });
+} );
+</script>
+<script type="text/javascript">
+  $(document).ready( function () {
+    $('#dttb_dspc').DataTable({
+       "bSort": false
+    });
+} );
+</script>
+<script type="text/javascript">
+  $(document).ready( function () {
+    $('#dttb_dsgv').DataTable({
+       "bSort": false
+    });
+} );
+</script>

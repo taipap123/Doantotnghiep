@@ -25,7 +25,8 @@
 		<![endif]-->
 		<link rel="stylesheet" href="<?php echo base_url() ?>public/ace-skins.min.css" />
 		<link rel="stylesheet" href="<?php echo base_url() ?>public/ace-rtl.min.css" />
-	
+			<script src="<?php echo base_url() ?>public/js/jquery-2.1.4.min.js"></script>
+
 
 		<!--[if lte IE 9]>
 		  <link rel="stylesheet" href="<?php echo base_url() ?>public/css/ace-ie.min.css" />
@@ -66,9 +67,8 @@
 		<!-- basic scripts -->
 
 		<!--[if !IE]> -->
-		<link rel="stylesheet" type="text/css" href="//cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css"/>
-		<script src="<?php echo base_url() ?>public/js/jquery-2.1.4.min.js"></script>
-						<script type="text/javascript" src="https://cdn.datatables.net/1.10.8/js/jquery.dataTables.min.js"></script>
+		<link rel="stylesheet" type="text/css" href="<?php echo base_url() ?>public/DataTables/datatables.min.css"/>
+		<script type="text/javascript" src="<?php echo base_url() ?>public/DataTables/dataTables.min.js"></script>
 
 		<!-- <![endif]-->
 
@@ -321,3 +321,4 @@
 
 	</body>
 </html>
+

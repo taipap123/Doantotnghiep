@@ -24,7 +24,7 @@
               <table class="table table-bordered">
                 <thead>
                   <tr>
-                    <th class="color" scope="col">Bộ môn</th>
+                    <th class="color" scope="col" >Bộ môn</th>
                     <th class="color" scope="col">Số lần tạo đề tài</th>
                   </tr>
                 </thead>
@@ -89,7 +89,7 @@
           </div>
             <div class="tab-pane" id="tab_default_2">
               <h3><strong>Danh sách đề tài</strong></h3>
-              <table class="table table-bordered">
+              <table class="table table-bordered" id="datatable">
                 <thead>
                   <tr>
                     <th class="color" scope="col">Mã đề tài</th>
@@ -119,7 +119,7 @@
             </div>
                  <div class="tab-pane" id="tab_default_3">
               <h3><strong>Danh sách đề tài</strong></h3>
-              <table class="table table-bordered">
+              <table class="table table-bordered" id="datatable_diem">
                 <thead>
                   <tr>
                     <th class="color" scope="col">Mã đề tài</th>
@@ -166,3 +166,18 @@
   </div>
 </div>
 </div>
+<script type="text/javascript">
+  $(document).ready( function () {
+    $('#datatable_diem').DataTable({
+       "bSort": false
+    });
+} );
+</script>
+<script type="text/javascript">
+  $(document).ready( function () {
+    $('#datatable').DataTable({
+       "bSort": false
+    });
+} );
+</script>
+

@@ -19,14 +19,14 @@
           </div>
             <div class="tab-pane" id="tab_default_2">
               <h3><strong>Danh sách đề tài</strong></h3>
-              <table class="table table-bordered">
+              <table class="table table-bordered" id="dsdt">
                 <thead>
                   <tr>
-                    <th scope="col">Mã đề</th>
-                    <th scope="col">Nội dung</th>
-                    <th scope="col">Bộ môn</th>
-                    <th scope="col">GV hướng dẫn</th>
-                    <th scope="col">GV phản biện</th>
+                    <th class="color" scope="col">Mã đề</th>
+                    <th class="color" scope="col">Nội dung</th>
+                    <th class="color" scope="col">Bộ môn</th>
+                    <th class="color" scope="col">GV hướng dẫn</th>
+                    <th class="color" scope="col">GV phản biện</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -54,3 +54,10 @@
   </div>
 </div>
 </div>
+<script type="text/javascript">
+  $(document).ready( function () {
+    $('#dsdt').DataTable({
+       "bSort": false
+    });
+} );
+</script>

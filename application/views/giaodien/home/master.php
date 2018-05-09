@@ -36,3 +36,5 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 	
 
 	<?php echo isset($footer)? $footer: " "; ?>
+</body>
+</html>

@@ -18,9 +18,7 @@
 									<li><a href="#"><i class="fa fa-linkedin"></i></a></li>
 								</ul>
 							</div>
-							
 							<div class="clearfix"></div>
-						
 					</div>
 				</div>
 
@@ -41,9 +39,10 @@
 					<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 
 						<ul class="nav navbar-nav navbar-right">
-							<li><a href="index.html" class="active">Thông báo</a></li>
-							<li><a href="about.html">Đăng ký đề tài</a></li>
-							<li><a href="contact.html">Tài khoản</a></li>
+							<li><a href="<?php echo base_url()?>index.php/xuly/ThongBao" class="active">Thông báo</a></li>
+							<li><a href="<?php echo base_url()?>index.php/xuly/DangKyDeTai">Đăng ký đề tài</a></li>
+							<li><a href="<?php echo base_url()?>index.php/xuly/Baocaotiendo">Báo cáo-tiến độ</a></li>
+							<li><a href="<?php echo base_url()?>index.php/xuly/Taikhoan">Tài khoản</a></li>
 							
 							<li><a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Liên kết<span class="caret"></span></a>
 										<ul class="dropdown-menu">
@@ -52,7 +51,7 @@
 											<li><a href="codes.html">Fit.hufi.edu.vn</a></li>
 										</ul>
 							</li> 
-							<li><a href="contact.html">Hỗ trợ</a></li>
+							
 						</ul>
 
 					</div>

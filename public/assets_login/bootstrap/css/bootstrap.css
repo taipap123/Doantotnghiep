@@ -35,7 +35,6 @@ video {
   display: inline-block;
   vertical-align: baseline;
 }
-
 audio:not([controls]) {
   display: none;
   height: 0;
@@ -1582,25 +1581,6 @@ pre code {
   padding-left: 15px;
   margin-right: auto;
   margin-left: auto;
-  background-color: #FFF;
-}
-.container_top {
-  margin-bottom: 5px;
-  padding-right: 15px;
-  padding-left: 15px;
-  margin-right: auto;
-  margin-left: auto;
-  background-color: #fff;
-  
-}
-
-.container_header {
-  margin-bottom: 5px;
-  padding-right: 15px;
-  padding-left: 15px;
-  margin-right: auto;
-  margin-left: auto;
-  background-color: #87CEFA;
 }
 @media (min-width: 768px) {
   .container {
@@ -6087,7 +6067,6 @@ button.close {
 }
 .carousel {
   position: relative;
-  width: 1200px;
 }
 .carousel-inner {
   position: relative;
@@ -6603,40 +6582,3 @@ button.close {
   }
 }
 /*# sourceMappingURL=bootstrap.css.map */
-
-/*# css tự viết */
-.thongtinhsv {
-  float: left;
-  width: 400px;
-  margin-bottom: 20px;
-}
-.dropdown_locdulieu{
-
-  width: 600px;
-  margin-left: 140px;
-  float: left;
-}
-
-.dropdown_locdulieu button {
-  height: 25px;
-}
-
-.table_header{
-  background-color: 00BFFF;
-  color: FFFFFF;
-}
-.table_background{
-  background-color: DCDCDC;
-  font-weight: 000000;
-  color: 000000;
-}
-.comment_baocao {
-  margin-left: 10px;
-  margin-bottom: 5px;
-}
-.thongtindetai {
-    width: 50%;
-    height: 50%;
-    margin: auto;
-    margin-bottom: -130px;
-}

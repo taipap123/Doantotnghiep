@@ -83,7 +83,9 @@
                   <label class="col-sm-3 control-label no-padding-right" for="form-field-1"><strong> Số lượng đề tài </strong></label>
 
                   <div class="col-sm-9">
-                    <input type="number" id="form-field-1" placeholder="Số lượng đề tài" class="col-xs-12 col-sm-10" />
+                    <input type="number" id="form-field-1" placeholder="Công nghệ phần mềm" class="col-xs-12 col-sm-10" style="margin-bottom: 5px"/>
+                    <input type="number" id="form-field-1" placeholder="Hệ thống thông tin" class="col-xs-12 col-sm-10" style="margin-bottom: 5px" />
+                    <input type="number" id="form-field-1" placeholder="Mạng máy tính" class="col-xs-12 col-sm-10" />
                   </div>
                 </div>
                 <div class="form-group">
@@ -179,7 +181,7 @@
               </div>
             </div>
         </div>
-        <h5><b>Thông tin yêu cầu</b></h5>
+        <h5><b>Số lượng đề tài</b></h5>
         <table class="table table-bordered" id="datatb">
           <thead>
             <tr>
@@ -202,6 +204,7 @@
           </tbody>
         </table>
       </div>
+      <!-- tab3 -->
       <div class="tab-pane" id="tab_default_3">
          <form class="form-horizontal" role="form">
               <div class="form-group">
@@ -222,45 +225,59 @@
                   <tr>
                     <th class="color" scope="col">Mã đề tài</th>
                     <th class="color" scope="col">Tên đề tài</th>
-                    <th class="color" scope="col">Giáo viên ra đề</th>
-                    <th class="color" scope="col">Giáo viên hướng dẫn</th>
-                    <th class="color" scope="col">Giáo viên Phản biện</th>
+                    <th class="color" scope="col">Hội đồng phản Biện</th>
                   </tr>
                 </thead>
                 <tbody>
                   <tr>
-                    <th scope="row">1</th>
-                    <td></td>
-                    <td>Công nghệ phần mềm</td>
+                    <th scope="row">DA0001</th>
+                    <td>Phân tích hệ thống đăng ký khóa luận cho sinh viên khoa CNTT</td>
                     <td>
                         <select id="simple-colorpicker-1" class="" style="width: 100%">
-                          <option value="#ac725e">Tô văn Nhật Phi</option>
-                          <option value="#d06b64">Phan Thành Nhân</option>
-                      </select>
-                    </td>
-                    <td>
-                        <select id="simple-colorpicker-1" class="" style="width: 100%">
-                          <option value="#ac725e">Tô văn Nhật Phi</option>
-                          <option value="#d06b64">Phan Thành Nhân</option>
+                          <option value="#ac725e">HDK05</option>
+                          <option value="#d06b64">HDK06</option>
                       </select>
                     </td>
                   </tr>
                   <tr>
-                    <th scope="row">2</th>
-                    <td></td>
-                    <td>Công nghệ phần mềm</td>
+                    <th scope="row">DA0004</th>
+                    <td>Xây dựng phần mềm quản lý nhà hàng</td>
                     <td>
-                      <select id="simple-colorpicker-1" class="" style="width: 100%">
-                          <option value="#ac725e">Tô văn Nhật Phi</option>
-                          <option value="#d06b64">Phan Thành Nhân</option>
+                        <select id="simple-colorpicker-1" class="" style="width: 100%">
+                          <option value="#ac725e">HDK05</option>
+                          <option value="#d06b64">HDK06</option>
                       </select>
-                   </td>
+                    </td>
+                  </tr>
+                  <tr>
+                    <th scope="row">DA0008</th>
+                    <td>Quản lý siêu thị Điện Máy Xanh</td>
                     <td>
-                      <select id="simple-colorpicker-1" class="" style="width: 100%">
-                        <option value="#ac725e">Tô văn Nhật Phi</option>
-                        <option value="#d06b64">Phan Thành Nhân</option>
+                        <select id="simple-colorpicker-1" class="" style="width: 100%">
+                          <option value="#ac725e">HDK05</option>
+                          <option value="#d06b64">HDK06</option>
                       </select>
-                     </td>
+                    </td>
+                  </tr>
+                  <tr>
+                    <th scope="row">DA0009</th>
+                    <td>Xây dựng website bán đồ  dùng trẻ em</td>
+                    <td>
+                        <select id="simple-colorpicker-1" class="" style="width: 100%">
+                          <option value="#ac725e">HDK05</option>
+                          <option value="#d06b64">HDK06</option>
+                      </select>
+                    </td>
+                  </tr>
+                  <tr>
+                    <th scope="row">DA0010</th>
+                    <td>Tìm hiểu ReactJS.NET viết ứng dụng minh họa.</td>
+                    <td>
+                        <select id="simple-colorpicker-1" class="" style="width: 100%">
+                          <option value="#ac725e">HDK05</option>
+                          <option value="#d06b64">HDK06</option>
+                      </select>
+                    </td>
                   </tr>
                 </tbody>
               </table>
@@ -269,43 +286,122 @@
                   Lưu
                 </button>
             </div>
+          </div>
         </div>
-      <div class="row">
+       <!-- het tag 3 -->
+       <!-- tab4 -->
+       <div class="tab-pane" id="tab_default_4">
+         <form class="form-horizontal" role="form">
+              <div class="form-group">
+                <div>
+                  <button class="btn btn-warning dropdown-toggle" data-target="#myModal" data-toggle="modal" type="button" style="border-radius: 5px;margin-left: 87%; margin-top: -2px">
+                  <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+                  Tạo hội đồng
+                </button>
+                </div>
+              </div>
+            </form>
+            <div class="row">
+            <div class="col-sm-5">
+              
               <div class="col-sm-12" style="margin-top: 10px">
-               <h5><b>Danh sách phân công</b></h5>
-              <table class="table table-bordered" id="dttb_dspc">
+               <h5><b>Danh sách hội đồng</b></h5>
+              <table class="table table-bordered">
                 <thead>
                   <tr>
-                    <th class="color" scope="col">Mã đề tài</th>
-                    <th class="color" scope="col">Tên đề tài</th>
-                    <th class="color" scope="col">Giáo viên ra đề</th>
-                    <th class="color" scope="col">Giáo viên hướng dẫn</th>
-                    <th class="color" scope="col">Giáo viên phản biện</th>
+                    <th class="color" scope="col">Mã Hội Đồng</th>
+                    <th class="color" scope="col">Tên Hội Đồng</th>
+                    <th class="color" scope="col">Số lượng tv</th>
                   </tr>
                 </thead>
                 <tbody>
                   <tr>
-                    <th scope="row">1</th>
-                    <td></td>
-                    <td>Công nghệ phần mềm</td>
-                    <td> Phan Thành Nhân</td>
-                    <td>Tô văn Nhật Phi</td>
+                    <th scope="row">HDK05</th>
+                    <td>Phản biện khóa 05</td>
+                    <td>4</td>
                   </tr>
                   <tr>
-                    <th scope="row">2</th>
-                    <td></td>
-                    <td>Công nghệ phần mềm</td>
-                    <td>Tô văn Nhật Phi</td>
-                    <td>Phan Thành Nhân</td>
+                    <th scope="row">HDK06</th>
+                    <td>Phản biện khóa 06</td>
+                    <td>3</td>
                   </tr>
                 </tbody>
               </table>
+            
             </div>
         </div>
+        <div class="col-sm-7">
+              <div class="col-sm-12" style="margin-top: 10px">
+               <h5><b>Danh sách Giảng viên</b></h5>
+              <table class="table table-bordered"  id="dttb_dsgv">
+                <thead>
+                  <tr>
+                    <th class="color" scope="col">Mã giảng viên</th>
+                    <th class="color" scope="col">Tên Giảng viên</th>
+                    <th class="color" scope="col"> Mã Bộ môn</th>
+                    <th class="color" scope="col">Tham gia</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <th scope="row">GV0001</th>
+                    <td>Nguyễn Văn Hoàng</td>
+                    <td>CNPM</td>
+                    <td><input type="checkbox" name=""></td>
+                  </tr>
+                  <tr>
+                    <th scope="row">GV0005</th>
+                    <td>Nguyễn Thị Thúy</td>
+                    <td>MMT</td>
+                    <td><input type="checkbox" name=""></td>
+                  </tr>
+                </tbody>
+              </table>
+              <div>
+                <button class="btn btn-success" type="button" style="border-radius: 5px;margin-left: 40%">
+                  <i class="ace-icon fa fa-check bigger-110"></i>
+                  Lưu
+                </button>
+              </div>
+            </div>
+        </div>
+            </div>
+            <div class="row">
+              <div class="col-sm-12">
+              
+              <div class="col-sm-12" style="margin-top: 10px">
+              <table class="table table-bordered" id="dttbtb">
+                <thead>
+                  <tr>
+                    <th class="color" scope="col">Mã Hội Đồng</th>
+                    <th class="color" scope="col">Mã Giảng Viên</th>
+                    <th class="color" scope="col">Tên Giảng Viên</th>
+                    <th class="color" scope="col">Mã Bộ Môn</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <th scope="row">HDK05</th>
+                    <th scope="row">GV0005</th>
+                    <td>Nguyễn Thị Thúy</td>
+                    <td>MMT</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">HDK06</th>
+                    <th scope="row">GV0001</th>
+                    <td>Nguyễn Văn Hoàng</td>
+                    <td>CNPM</td>
+                  </tr>
+                </tbody>
+              </table>
+            
+            </div>
+        </div>
+            </div>
+
+            
       </div>
-       <!-- het tag 3 -->
-       <!-- tab4 -->
-       <div class="tab-pane" id="tab_default_4">
+      <div class="tab-pane" id="tab_default_5">
          <form class="form-horizontal" role="form">
               <div class="form-group">
                 <label class="col-sm-3 control-label no-padding-right" for="form-field-1"> Mã đợt đăng ký </label>
@@ -315,66 +411,49 @@
                     <option value="#d06b64">#d06b64</option>
                   </select>
                 </div>
-                <div>
-                  <button class="btn btn-warning dropdown-toggle" data-target="#myModal" data-toggle="modal" type="button" style="border-radius: 5px;margin-left: 62%; margin-top: -38px">
-                  <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
-                  Tạo hội đồng
-                </button>
-                </div>
               </div>
             </form>
             <div class="row">
               <div class="col-sm-12" style="margin-top: 10px">
-               <h5><b>Danh sách Giảng viên</b></h5>
-              <table class="table table-bordered" id="dttb_dsgv">
+               <h5><b>Danh sách đề tài</b></h5>
+              <table class="table table-bordered" id="dttb_dsdt">
                 <thead>
                   <tr>
-                    <th class="color" scope="col">Mã Giảng viên</th>
-                    <th class="color" scope="col">Tên Giảng viên</th>
-                    <th class="color" scope="col">Mã bộ môn</th>
+                    <th class="color" scope="col">Mã đề tài</th>
+                    <th class="color" scope="col">Tên đề tài</th>
+                    <th class="color" scope="col">Giáo Viên ra đề</th>
                     <th class="color" scope="col">Bộ môn</th>
-                    <th class="color" scope="col">Mã Hội Đồng</th>
-                    <th class="color" scope="col">Chức vụ</th>
+                    <th class="color" scope="col">Kiểm duyệt</th>
                   </tr>
                 </thead>
                 <tbody>
                   <tr>
-                    <th scope="row">GV0001</th>
-                    <td>Vũ Hoàng Long</td>
+                    <th scope="row">DA0001</th>
+                    <td>Phân tích hệ thống đăng ký khóa luận cho sinh viên khoa CNTT</td>
+                    <td>Nguyễn Thị Thùy Ngân</td>
                     <td>CNPM</td>
-                    <td>Công nghệ phần mềm</td>
-                    <td>
-                        <select id="simple-colorpicker-1" class="" style="width: 100%">
-                          <option value="#ac725e">HDK05</option>
-                          <option value="#d06b64">HDK06</option>
-                      </select>
-                    </td>
-                    <td>
-                        <select id="simple-colorpicker-1" class="" style="width: 100%">
-                          <option value="#ac725e">trưởng</option>
-                          <option value="#d06b64">Phó</option>
-                          <option value="#d06b64">Thành viên</option>
-                      </select>
-                    </td>
+                    <td><input type="checkbox" name=""></td>
                   </tr>
                   <tr>
-                    <th scope="row">GV0002</th>
-                    <td>Vũ Ái VY</td>
+                    <th scope="row">DA0004</th>
+                    <td>Xây dựng phần mềm quản lý nhà hàng</td>
+                    <td>Nguyễn Thị Thùy Trang</td>
+                    <td>HTTT</td>
+                    <td><input type="checkbox" name=""></td>
+                  </tr>
+                  <tr>
+                    <th scope="row">DA0008</th>
+                    <td>Quản lý siêu thị Điện Máy Xanh</td>
+                    <td>Tô Văn Nhật Phi</td>
+                    <td>MMT</td>
+                    <td><input type="checkbox" name=""></td>
+                  </tr>
+                  <tr>
+                    <th scope="row">DA0009</th>
+                    <td>Xây dựng website bán đồ  dùng trẻ em</td>
+                    <td>Lê Thanh Hưng</td>
                     <td>CNPM</td>
-                    <td>Công nghệ phần mềm</td>
-                    <td>
-                      <select id="simple-colorpicker-1" class="" style="width: 100%">
-                          <option value="#ac725e">HDK05</option>
-                          <option value="#d06b64">HDK05</option>
-                      </select>
-                   </td>
-                    <td>
-                      <select id="simple-colorpicker-1" class="" style="width: 100%">
-                        <option value="#ac725e">Trưởng</option>
-                        <option value="#d06b64"> Phó</option>
-                        <option value="#d06b64">Thành viên</option>
-                      </select>
-                     </td>
+                    <td><input type="checkbox" name=""></td>
                   </tr>
                 </tbody>
               </table>
@@ -383,8 +462,8 @@
                   Lưu
                 </button>
             </div>
+          </div>
         </div>
-      </div>
     </div>
   </div>
 </div>
@@ -470,6 +549,13 @@
 <script type="text/javascript">
   $(document).ready( function () {
     $('#dttb_dsgv').DataTable({
+       "bSort": false
+    });
+} );
+</script>
+<script type="text/javascript">
+  $(document).ready( function () {
+    $('#dttbtb').DataTable({
        "bSort": false
     });
 } );

@@ -8,7 +8,7 @@ class Xuly extends CI_Controller {
 		
 		$this->load->library(array('form_validation','session'));
 		$this->load->helper('url');
-		$this->load->model('m_login');
+		$this->load->model(array('m_login', 'm_quanlydata'));
 
 		//view design
 		$this->design['header'] = $this->load->view('giaodien/home/header', null, true);
@@ -29,9 +29,11 @@ class Xuly extends CI_Controller {
 			if($this->form_validation->run())
 			{
 				$user = $this->input->post('user');
+				$name_user= $this->m_quanlydata->loadTableWhere("sinhvien","MASV = ".$user);
 
-				$this->session->set_userdata('login', $user);
-
+				$this->session->set_userdata('login', $name_user[0]['HOTEN']);
+				$this->session->set_userdata('maso', $name_user[0]['MASV']);
+				
 				redirect(base_url('index.php/xuly/thongbao'));
 			}
 		}
@@ -58,8 +60,12 @@ class Xuly extends CI_Controller {
 
 	public function DangKyDeTai()
 	{
-		$this->design['index'] = $this->load->view('giaodien/page/dangkydetai',null,true);
+		$data['dotdangky'] = $this->m_quanlydata->loadTable('dotdangky');
+		$data['detai'] = $this->m_quanlydata->loadTableJoinTable('detai','dotdangky','MADOT','MADOT');
+		
+		$this->design['index'] = $this->load->view('giaodien/page/dangkydetai',$data,true);
 		$this->load->view('giaodien/home/master',$this->design);
+
 	}
 	public function Baocaotiendo()
 	{
@@ -71,6 +77,8 @@ class Xuly extends CI_Controller {
 		$this->design['index'] = $this->load->view('giaodien/page/taikhoan',null,true);
 		$this->load->view('giaodien/home/master',$this->design);
 	}
+
+	
 
 	
 

@@ -12,10 +12,7 @@
 							</div>
 							<div class="col-md-3 top-middle">
 								<ul>
-									<li><a href="#"><i class="fa fa-facebook"></i></a></li>
-									<li><a href="#"><i class="fa fa-twitter"></i></a></li>
-									<li><a href="#"><i class="fa fa-google-plus"></i></a></li>
-									<li><a href="#"><i class="fa fa-linkedin"></i></a></li>
+									<li><a href="#"><i>Xin chào! <?php echo $this->session->userdata('login') ?></i></a></li>
 								</ul>
 							</div>
 							<div class="clearfix"></div>
@@ -49,6 +46,7 @@
 											<li><a href="codes.html">Thông tin giảng viên</a></li>
 											<li><a href="icons.html">Sinhvien.hufi.edu.vn</a></li>
 											<li><a href="codes.html">Fit.hufi.edu.vn</a></li>
+											<li><a href="codes.html">Đăng xuất</a></li>
 										</ul>
 							</li> 
 							

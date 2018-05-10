@@ -20,7 +20,7 @@
 
     </head>
 
-    <body background="<?php echo base_url() ?>public/assets_login/img/backgrounds/login_giaodien.jpg">
+    <body background="<?php echo base_url() ?>public/assets_login/img/backgrounds/login_admin.jpg">
 
         <!-- Top content -->
         <div class="top-content">
@@ -29,7 +29,7 @@
                 <div class="container">
                     <div class="row">
                         <div class="col-sm-8 col-sm-offset-2 text">
-                            <h1><strong>ITTC-Đăng nhập</strong></h1>
+                            <h1><strong>ITTC-Admin Đăng nhập</strong></h1>
                         </div>
                     </div>
                     <div class="row">

@@ -1,5 +1,4 @@
 <!-- services -->
-	
 <div class="w3-agile-services">
 		<div class="container">
 			<h3 class="title-txt"><span>Đăng ký đề tài</span></h3>
@@ -10,11 +9,11 @@
 						    <table>
 									<tr class="masthead">
 										<td>Mã số sinh viên: </td>
-										<td>2001140219</td>
+										<td><?php echo $this->session->userdata('maso') ?></td>
 									</tr>
 									<tr class="masthead">
 										<td>Họ và tên: </td>
-										<td colspan="2">Ngô Tấn Tài</td>
+										<td colspan="2"><?php echo $this->session->userdata('login') ?></td>
 									</tr>
 							</table>
 
@@ -31,10 +30,10 @@
 									<td>Đợt đăng ký&nbsp&nbsp</td>
 									<td>
 										<select id="simple-colorpicker-1" class="" style="width: 150px;">
-											
-						                    <option value="#ac725e">Đồ án phân tích thiết kế</option>
-						                    <option value="#d06b64">Đồ án môn học</option>
-
+											<?php foreach ($dotdangky as $row): 
+                 								?>
+						                    <option value="123"> <?php echo $row['NOIDUNGDT'] ?> </option>
+						                    <?php endforeach;?>
 					                  	</select>
 									</td>
 									<td>&nbsp&nbspBộ môn&nbsp&nbsp</td>
@@ -66,27 +65,19 @@
 				    	<th>Yêu cầu đề tài
 				    	<th>Số lượng thành viên</th>
 				    </tr>
-
+				    <?php foreach ($detai as $row): 
+                 	?>
 				     <tr>
 				    	<td><label>
 				    			<input type="radio" name="blankRadio" id="blankRadio1" value="option1" aria-label="...">
 				    		</label>
 				    	</td>
-				    	<td>Table cell</td>
-				    	<td>Table cell</td>
-				    	<td>Table cell</td>
-				    	<td>Table cell</td>
+				    	<td><?php echo $row['MADETAI'] ?></td>
+				    	<td><?php echo $row['TEN_DT'] ?></td>
+				    	<td><?php echo $row['YEUCAU'] ?></td>
+				    	<td><?php echo $row['SLTVNHOM'] ?></td>
 				    </tr>
-				    <tr>
-				    	<td><label>
-				    			<input type="radio" name="blankRadio" id="blankRadio1" value="option1" aria-label="...">
-				    		</label>
-				    	</td>
-				    	<td>Table cell</td>
-				    	<td>Table cell</td>
-				    	<td>Table cell</td>
-				    	<td>Table cell</td>
-				    </tr>
+				    <?php endforeach;?>
 				</div>
 			</table>
 			<center>
@@ -124,34 +115,27 @@
 				    	<th colspan="5"><font color="FFFFFF" size="4">Thông tin đề tài đăng ký</font></th>
 				    	
 				    </tr>
+				    <tr class="bg-primary">
+				    	<th colspan="5"><center><font color="FFFFFF" size="4">Tên đề tài: </font></center></th>
+				    </tr>
 				    <tr class="table_background">
-				    	<th>Tìm kiếm</th>
-				    	<th>Mã đề</th>
-				    	<th>Nội dung đề tài</th>
-				    	<th>Yêu cầu đề tài
-				    	<th>Số lượng thành viên</th>
+		
+				    	<th>Mã thành viên</th>
+				    	<th>Tên thành viên</th>
+				    	<th>Ngày đăng ký</th>
+				    	<th>Số điện thoại</th>
+				    	<th>Email</th>
 				    </tr>
 
 				     <tr>
-				    	<td><label>
-				    			<input type="radio" name="blankRadio" id="blankRadio1" value="option1" aria-label="...">
-				    		</label>
-				    	</td>
 				    	<td>Table cell</td>
 				    	<td>Table cell</td>
 				    	<td>Table cell</td>
 				    	<td>Table cell</td>
+				    	<td>Table cell</td>
+
 				    </tr>
-				    <tr>
-				    	<td><label>
-				    			<input type="radio" name="blankRadio" id="blankRadio1" value="option1" aria-label="...">
-				    		</label>
-				    	</td>
-				    	<td>Table cell</td>
-				    	<td>Table cell</td>
-				    	<td>Table cell</td>
-				    	<td>Table cell</td>
-				    </tr>
+
 				</div>
 			</table>
 		</div>

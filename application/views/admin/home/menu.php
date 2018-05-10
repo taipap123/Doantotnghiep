@@ -89,14 +89,6 @@
 				</a>
 				<b class="arrow"></b>
 			</li>
-				
-			<li class="">
-				<a href="<?php base_url() ?>index.php/welcome/product" class="dropdown-toggle">
-					<i class="menu-icon fa fa-desktop"></i>
-					<span class="menu-text">Hội đồng</span>
-									</a>
-				<b class="arrow"></b>
-			</li>
 			<li class="">
 				<a href="<?php echo base_url() ?>index.php/xuly_ad/thongbao">
 					<i class="menu-icon fa fa-desktop"></i>

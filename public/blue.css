@@ -97,6 +97,6 @@ Licensed under MIT
     transition: 0.5s;
     }
 .color{
-  color: #FFF;
+    color: #FFF !important;
     background: #337ab7;
 }

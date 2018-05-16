@@ -100,3 +100,7 @@ Licensed under MIT
     color: #FFF !important;
     background: #337ab7;
 }
+.dataTables_wrapper .dataTables_filter input
+{
+  border-radius: 5px !important;
+}

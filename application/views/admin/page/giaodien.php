@@ -27,88 +27,101 @@
           </ul>
           <div class="tab-content">
             <!-- tab1 -->
+            
             <div class="tab-pane active" id="tab_default_1">
+               <form action="<?php echo base_url() ?>index.php/xuly_ad/insert_madotdk" method="post" class="form-horizontal" role="form"> 
                 <div class="row">
                   <div class="col-md-6">
-                     <form class="form-horizontal" role="form">
                     <div class="form-group">
-                  <label class="col-sm-3 control-label no-padding-right" for="form-field-1"> <strong>Mã đợt đăng ký</strong> </label>
+                  <label class="col-sm-3 control-label no-padding-right" for="form-field-1"> <strong>Loại đợt đăng ký</strong> </label>
                   <div class="col-sm-9">
-                    <input type="text" id="form-field-1" placeholder="Nhập mã đợt dăng ký" class="col-xs-12 col-sm-12" />
+                     <select id="simple-colorpicker-1" class="" style="width: 250px;"  onchange="testcombo(this)">
+                      <option value="" disabled="true" selected="true"">--Chọn loại đăng ký--</option>
+                    <option value="KLTNK">Khóa Luận Tốt Nghiệp</option>
+                    <option value="DATNK">Đồ Án Tốt Nghiệp</option>
+                     <option value="DAMH">Đồ Án Môn Học</option>
+                  </select>
+                  </div>
+                </div>
+                 <div class="form-group">
+                  <label class="col-sm-3 control-label no-padding-right" for="form-field-1"><strong> Mã đợt đăng ký </strong></label>
+
+                  <div class="col-sm-9">
+                    <input type="text" id="form-field-1" name="madk" placeholder="Nhập mã đợt đăng ký" class="madkk col-xs-12 col-sm-12" readonly="true" />
                   </div>
                 </div>
                 <div class="form-group">
                   <label class="col-sm-3 control-label no-padding-right" for="form-field-8"><strong>Nội dung</strong></label>
                   <div class="col-sm-9">
-                    <textarea class="col-xs-12 col-sm-12"  rows="6"  id="form-field-8" placeholder="Nhập nội dung"></textarea>
+                    <textarea class="col-xs-12 col-sm-12" name="nddk" rows="6"  id="form-field-8" placeholder="Nhập nội dung"></textarea>
                   </div>
                 </div>
+
                 <div class="form-group">
                   <label class="col-sm-3 control-label no-padding-right" for="form-field-1"> <strong>Thời gian ra đề</strong> </label>
                   <div class="col-sm-9">
-                    <input type="date" id="form-field-1" placeholder="Nhập mã đợt dăng ký" class="col-xs-12 col-sm-12" />
+                    <input type="date" id="form-field-1" name="tgrade" class="col-xs-12 col-sm-12" />
                   </div>
                 </div>
                 <div class="form-group">
                   <label class="col-sm-3 control-label no-padding-right" for="form-field-1"><strong> Thời gian bắt đầu </strong></label>
 
                   <div class="col-sm-9">
-                    <input type="date" id="form-field-1" placeholder="Nhập mã đợt đăng ký" class="col-xs-12 col-sm-12" />
+                    <input type="date" id="form-field-1" name="tgbatdau" class="col-xs-12 col-sm-12" />
                   </div>
                 </div>
-              </form>
                   </div>
                   <div class="col-md-6">
-                        <form class="form-horizontal" role="form">       
+                             
                 <div class="form-group">
                   <label class="col-sm-3 control-label no-padding-right" for="form-field-1"> <strong>Thời gian bảo vệ </strong></label>
                   <div class="col-sm-9">
-                    <input type="date" id="form-field-1" placeholder="Nhập mã đợt đăng ký" class="col-xs-12 col-sm-10" />
+                    <input type="date" id="form-field-1" name="tgbaove" class="col-xs-12 col-sm-10" />
                   </div>
                 </div>
                 <div class="form-group">
                   <label class="col-sm-3 control-label no-padding-right" for="form-field-1"><strong> Thời gian phúc khảo </strong></label>
                   <div class="col-sm-9">
-                    <input type="date" id="form-field-1" placeholder="Nhập mã đợt đăng ký" class="col-xs-12 col-sm-10" />
+                    <input type="date" id="form-field-1" name="tgphuckhao" class="col-xs-12 col-sm-10" />
                   </div>
                 </div>
                 <div class="space-4"></div>
                 <div class="form-group">
                   <label class="col-sm-3 control-label no-padding-right" for="form-field-1"><strong> Số lượng thành viên nhóm </strong></label>
                   <div class="col-sm-9">
-                    <input type="number" id="form-field-1" placeholder="Số lượng thành viên nhóm" class="col-xs-12 col-sm-10" />
+                    <input type="number" id="form-field-1" name="sltv" class="col-xs-12 col-sm-10" />
                   </div>
                 </div>
                 <div class="form-group">
                   <label class="col-sm-3 control-label no-padding-right" for="form-field-1"><strong> Số lượng đề tài </strong></label>
 
                   <div class="col-sm-9">
-                    <input type="number" id="form-field-1" placeholder="Công nghệ phần mềm" class="col-xs-12 col-sm-10" style="margin-bottom: 5px"/>
-                    <input type="number" id="form-field-1" placeholder="Hệ thống thông tin" class="col-xs-12 col-sm-10" style="margin-bottom: 5px" />
-                    <input type="number" id="form-field-1" placeholder="Mạng máy tính" class="col-xs-12 col-sm-10" />
+                    <input type="number" id="form-field-1" name="pm" placeholder="Công nghệ phần mềm" class="col-xs-12 col-sm-10" style="margin-bottom: 5px"/>
+                    <input type="number" id="form-field-1" name="httt" placeholder="Hệ thống thông tin" class="col-xs-12 col-sm-10" style="margin-bottom: 5px" />
+                    <input type="number" id="form-field-1" name="mtt" placeholder="Mạng máy tính" class="col-xs-12 col-sm-10" />
                   </div>
                 </div>
                 <div class="form-group">
                   <label class="col-sm-3 control-label no-padding-right" for="form-field-1"><strong>Chấm hội đồng </strong></label>
                   <div class="radio col-sm-9">
                     <label>
-                      <input name="form-field-radio" type="radio" class="ace" />
+                      <input name="hd" value="1" type="radio" class="ace" />
                       <span class="lbl">Có chấm hội đồng</span>
                     </label>
                   </div>
                   <div class="radio col-sm-9">
                     <label>
-                      <input name="form-field-radio" type="radio" class="ace" />
+                      <input name="hd" value="0" type="radio" class="ace" />
                       <span class="lbl"> Không chấm hội đồng</span>
                     </label>
                   </div>
                 </div>              
-              </form>
+              
                   </div>
                 </div>
               <div class="clearfix form-actions">
                   <div class="col-md-offset-3 col-md-9">
-                    <button class="btn btn-primary" type="button" style="border-radius: 5px">
+                    <button class="btn btn-primary" type="submit" style="border-radius: 5px">
                       <i class="ace-icon fa fa-check bigger-110"></i>
                       Submit
                     </button>
@@ -119,6 +132,7 @@
                     </button>
                   </div>
                 </div>
+            </form>
             </div>
             <!-- hết tab 1 -->
             <!-- tab2 -->
@@ -136,9 +150,10 @@
               </div>
             </form>
             <div class="row">
-              <div class="col-sm-12" style="margin-top: 10px">
+              
+              <div class="col-sm-12 dataTables_wrapper form-inline no-footer" style="margin-top: 10px">
                <h5><b>Danh sách giảng viên</b></h5>              
-              <table id="datatable" class="table table-bordered">
+              <table id="datatable" class="table table-striped table-bordered table-hover dataTable no-footer">
                 <thead>
                   <tr>
                     <th class="color" scope="col">Mã giảng viên</th>
@@ -146,26 +161,31 @@
                     <th class="color" scope="col">Bộ môn</th>
                     <th class="color" scope="col">Số Lượng Đề Tài</th>
                      <th class="color" scope="col">Ngày nộp</th>
-                    <th class="color" scope="col">Ra đề</th>
+                    <th class="color" scope="col"><input type="checkbox" id="checkAll" >Ra đề</th>
+                     <th class="color" scope="col">Xử Lý</th>
                   </tr>
                 </thead>
                 <tbody>
+                   <?php foreach ($allgv as $item) { ?>
                   <tr>
-                    <th scope="row">1</th>
-                    <td>Nguyễn Văn A</td>
-                    <td>Mạng máy tính</td>
+                    <th scope="row"><?php echo $item['MAGV'] ?></th>
+                    <td><?php echo $item['TENGV'] ?></td>
+                    <td><?php echo $item['MABM'] ?></td>
                     <td><input type="number" id="form-field-1" placeholder="Số lượng đề tài" class="col-xs-12 col-sm-10"></td>
                     <td><input type="date" id="form-field-1" placeholder="Nhập mã đợt dăng ký" class="col-xs-12 col-sm-12"></td>
-                    <td><input type="checkbox" name=""></td>
+                    <td><input type="checkbox" class="check" name=""></td>
+                    <td>
+        <div class="hidden-sm hidden-xs action-buttons">
+          <a class="edit" data-target="#myModal" data-id="1" data-name="Honda" data-description="Xe Nhật" data-toggle="modal" href="#">
+            <i class="ace-icon fa fa-pencil bigger-130"></i>
+          </a>
+          <a class="red" href="#" onclick="delete_hangxe('1','1')">
+            <i class="ace-icon fa fa-trash-o bigger-130"></i>
+          </a>
+        </div>
+                                </td>
                   </tr>
-                  <tr>
-                    <th scope="row">2</th>
-                    <td>Nguyễn Thị B</td>
-                    <td>Công nghệ phần mềm</td>
-                    <td><input type="number" id="form-field-1" placeholder="Số lượng đề tài" class="col-xs-12 col-sm-10"></td>
-                    <td><input type="date" id="form-field-1" placeholder="Nhập mã đợt dăng ký" class="col-xs-12 col-sm-12"></td>
-                    <td><input type="checkbox" name=""></td>
-                  </tr>
+                   <?php  } ?>
                 </tbody>
               </table>
                <div class="col-md-offset-3 col-md-9">
@@ -181,6 +201,7 @@
               </div>
             </div>
         </div>
+        
         <h5><b>Số lượng đề tài</b></h5>
         <table class="table table-bordered" id="datatb">
           <thead>
@@ -470,7 +491,6 @@
 </div>
 </div>
 </div>
-
 <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
@@ -487,7 +507,6 @@
                     <input type="text" id="form-field-1" style="margin-bottom: 10px;" placeholder="Nhập mã hội đồng" class="col-xs-12 col-sm-12">
                   </div>
                 </div>
-
                 <div class="form-group">
                   <label class="col-sm-3 control-label no-padding-right" for="form-field-1"> <strong>Mã đợt đăng ký</strong> </label>
 
@@ -559,4 +578,27 @@
        "bSort": false
     });
 } );
+</script>
+<script type="text/javascript">
+  $("#checkAll").click(function () {
+    $(".check").prop('checked', $(this).prop('checked'));
+});
+</script>
+<script type="text/javascript">
+ function testcombo(obj){
+    var id = obj.value;
+      $.ajax({
+        url: '<?php echo base_url()?>index.php/xuly_ad/create_madot',
+        type: 'POST',
+        dataType: 'JSON',
+        data: {madk : id},
+      })
+      .done(function(data) {
+                 $(".madkk").val(data);
+              })
+      .fail(function() {
+        alert('thatbai');
+        console.log("error");
+      });
+    }
 </script>

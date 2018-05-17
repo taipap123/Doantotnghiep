@@ -21,12 +21,12 @@
 			$macuoi = $data['ma'][count($data['ma'])-1]['MADOT'];
 			$dem = (int)(substr($macuoi,strlen($value), strlen($macuoi) -strlen($value)));
 			$dem = $dem + 1;
-			if($dem < 10)
-				return $value."00".$dem;
-			else if($dem < 100)
-				return $value."0".$dem;
-			else if($dem < 1000)
-				return $value."".$dem;
+			if($dem < 10000)
+				return $value.$dem;
+			// else if($dem < 100)
+			// 	return $value."0".$dem;
+			// else if($dem < 1000)
+			// 	return $value."".$dem;
 			else
 				return "";
 

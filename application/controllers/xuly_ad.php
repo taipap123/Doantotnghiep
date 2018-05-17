@@ -47,7 +47,7 @@ class Xuly_ad extends CI_Controller {
 		$data =  $this->m_admin->create_madot($madk);
 		echo json_encode($data);
 	}
-	public function insert_madotdk()
+	public function insert_madotdk() 
 	{
 		$data['MADOT'] =  $this->input->post('madk');
 		$data['NOIDUNGDT'] = $this->input->post('nddk');

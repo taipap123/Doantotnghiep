@@ -37,8 +37,8 @@
                   <div class="col-sm-9">
                      <select id="simple-colorpicker-1" class="" style="width: 250px;"  onchange="testcombo(this)">
                       <option value="" disabled="true" selected="true"">--Chọn loại đăng ký--</option>
-                    <option value="KLTNK">Khóa Luận Tốt Nghiệp</option>
-                    <option value="DATNK">Đồ Án Tốt Nghiệp</option>
+                    <option value="KLTN">Khóa Luận Tốt Nghiệp</option>
+                    <option value="DATN">Đồ Án Tốt Nghiệp</option>
                      <option value="DAMH">Đồ Án Môn Học</option>
                   </select>
                   </div>
@@ -254,61 +254,72 @@
                     <th scope="row">DA0001</th>
                     <td>Phân tích hệ thống đăng ký khóa luận cho sinh viên khoa CNTT</td>
                     <td>
-                        <select id="simple-colorpicker-1" class="" style="width: 100%">
-                          <option value="#ac725e">HDK05</option>
-                          <option value="#d06b64">HDK06</option>
-                      </select>
+                        <input type="checkbox">
                     </td>
                   </tr>
                   <tr>
                     <th scope="row">DA0004</th>
                     <td>Xây dựng phần mềm quản lý nhà hàng</td>
                     <td>
-                        <select id="simple-colorpicker-1" class="" style="width: 100%">
-                          <option value="#ac725e">HDK05</option>
-                          <option value="#d06b64">HDK06</option>
-                      </select>
+                        <input type="checkbox">
                     </td>
                   </tr>
                   <tr>
                     <th scope="row">DA0008</th>
                     <td>Quản lý siêu thị Điện Máy Xanh</td>
                     <td>
-                        <select id="simple-colorpicker-1" class="" style="width: 100%">
-                          <option value="#ac725e">HDK05</option>
-                          <option value="#d06b64">HDK06</option>
-                      </select>
+                        <input type="checkbox">
                     </td>
                   </tr>
                   <tr>
                     <th scope="row">DA0009</th>
                     <td>Xây dựng website bán đồ  dùng trẻ em</td>
                     <td>
-                        <select id="simple-colorpicker-1" class="" style="width: 100%">
-                          <option value="#ac725e">HDK05</option>
-                          <option value="#d06b64">HDK06</option>
-                      </select>
+                        <input type="checkbox">
                     </td>
                   </tr>
                   <tr>
                     <th scope="row">DA0010</th>
                     <td>Tìm hiểu ReactJS.NET viết ứng dụng minh họa.</td>
                     <td>
-                        <select id="simple-colorpicker-1" class="" style="width: 100%">
-                          <option value="#ac725e">HDK05</option>
-                          <option value="#d06b64">HDK06</option>
-                      </select>
+                        <input type="checkbox">
                     </td>
                   </tr>
                 </tbody>
               </table>
-            <button class="btn btn-primary" type="button" style="border-radius: 5px;margin-left: 40%">
+            <button class="btn btn-success" data-toggle="modal" data-target="#phanconghd" type="button" style="border-radius: 5px;margin-left: 40%">
                   <i class="ace-icon fa fa-check bigger-110"></i>
-                  Lưu
+                 Phân công hội đồng
                 </button>
             </div>
           </div>
         </div>
+        <!-- Button trigger modal -->
+
+<!-- Modal -->
+<div class="modal fade" id="phanconghd" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">Hội Đồng Phản Biện</h4>
+      </div>
+      <div class="modal-body">
+        <select class="form-control">
+          <option disabled="true" selected>--Chọn Hội Đồng--</option>
+          <option>2</option>
+          <option>3</option>
+          <option>4</option>
+          <option>5</option>
+        </select>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Đóng</button>
+        <button type="button" class="btn btn-primary">Lưu</button>
+      </div>
+    </div>
+  </div>
+</div>
        <!-- het tag 3 -->
        <!-- tab4 -->
        <div class="tab-pane" id="tab_default_4">

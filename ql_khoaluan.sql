@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th5 09, 2018 lúc 08:49 AM
+-- Thời gian đã tạo: Th5 17, 2018 lúc 10:45 AM
 -- Phiên bản máy phục vụ: 10.1.31-MariaDB
 -- Phiên bản PHP: 7.2.3
 
@@ -79,32 +79,34 @@ CREATE TABLE `detai` (
   `MADETAI` varchar(10) COLLATE utf8_unicode_ci NOT NULL,
   `TEN_DT` text COLLATE utf8_unicode_ci NOT NULL,
   `YEUCAU` text COLLATE utf8_unicode_ci NOT NULL,
+  `SLTV` int(11) NOT NULL,
   `KIEMDUYET` tinyint(1) NOT NULL,
-  `SLTHANHVIEN` int(11) NOT NULL,
   `TGCHAMHOIDONG` date NOT NULL,
-  `DIADIEM` text COLLATE utf8_unicode_ci NOT NULL
+  `DIADIEM` text COLLATE utf8_unicode_ci NOT NULL,
+  `MADOT` varchar(10) COLLATE utf8_unicode_ci NOT NULL,
+  `MABM` varchar(10) COLLATE utf8_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Đang đổ dữ liệu cho bảng `detai`
 --
 
-INSERT INTO `detai` (`MADETAI`, `TEN_DT`, `YEUCAU`, `KIEMDUYET`, `SLTHANHVIEN`, `TGCHAMHOIDONG`, `DIADIEM`) VALUES
-('DA0001', 'Phân tích hệ thống đăng ký khóa luận cho sinh viên khoa CNTT', 'Phân tích đầy đủ các quy trình', 1, 2, '2018-07-10', 'Văn Phòng Khoa'),
-('DA0002', 'Nghiên cứu các thuật toán máy học và xây dựng công cụ rút trích thông tin người dùng từ mạng xã hội.', '- Tìm hiểu mạng xã hội\r\n- Nghiên cứu các thuật toán, phương pháp trích xuất thông tin người sử dụng trên mạng xã hội\r\n- Xây dựng công cụ rút trích thông tin người dùng từ mạng xã hội', 1, 2, '2018-07-11', 'Hội trường C'),
-('DA0003', 'Nghiên cứu Advertising Network (Ad Network) và xây dựng hệ thống minh họa.', '- Tìm hiểu Advertising Network (Ad Network)\r\n- Tìm hiểu các giải pháp, công cụ về Ad Network\r\n- Xây dựng hệ thống minh họa về Ad Network', 0, 2, '2018-07-12', 'Hội Trường C'),
-('DA0004', 'Xây dựng phần mềm quản lý nhà hàng', '- Quản lý nhân viên\r\n- Quản lý đặt tiệc.\r\n- Quản lý khách hàng\r\n- Quản lý khuyến mãi\r\n- Quản lý mua thực phẩm\r\n- Quản lý thanh toán.\r\n- Báo cáo thống kê.', 0, 2, '2018-12-07', 'Hội Trường E'),
-('DA0005', 'Tìm hiểu và triển khai phân tích FileLog trên Windows Server', '- Tìm hiểu về File Log\r\n- Tìm hiểu phần mềm mã nguồn mở Lucene\r\n- Tìm hiểu về bộ công cụ ELK\r\n- Xây dựng và triển khai phân tích file log trên Windows Server ', 1, 2, '2018-07-18', 'Hội Trường C'),
-('DA0006', 'Tìm hiểu giao thức IPv6 và triển khai ứng dụng', '- Tìm hiểu TCP/IP v4, IPv6\r\n- Đặc điểm cấu trúc của IPv6 (header, format, đóng gói …)\r\n- Các giải pháp triển khai hệ thống với IPv4 và IPv6\r\n- Khảo sát, phân tích và đề xuất giải pháp thực tế triển khai IPv6\r\n- Triển khai thực nghiệm trong hệ thống mạng tại doanh nghiệp', 1, 2, '2018-10-07', 'Văn phòng khoa'),
-('DA0007', 'Nghiên cứu và phát triển thử nghiệm SIEM trên mã nguồn mở', '\'- Tìm hiểu IDS/IPS\r\n- Tìm hiểu SIEM\r\n- Triển khai thử nghiệm SIEM trên AlienVault OSSIM', 0, 2, '2018-07-11', 'Hội Trường C'),
-('DA0008', 'Quản lý siêu thị Điện Máy Xanh', '- Quản lý nhận hàng theo danh mục đã đặt hàng trước đó.\r\n- Quản lý bán hàng, thanh toán \r\n- Quản lý đổi trả hàng\r\n- Quản lý bảo hành sản phẩm\r\n- Quản lý nhân viên (thu ngân)\r\n- Quản lý khuyến mãi (khuyến mãi %giảm giá, tặng kèm sản phẩm)', 1, 2, '2018-07-10', 'Hội trường C'),
-('DA0009', 'Xây dựng website bán đồ  dùng trẻ em', '– Quản lý thông tin của nhân viên.\r\n– Quản lý thông tin khách hàng.\r\n– Quản lý hàng hóa.\r\n– Quản lý mua bán hàng hóa\r\n– Quản lý thông tin liên hệ nhà cung cấp.\r\n– Tạo các thống kê, báo cáo.\r\n– Hoàn thiện website', 1, 2, '2018-07-12', 'Hội trường E'),
-('DA0010', 'Tìm hiểu ReactJS.NET viết ứng dụng minh họa.', '- Tìm hiểu Reactjs.net, \r\n- Tìm hiểu quy trình nghiệp vụ website sàn giao dịch\r\n- Xây dựng chức năng: Trang chủ, đăng ký, đăng nhập, quản lý tài khoản người dùng;  \r\n- Xây dựng module đăng và quản lý tin tức;\r\n- Xây dựng chức năng tạo ví giao dịch và thanh toán trực tuyến;\r\n- Thiết kế, quản lý các quảng cáo và quản trị chung cho trang web.\r\n- Trình bày nội dung và báo cáo theo quy định', 1, 2, '2018-07-11', 'Hội trường E'),
-('DA0011', 'Phần mềm tiện ích bán hàng online trên mạng xã hội Facebook', '– Quét khách hàng mục tiêu\r\n– Kết bạn tự động\r\n– Quản lý profile\r\n– Tin nhắn tự động fanpage\r\n– Tạo tương tác với bạn bè\r\n– Tính năng nâng cao khác\r\n– Sinh viên phải có kiến thức lập trình Web, Windows Form, java.', 1, 2, '2018-07-11', 'Văn Phòng khoa'),
-('DA0012', 'Xây dựng phần mềm quản lý khẩu phần ăn trường mầm non', '- Danh mục các món ăn, nguyên vật liệu chế biến món ăn.\r\n- Bảng tính định lượng khẩu phần ăn.\r\n- Thực đơn.\r\n- Quản lý sổ nhập, xuất thực phẩm.\r\n- Điểm danh báo ăn.\r\n- Sổ tính khẩu phần ăn theo ngày.\r\n- Sổ giao nhận thực phẩm.\r\n- Quyết toán tiền ăn trong tháng.\r\n- kiểm kê cuối tháng.\r\n- Tồn kho NVL', 0, 2, '2018-07-12', 'Hội Trường E'),
-('DA0013', 'Tìm hiểu các giao thức định tuyến và triển khai ứng dụng tại doanh nghiệp', '- Tìm hiểu Routing protocol\r\n- Cơ chế hoạt động của các thuật toán định tuyến IGP, BGP\r\n- Khảo sát, phân tích và đề xuất giải pháp thực tế\r\n- Triển khai thực nghiệm trong hệ thống mạng tại doanh nghiệp', 1, 2, '2018-07-10', 'Hội trường C'),
-('DA0014', 'Quản lý nhà sách', '- Quản lý được sản phẩm theo chủ đề (sách, truyện tranh, văn phòng phẩm)\r\n- Quản lý đặt sách từ nhà xuất bản (lập phiếu đặt, phiếu đặt đã giao, chưa giao, phiếu giao trong ngày,..)\r\n- Quản lý nhận hàng theo danh mục đã đặt hàng trước đó.\r\n- Quản lý bán hàng, thanh toán \r\n- Quản lý đổi trả hàng\r\n- Quản lý khuyến mãi (khuyến mãi %giảm giá, theo %hóa đơn)\r\n- Quản lý nhân viên (thu ngân)\r\n- Tạo được các báo cáo thông kê cần thiết: báo cáo doanh thu, báo cáo tồn kho, báo cáo đổi/ trả hàng.', 1, 2, '2018-07-12', 'Văn phòng khoa'),
-('DA0015', 'Tìm hiểu điện toán đám mây và triển khai hệ thống OpenStack trên nền Ubuntu', '- Tìm hiểu về phần mềm mã nguôn mở và các công nghệ ảo hóa.\r\n- Tìm hiểu về công nghệ ảo hóa máy chủ\r\n- Tìm hiểu về Openstack.\r\n- Nghiên cứu và tiến hành đề xuất thiết kế mô hình OpenStack thích hợp.\r\n- Xây dựng và triển khai hệ thống OpenStack trên nền Ubuntu. ', 0, 2, '2018-07-12', 'Văn Phòng khoa');
+INSERT INTO `detai` (`MADETAI`, `TEN_DT`, `YEUCAU`, `SLTV`, `KIEMDUYET`, `TGCHAMHOIDONG`, `DIADIEM`, `MADOT`, `MABM`) VALUES
+('DA0001', 'Phân tích hệ thống đăng ký khóa luận cho sinh viên khoa CNTT', 'Phân tích đầy đủ các quy trình', 2, 0, '2018-07-10', 'Văn Phòng Khoa', 'DAMH2018', 'CNPM'),
+('DA0002', 'Nghiên cứu các thuật toán máy học và xây dựng công cụ rút trích thông tin người dùng từ mạng xã hội.', '- Tìm hiểu mạng xã hội\r\n- Nghiên cứu các thuật toán, phương pháp trích xuất thông tin người sử dụng trên mạng xã hội\r\n- Xây dựng công cụ rút trích thông tin người dùng từ mạng xã hội', 0, 1, '2018-07-11', 'Hội trường C', 'DATN2018', 'HTTT'),
+('DA0003', 'Nghiên cứu Advertising Network (Ad Network) và xây dựng hệ thống minh họa.', '- Tìm hiểu Advertising Network (Ad Network)\r\n- Tìm hiểu các giải pháp, công cụ về Ad Network\r\n- Xây dựng hệ thống minh họa về Ad Network', 0, 1, '2018-07-12', 'Hội Trường C', 'DAMH2018', 'MMT'),
+('DA0004', 'Xây dựng phần mềm quản lý nhà hàng', '- Quản lý nhân viên\r\n- Quản lý đặt tiệc.\r\n- Quản lý khách hàng\r\n- Quản lý khuyến mãi\r\n- Quản lý mua thực phẩm\r\n- Quản lý thanh toán.\r\n- Báo cáo thống kê.', 0, 1, '2018-12-07', 'Hội Trường E', 'DAMH2018', 'CNPM'),
+('DA0005', 'Tìm hiểu và triển khai phân tích FileLog trên Windows Server', '- Tìm hiểu về File Log\r\n- Tìm hiểu phần mềm mã nguồn mở Lucene\r\n- Tìm hiểu về bộ công cụ ELK\r\n- Xây dựng và triển khai phân tích file log trên Windows Server ', 1, 1, '2018-07-18', 'Hội Trường C', 'DAMH2018', 'MMT'),
+('DA0006', 'Tìm hiểu giao thức IPv6 và triển khai ứng dụng', '- Tìm hiểu TCP/IP v4, IPv6\r\n- Đặc điểm cấu trúc của IPv6 (header, format, đóng gói …)\r\n- Các giải pháp triển khai hệ thống với IPv4 và IPv6\r\n- Khảo sát, phân tích và đề xuất giải pháp thực tế triển khai IPv6\r\n- Triển khai thực nghiệm trong hệ thống mạng tại doanh nghiệp', 2, 1, '2018-10-07', 'Văn phòng khoa', 'DATN2018', 'HTTT'),
+('DA0007', 'Nghiên cứu và phát triển thử nghiệm SIEM trên mã nguồn mở', '\'- Tìm hiểu IDS/IPS\r\n- Tìm hiểu SIEM\r\n- Triển khai thử nghiệm SIEM trên AlienVault OSSIM', 2, 1, '2018-07-11', 'Hội Trường C', 'DATN2018', 'CNPM'),
+('DA0008', 'Quản lý siêu thị Điện Máy Xanh', '- Quản lý nhận hàng theo danh mục đã đặt hàng trước đó.\r\n- Quản lý bán hàng, thanh toán \r\n- Quản lý đổi trả hàng\r\n- Quản lý bảo hành sản phẩm\r\n- Quản lý nhân viên (thu ngân)\r\n- Quản lý khuyến mãi (khuyến mãi %giảm giá, tặng kèm sản phẩm)', 2, 1, '2018-07-10', 'Hội trường C', 'DAMH2018', 'CNPM'),
+('DA0009', 'Xây dựng website bán đồ  dùng trẻ em', '– Quản lý thông tin của nhân viên.\r\n– Quản lý thông tin khách hàng.\r\n– Quản lý hàng hóa.\r\n– Quản lý mua bán hàng hóa\r\n– Quản lý thông tin liên hệ nhà cung cấp.\r\n– Tạo các thống kê, báo cáo.\r\n– Hoàn thiện website', 2, 1, '2018-07-12', 'Hội trường E', 'DAMH2018', 'HTTT'),
+('DA0010', 'Tìm hiểu ReactJS.NET viết ứng dụng minh họa.', '- Tìm hiểu Reactjs.net, \r\n- Tìm hiểu quy trình nghiệp vụ website sàn giao dịch\r\n- Xây dựng chức năng: Trang chủ, đăng ký, đăng nhập, quản lý tài khoản người dùng;  \r\n- Xây dựng module đăng và quản lý tin tức;\r\n- Xây dựng chức năng tạo ví giao dịch và thanh toán trực tuyến;\r\n- Thiết kế, quản lý các quảng cáo và quản trị chung cho trang web.\r\n- Trình bày nội dung và báo cáo theo quy định', 2, 1, '2018-07-11', 'Hội trường E', 'DAMH2018', 'MMT'),
+('DA0011', 'Phần mềm tiện ích bán hàng online trên mạng xã hội Facebook', '– Quét khách hàng mục tiêu\r\n– Kết bạn tự động\r\n– Quản lý profile\r\n– Tin nhắn tự động fanpage\r\n– Tạo tương tác với bạn bè\r\n– Tính năng nâng cao khác\r\n– Sinh viên phải có kiến thức lập trình Web, Windows Form, java.', 2, 1, '2018-07-11', 'Văn Phòng khoa', 'DATN2018', 'MMT'),
+('DA0012', 'Xây dựng phần mềm quản lý khẩu phần ăn trường mầm non', '- Danh mục các món ăn, nguyên vật liệu chế biến món ăn.\r\n- Bảng tính định lượng khẩu phần ăn.\r\n- Thực đơn.\r\n- Quản lý sổ nhập, xuất thực phẩm.\r\n- Điểm danh báo ăn.\r\n- Sổ tính khẩu phần ăn theo ngày.\r\n- Sổ giao nhận thực phẩm.\r\n- Quyết toán tiền ăn trong tháng.\r\n- kiểm kê cuối tháng.\r\n- Tồn kho NVL', 2, 1, '2018-07-12', 'Hội Trường E', 'DAMH2018', 'CNPM'),
+('DA0013', 'Tìm hiểu các giao thức định tuyến và triển khai ứng dụng tại doanh nghiệp', '- Tìm hiểu Routing protocol\r\n- Cơ chế hoạt động của các thuật toán định tuyến IGP, BGP\r\n- Khảo sát, phân tích và đề xuất giải pháp thực tế\r\n- Triển khai thực nghiệm trong hệ thống mạng tại doanh nghiệp', 2, 1, '2018-07-10', 'Hội trường C', 'DATN2018', 'CNPM'),
+('DA0014', 'Quản lý nhà sách', '- Quản lý được sản phẩm theo chủ đề (sách, truyện tranh, văn phòng phẩm)\r\n- Quản lý đặt sách từ nhà xuất bản (lập phiếu đặt, phiếu đặt đã giao, chưa giao, phiếu giao trong ngày,..)\r\n- Quản lý nhận hàng theo danh mục đã đặt hàng trước đó.\r\n- Quản lý bán hàng, thanh toán \r\n- Quản lý đổi trả hàng\r\n- Quản lý khuyến mãi (khuyến mãi %giảm giá, theo %hóa đơn)\r\n- Quản lý nhân viên (thu ngân)\r\n- Tạo được các báo cáo thông kê cần thiết: báo cáo doanh thu, báo cáo tồn kho, báo cáo đổi/ trả hàng.', 2, 1, '2018-07-12', 'Văn phòng khoa', 'DAMH2018', 'MMT'),
+('DA0015', 'Tìm hiểu điện toán đám mây và triển khai hệ thống OpenStack trên nền Ubuntu', '- Tìm hiểu về phần mềm mã nguôn mở và các công nghệ ảo hóa.\r\n- Tìm hiểu về công nghệ ảo hóa máy chủ\r\n- Tìm hiểu về Openstack.\r\n- Nghiên cứu và tiến hành đề xuất thiết kế mô hình OpenStack thích hợp.\r\n- Xây dựng và triển khai hệ thống OpenStack trên nền Ubuntu. ', 2, 1, '2018-07-12', 'Văn Phòng khoa', 'DAMH2018', 'HTTT');
 
 -- --------------------------------------------------------
 
@@ -130,8 +132,8 @@ CREATE TABLE `dotdangky` (
 --
 
 INSERT INTO `dotdangky` (`MADOT`, `NOIDUNGDT`, `TGRADE`, `TGDANGKYNHOM`, `TGBATDAU`, `TGBAOVE`, `TGPHUCKHAO`, `SLTVNHOM`, `SLDETAI`, `CHAMHOIDONG`) VALUES
-('DAMH0001', 'Đồ án phân tích thiết kế', '2018-04-10 00:00:00', '2018-04-10 00:00:00', '2018-04-20 00:00:00', '2018-05-20 00:00:00', '2018-05-25 00:00:00', 2, 200, 0),
-('DATNK05', 'Đồ án tốt nghiệp khóa 05', '2017-12-20 00:00:00', '2018-01-20 00:00:00', '2018-02-01 00:00:00', '2018-06-01 00:00:00', '2018-06-10 00:00:00', 2, 15, 1);
+('DAMH2018', 'Đồ án phân tích thiết kế', '2018-04-10 00:00:00', '2018-04-10 00:00:00', '2018-04-20 00:00:00', '2018-05-20 00:00:00', '2018-05-25 00:00:00', 2, 200, 0),
+('DATN2018', 'Đồ án tốt nghiệp khóa 05', '2017-12-20 00:00:00', '2018-01-20 00:00:00', '2018-02-01 00:00:00', '2018-06-01 00:00:00', '2018-06-10 00:00:00', 2, 15, 1);
 
 -- --------------------------------------------------------
 
@@ -202,9 +204,20 @@ CREATE TABLE `gv_detai` (
 --
 
 INSERT INTO `gv_detai` (`MAGV`, `MADETAI`, `IDLOAICV`, `GHICHU`) VALUES
-('GV0001', 'DT0001', 'CV001', ''),
-('GV0001', 'DA001', 'CV001', ''),
-('GV0001', 'DA0001', 'CV003', '');
+('GV10012341', 'DA0001', 'CV003', ''),
+('GV10012341', 'DA0002', 'CV003', ''),
+('GV10012341', 'DA0003', 'CV003', ''),
+('GV10012341', 'DA0004', 'CV003', ''),
+('GV10012341', 'DA0005', 'CV001', ''),
+('GV10012342', 'DA0006', 'CV001', ''),
+('GV10012342', 'DA0007', 'CV003', ''),
+('GV10012343', 'DA0008', 'CV003', ''),
+('GV10012344', 'DA0009', 'CV001', ''),
+('GV10012345', 'DA0009', 'CV002', ''),
+('GV10012345', 'DA0014', 'CV003', ''),
+('GV10012345', 'DA0015', 'CV003', ''),
+('GV10012346', 'DA0013', 'CV003', ''),
+('GV10012347', 'DA0012', 'CV003', '');
 
 -- --------------------------------------------------------
 
@@ -368,10 +381,10 @@ CREATE TABLE `sv_detai` (
 --
 
 INSERT INTO `sv_detai` (`MASV`, `MADETAI`, `NGAYDANGKY`, `DIEMHUONGDAN`, `DIEMPHANBIEN`, `DIEMHOIDONG`, `DIEMPHUCKHAO`, `TONGDIEM`) VALUES
-('2001140096', 'DA0001', '2018-04-20 07:20:00', NULL, NULL, NULL, NULL, NULL),
+('2001140096', 'DA0004', '2018-05-15 10:11:49', NULL, NULL, NULL, NULL, NULL),
 ('2001140123', 'DA0002', '2018-04-20 00:00:00', NULL, NULL, NULL, NULL, NULL),
 ('2001140127', 'DA0002', '2018-04-20 00:00:00', NULL, NULL, NULL, NULL, NULL),
-('2001140219', 'DA0001', '2018-04-20 00:00:00', NULL, NULL, NULL, NULL, NULL);
+('2001140219', 'DA0004', '2018-05-15 09:59:08', NULL, NULL, NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -492,6 +505,12 @@ ALTER TABLE `gvpb_detai`
   ADD PRIMARY KEY (`MAGV`,`MADETAI`);
 
 --
+-- Chỉ mục cho bảng `gv_detai`
+--
+ALTER TABLE `gv_detai`
+  ADD PRIMARY KEY (`MAGV`,`MADETAI`,`IDLOAICV`);
+
+--
 -- Chỉ mục cho bảng `hd_giangvien`
 --
 ALTER TABLE `hd_giangvien`
@@ -501,7 +520,7 @@ ALTER TABLE `hd_giangvien`
 -- Chỉ mục cho bảng `hoidong`
 --
 ALTER TABLE `hoidong`
-  ADD PRIMARY KEY (`MAHD`);
+  ADD PRIMARY KEY (`MAHD`,`SLTHANHVIEN`,`MADOT`);
 
 --
 -- Chỉ mục cho bảng `loaicongviec`

@@ -1,3 +1,4 @@
+
 <!-- services -->
 <div class="w3-agile-services">
 		<div class="container">
@@ -32,7 +33,7 @@
 										<select id="simple-colorpicker-1" class="" style="width: 150px;">
 											<?php foreach ($dotdangky as $row): 
                  								?>
-						                    <option value="123"> <?php echo $row['NOIDUNGDT'] ?> </option>
+						                    <option value="<?php echo $row['MADOT']?>"> <?php echo $row['NOIDUNGDT'] ?> </option>
 						                    <?php endforeach;?>
 					                  	</select>
 									</td>
@@ -52,40 +53,43 @@
 						</div>
 					</div>
 				</div>
-			<table class="table table-bordered">
-				<div class="radio">
-					<tr class="bg-primary">
-				    	<th colspan="5"><font color="FFFFFF" size="4">Danh sách đề tài</font></th>
-				    	
-				    </tr>
-				    <tr class="table_background">
-				    	<th>Tìm kiếm</th>
-				    	<th>Mã đề</th>
-				    	<th>Nội dung đề tài</th>
-				    	<th>Yêu cầu đề tài
-				    	<th>Số lượng thành viên</th>
-				    </tr>
-				    <?php foreach ($detai as $row): 
-                 	?>
-				     <tr>
-				    	<td><label>
-				    			<input type="radio" name="blankRadio" id="blankRadio1" value="option1" aria-label="...">
-				    		</label>
-				    	</td>
-				    	<td><?php echo $row['MADETAI'] ?></td>
-				    	<td><?php echo $row['TEN_DT'] ?></td>
-				    	<td><?php echo $row['YEUCAU'] ?></td>
-				    	<td><?php echo $row['SLTVNHOM'] ?></td>
-				    </tr>
-				    <?php endforeach;?>
-				</div>
-			</table>
-			<center>
-				 <button class="btn btn-primary" type="button" style="border-radius: 5px">
-                      <i class="ace-icon fa fa-check bigger-110"></i>
-                      Đăng ký
-                 </button>
-             </center>
+
+				<form action="" method="POST">
+					<table id="tb_detai" class="table table-bordered">
+						<div class="radio">
+							<tr class="bg-primary">
+						    	<th colspan="5"><font color="FFFFFF" size="4">Danh sách đề tài</font></th>
+						    	
+						    </tr>
+						    <tr class="table_background">
+						    	<th>Tìm kiếm</th>
+						    	<th>Mã đề</th>
+						    	<th>Nội dung đề tài</th>
+						    	<th>Yêu cầu đề tài
+						    	<th>Số lượng thành viên</th>
+						    </tr>
+						    <?php foreach ($detai as $row): 
+		                 	?>
+						     <tr>
+						    	<td><label>
+						    			<input type="radio" name="rdb_detai" id="rdb_detai" value="<?php echo $row['MADETAI']?>">
+						    		</label>
+						    	</td>
+						    	<td><?php echo $row['MADETAI'] ?></td>
+						    	<td><?php echo $row['TEN_DT'] ?></td>
+						    	<td><?php echo $row['YEUCAU'] ?></td>
+						    	<td><?php echo $row['SLTV'] ?></td>
+						    </tr>
+						    <?php endforeach;?>
+						</div>
+					</table>
+					<center>
+						 <button class="btn btn-primary" type="submit" name="sub_dangky" style="border-radius: 5px">
+		                      <i class="ace-icon fa fa-check bigger-110"></i>
+		                      Đăng ký
+		                 </button>
+		             </center>
+             </form>
 			 <!-- phân trang -->
 			<center>
 			<nav aria-label="Page navigation example">
@@ -116,7 +120,9 @@
 				    	
 				    </tr>
 				    <tr class="bg-primary">
-				    	<th colspan="5"><center><font color="FFFFFF" size="4">Tên đề tài: </font></center></th>
+				    	<th colspan="5"><center><font color="FFFFFF" size="4">Tên đề tài: 
+				    		<?php if( (int)$tt_dangky != 0) echo $tt_dangky[0]['ten_dt'] ?>
+				    	</font></center></th>
 				    </tr>
 				    <tr class="table_background">
 		
@@ -126,16 +132,19 @@
 				    	<th>Số điện thoại</th>
 				    	<th>Email</th>
 				    </tr>
+				    <?php if( (int)$tt_dangky != 0) 
+				    	{
+				    		foreach ($tt_dangky as $row): ?>
+                 								
+					     <tr>
+					    	<td><?php echo $row['masv'] ?></td>
+					    	<td><?php echo $row['hoten'] ?></td>
+					    	<td><?php echo $row['ngaydangky'] ?></td>
+					    	<td><?php echo $row['sdt'] ?></td>
+					    	<td><?php echo $row['email'] ?></td>
 
-				     <tr>
-				    	<td>Table cell</td>
-				    	<td>Table cell</td>
-				    	<td>Table cell</td>
-				    	<td>Table cell</td>
-				    	<td>Table cell</td>
-
-				    </tr>
-
+					    </tr>
+					<?php endforeach; }?>
 				</div>
 			</table>
 		</div>

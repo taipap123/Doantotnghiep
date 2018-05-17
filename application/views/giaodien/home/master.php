@@ -24,6 +24,13 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 	<link href="//fonts.googleapis.com/css?family=Lato:300,400,700,900" rel="stylesheet">
 	<link href="//fonts.googleapis.com/css?family=Raleway:300,400,500,600,800" rel="stylesheet">
 	<!--//fonts-->
+	<style type="text/css">
+		
+		table tr:not(:first-child){
+			cursor: pointer; transition: all .25s ease-in-out;
+		}
+		table tr:not(:first-child):hover{background-color: #ADD8E6;}
+	</style>
 
 </head>
 

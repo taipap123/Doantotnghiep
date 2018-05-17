@@ -24,6 +24,10 @@
               <a href="#tab_default_5" data-toggle="tab">
               Kiểm duyệt đề tài</a>
             </li>
+             <li>
+              <a href="#tab_default_6" data-toggle="tab">
+              Thông tin đăng ký đề tài</a>
+            </li>
           </ul>
           <div class="tab-content">
             <!-- tab1 -->
@@ -129,8 +133,13 @@
                 <label class="col-sm-3 control-label no-padding-right" for="form-field-1"> Mã đợt đăng ký </label>
                 <div class="col-sm-7">
                   <select id="simple-colorpicker-1" class="" style="width: 150px;">
-                    <option value="#ac725e">#ac725e</option>
-                    <option value="#d06b64">#d06b64</option>
+
+                    <?php foreach ($madotdk as $row): ?>
+                    
+                     <option value="<?php echo $row['MADOT'] ?>"><?php echo $row['NOIDUNGDT'] ?></option>
+
+                    <?php endforeach; ?>
+
                   </select>
                 </div>
               </div>
@@ -211,8 +220,11 @@
                 <label class="col-sm-3 control-label no-padding-right" for="form-field-1"> Mã đợt đăng ký </label>
                 <div class="col-sm-5">
                   <select id="simple-colorpicker-1" class="" style="width: 150px;">
-                    <option value="#ac725e">#ac725e</option>
-                    <option value="#d06b64">#d06b64</option>
+                    <?php foreach ($madotdk as $row): ?>
+                    
+                     <option value="<?php echo $row['MADOT'] ?>"><?php echo $row['NOIDUNGDT'] ?></option>
+
+                    <?php endforeach; ?>
                   </select>
                 </div>
               </div>
@@ -399,16 +411,20 @@
         </div>
             </div>
 
-            
       </div>
+        <!-- hết tab 4 -->  
       <div class="tab-pane" id="tab_default_5">
          <form class="form-horizontal" role="form">
               <div class="form-group">
                 <label class="col-sm-3 control-label no-padding-right" for="form-field-1"> Mã đợt đăng ký </label>
                 <div class="col-sm-5">
                   <select id="simple-colorpicker-1" class="" style="width: 150px;">
-                    <option value="#ac725e">#ac725e</option>
-                    <option value="#d06b64">#d06b64</option>
+
+                    <?php foreach ($madotdk as $row): ?>
+                    
+                      <option value="<?php echo $row['MADOT'] ?>"><?php echo $row['NOIDUNGDT'] ?></option>
+
+                    <?php endforeach; ?>
                   </select>
                 </div>
               </div>
@@ -427,34 +443,20 @@
                   </tr>
                 </thead>
                 <tbody>
-                  <tr>
-                    <th scope="row">DA0001</th>
-                    <td>Phân tích hệ thống đăng ký khóa luận cho sinh viên khoa CNTT</td>
-                    <td>Nguyễn Thị Thùy Ngân</td>
-                    <td>CNPM</td>
-                    <td><input type="checkbox" name=""></td>
-                  </tr>
-                  <tr>
-                    <th scope="row">DA0004</th>
-                    <td>Xây dựng phần mềm quản lý nhà hàng</td>
-                    <td>Nguyễn Thị Thùy Trang</td>
-                    <td>HTTT</td>
-                    <td><input type="checkbox" name=""></td>
-                  </tr>
-                  <tr>
-                    <th scope="row">DA0008</th>
-                    <td>Quản lý siêu thị Điện Máy Xanh</td>
-                    <td>Tô Văn Nhật Phi</td>
-                    <td>MMT</td>
-                    <td><input type="checkbox" name=""></td>
-                  </tr>
-                  <tr>
-                    <th scope="row">DA0009</th>
-                    <td>Xây dựng website bán đồ  dùng trẻ em</td>
-                    <td>Lê Thanh Hưng</td>
-                    <td>CNPM</td>
-                    <td><input type="checkbox" name=""></td>
-                  </tr>
+                  <?php foreach ($ds_detai as $row) {
+                   ?>
+
+                    <tr>
+                      <th scope="row"><?php echo $row['madetai'] ?></th>
+                      <td><?php echo $row['ten_dt'] ?></td>
+                      <td><?php echo $row['tengv'] ?></td>
+                      <td><?php echo $row['tenbm'] ?></td>
+                      <td><input type="checkbox" name="kiemduyet[]" value="$row['madetai']"
+                       <?php if($row['kiemduyet']=='1') echo 'checked="checked"' ?> > </td>
+                    </tr>
+
+                  <?php } ?>
+
                 </tbody>
               </table>
             <button class="btn btn-primary" type="button" style="border-radius: 5px;margin-left: 40%">
@@ -464,6 +466,54 @@
             </div>
           </div>
         </div>
+
+        <!-- hết tab 5 -->
+
+        <div class="tab-pane" id="tab_default_6">
+              <table id="datatable" class="table table-bordered">
+                <thead>
+                  <tr>
+                    <th class="color" scope="col">Mã đề tài</th>
+                    <th class="color" scope="col">Tên đề tài</th>
+                    <th class="color" scope="col">Thông tin nhóm</th>
+                  </tr>
+                </thead>
+                <tbody>
+
+                  <?php 
+                  for($i = 0 ; $i < count($ds_svdangky) ; $i++) 
+                  {
+                   ?>
+
+                    <tr>
+                      <td scope="row"><?php echo $ds_svdangky[$i][0]?></td>
+                      <td scope="row"><?php echo $ds_svdangky[$i][1]?></td>
+                     
+                      <td scope="row">
+                        <table width=100% height = 100%>
+                          <?php for ($j=0; $j < count($ds_svdangky[$i][2]); $j++) 
+                              {  ?>
+                          <tr>
+                            <td>
+                                <?php echo $ds_svdangky[$i][2][$j]['masv'] ?>
+                            </td>
+                            <td>
+                                <?php echo $ds_svdangky[$i][2][$j]['hoten'] ?>
+                            </td>
+                          </tr>
+                           <?php } ?>
+                          
+                        </table>
+        
+                        </td>
+                    </tr>
+                   
+                  <?php } ?>
+
+                </tbody>
+              </table>
+        </div>
+        <!-- hết tab 6 -->
     </div>
   </div>
 </div>

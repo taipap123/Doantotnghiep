@@ -58,15 +58,47 @@ class Xuly extends CI_Controller {
 		$this->load->view('giaodien/home/master',$this->design);
 	}
 
+	//quan ly dang ky de tai
 	public function DangKyDeTai()
 	{
+		$this->luuDeTaiDangky();
+
 		$data['dotdangky'] = $this->m_quanlydata->loadTable('dotdangky');
-		$data['detai'] = $this->m_quanlydata->loadTableJoinTable('detai','dotdangky','MADOT','MADOT');
-		
+		$data['detai'] = $this->m_quanlydata->loadTableJoinTable('detai','dotdangky','MADOT','MADOT', 'detai.SLTV > 0');
+
+		$data['tt_dangky'] = $this->m_quanlydata->load_NhomDeTai($this->session->userdata('maso'));
+
 		$this->design['index'] = $this->load->view('giaodien/page/dangkydetai',$data,true);
 		$this->load->view('giaodien/home/master',$this->design);
 
 	}
+
+	public function luuDeTaiDangky ()
+	{
+		if($this->input->post())
+		{
+			$madetai = $this->input->post('rdb_detai');
+			if($this->m_quanlydata->ktSoLuongTV($this->input->post('rdb_detai')))
+			{
+				$now = getdate(); 
+				$currentTime = $now["hours"] . ":" . $now["minutes"] . ":" . $now["seconds"]; 
+				$currentDate = $now["year"]."-".$now["mon"]."-".$now["mday"]; 
+				
+				$data = array(
+				'madetai' => $madetai,
+				'masv' => $this->session->userdata('maso'),
+
+				'ngaydangky' => $currentDate." ".$currentTime,//date('Y-m-d H:i:s');
+				);
+
+				$this->m_quanlydata->insertData("sv_detai", $data);
+
+				$this->m_quanlydata->update_SLTV($madetai);
+			}
+
+		}
+	}
+	//-----------------------------
 	public function Baocaotiendo()
 	{
 		$this->design['index'] = $this->load->view('giaodien/page/baocaotiendo',null,true);

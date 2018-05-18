@@ -19,8 +19,8 @@ class Xuly_ad extends CI_Controller {
 	
 	public function index()
 	{
-		$this->admin['main'] = $this->load->view('admin/page/giaodien',null,true);
-		$this->load->view('admin/home/master',$this->admin);
+		// $this->admin['main'] = $this->load->view('admin/page/giaodien',null,true);
+		// $this->load->view('admin/home/master',$this->admin);
 	}
 
 	public function login()
@@ -36,8 +36,9 @@ class Xuly_ad extends CI_Controller {
 
 				$this->session->set_userdata('login', $name_user[0]['HOTEN']);
 				$this->session->set_userdata('maso', $name_user[0]['MASV']);
-				
-				redirect(base_url('index.php/xuly_ad/index'));
+				$this->session->set_userdata('madotdk', $this->m_admin->get_MaDot());
+
+				redirect(base_url('index.php/xuly_ad/tkpk'));
 			}
 		}
 		$this->load->view("admin/home/login");
@@ -60,7 +61,9 @@ class Xuly_ad extends CI_Controller {
 		$data['madotdk'] = $this->m_quanlydata->loadTable('dotdangky');
 		$data['ds_detai'] = $this->m_admin->load_DSDeTai();
 		$data['allgv'] = $this->m_admin->getallgv();
-
+		$data['ds_bomon'] = $this->m_admin->load_DSBoMon();
+		$data['ds_yeucaude'] = $this->m_admin->load_DSYeuCauDe($this->session->userdata('madotdk'));
+		
 		$this->admin['main'] = $this->load->view('admin/page/giaodien',$data,true);
 		$this->load->view('admin/home/master',$this->admin);
 	}
@@ -86,6 +89,20 @@ class Xuly_ad extends CI_Controller {
 		$data =  $this->m_admin->create_madot($madk);
 		echo json_encode($data);
 	}
+
+	public function update_kiemduyet()
+	{
+		$kiemduyet = $this->input->post('kiemduyet');
+
+		if(!empty($kiemduyet)) 
+		{
+			var_dump($kiemduyet);
+  			$this->m_admin->update_kiemduyet($kiemduyet);
+		}
+
+		header('location:tkpk');
+	}
+
 	public function insert_madotdk() 
 	{
 		$data['MADOT'] =  $this->input->post('madk');
@@ -96,14 +113,28 @@ class Xuly_ad extends CI_Controller {
 		$data['TGBAOVE'] = $this->input->post('tgbaove');
 		$data['TGPHUCKHAO'] = $this->input->post('tgphuckhao');
 		$data['SLTVNHOM'] = $this->input->post('sltv');
-		$pm = $this->input->post('pm');
-		$httt = $this->input->post('httt');
-		$mtt = $this->input->post('mtt');
-		$data['SLDETAI'] = $pm+$httt+$mtt;
+
 		$data['CHAMHOIDONG'] = $this->input->post('hd');
 		$this->m_admin->insert_madotdk($data);
+
+		$data_bm = $this->m_admin->load_DSBoMon();
+
+		foreach ($data_bm as $value) 
+		{
+			$data_slde['MADOT'] = $data['MADOT'];
+			$data_slde['MABM']  = $value['MABM'];
+			$data_slde['SLDE'] = $this->input->post($value['MABM']);
+
+			$this->m_quanlydata->insertData('dotdangky_bomon', $data_slde);
+		}
+
 		header('location:tkpk');
 
+	}
+
+	public function filter_data()
+	{
+		$madot = $this->input->post('madot');
 	}
 }
 ?>

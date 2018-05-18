@@ -8,6 +8,7 @@
 	        $this->load->database();
     	}
 
+    	//kiểm duyệt- danh sách sinh viên đăng ký
     	function load_DSMaDeTai ()
     	{
     		$this->db->select('detai.madetai, detai.ten_dt');
@@ -57,6 +58,38 @@
 			return $query->result_array();
     	}
 
+    	public function get_madetai ()
+		{
+			$this->db->select('madetai')
+				->from('detai');
+          	
+	        $query = $this->db->get();
+	        return $query->result_array();;
+		}
+
+    	function query_update_kiemduyet ($madetai, $kiemduyet)
+		{
+			$data = array(
+	               'KIEMDUYET' => $kiemduyet
+	            );
+			$this->db->where('MADETAI', $madetai);
+			$this->db->update('detai', $data); 
+		}
+
+		public function update_kiemduyet($data)
+		{
+			$data_made = $this->get_madetai();
+
+			foreach ($data_made as $value) 
+			{
+				if(in_array($value['madetai'], $data))
+					$this->query_update_kiemduyet($value['madetai'], 1);
+				else
+					$this->query_update_kiemduyet($value['madetai'], 0);
+			}
+		}
+
+		//tạo đợt đăng ký
     	public function getallgv()
 		{
 			return $this->db->get('giangvien')->result_array();
@@ -64,27 +97,61 @@
 
 		public function create_madot($value)
 		{
+			$now = getdate(); 
+			$currentYear = $now["year"];
+
 			$this->db->like("MADOT",$value);
 			$this->db->order_by("MADOT","asc");
 			$data['ma'] = $this->db->get('dotdangky')->result_array();
 
-			$macuoi = $data['ma'][count($data['ma'])-1]['MADOT'];
-			$dem = (int)(substr($macuoi,strlen($value), strlen($macuoi) -strlen($value)));
-			$dem = $dem + 1;
-			if($dem < 10000)
-				return $value.$dem;
-			// else if($dem < 100)
-			// 	return $value."0".$dem;
-			// else if($dem < 1000)
-			// 	return $value."".$dem;
+			if(!empty($data['ma']))
+			{
+				$macuoi = $data['ma'][count($data['ma'])-1]['MADOT'];
+				$dem = (int)$macuoi[strlen($macuoi) - 1] + 1;
+				
+				return $value.$currentYear.$dem;
+			}
 			else
-				return "";
+				return $value.$currentYear.'0';
 
 		}
 
 		public function insert_madotdk($data)
 		{
 			$this->db->insert('dotdangky',$data);
+		}
+
+		public function load_DSBoMon ()
+		{
+			$this->db->select("MABM, TENBM")
+				->from('bomon');
+
+			$query = $this->db->get();
+	        return $query->result_array();;
+		}
+
+		//phân công giảng viên
+		public function get_MaDot ()
+		{
+			$this->db->select('MADOT');
+			$this->db->order_by("TGTAO","desc");
+
+			$data = $this->db->get('dotdangky')->result_array();
+			$madot = $data[0]['MADOT'];
+
+			return $madot;
+		}
+		public function load_DSYeuCauDe($madot)
+		{
+			$this->db->select('bomon.mabm, bomon.tenbm, dotdangky_bomon.SLDE');
+			$this->db->from('dotdangky_bomon');
+			$this->db->join('bomon', 'bomon.mabm = dotdangky_bomon.mabm');
+			$this->db->join('dotdangky', 'dotdangky.madot = dotdangky_bomon.madot');
+		
+			$this->db->where("dotdangky.madot = '".$madot."'");
+
+			$query = $this->db->get();
+			return $query->result_array();
 		}
 	}
  ?>

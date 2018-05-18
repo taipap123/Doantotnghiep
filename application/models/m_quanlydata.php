@@ -96,5 +96,7 @@ class M_quanlydata extends CI_Model {
 		}
 		else return 0;
 	}
+
+	
 }
 ?>

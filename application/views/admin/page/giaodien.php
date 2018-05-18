@@ -44,6 +44,7 @@
                     <option value="KLTN">Khóa Luận Tốt Nghiệp</option>
                     <option value="DATN">Đồ Án Tốt Nghiệp</option>
                      <option value="DAMH">Đồ Án Môn Học</option>
+                     <option value="NCKH">Nghiên Cứu Khoa Học</option>
                   </select>
                   </div>
                 </div>
@@ -100,9 +101,13 @@
                   <label class="col-sm-3 control-label no-padding-right" for="form-field-1"><strong> Số lượng đề tài </strong></label>
 
                   <div class="col-sm-9">
-                    <input type="number" id="form-field-1" name="pm" placeholder="Công nghệ phần mềm" class="col-xs-12 col-sm-10" style="margin-bottom: 5px"/>
-                    <input type="number" id="form-field-1" name="httt" placeholder="Hệ thống thông tin" class="col-xs-12 col-sm-10" style="margin-bottom: 5px" />
-                    <input type="number" id="form-field-1" name="mtt" placeholder="Mạng máy tính" class="col-xs-12 col-sm-10" />
+                    <?php foreach ($ds_bomon as  $value) {
+                    ?>
+
+                        <input type="number" id="form-field-1" name="<?php echo $value['MABM'] ?>" placeholder="<?php echo $value['TENBM'] ?>" class="col-xs-12 col-sm-10" style="margin-bottom: 5px"/>
+
+                    <?php } ?>
+
                   </div>
                 </div>
                 <div class="form-group">
@@ -146,7 +151,7 @@
               <div class="form-group">
                 <label class="col-sm-3 control-label no-padding-right" for="form-field-1"> Mã đợt đăng ký </label>
                 <div class="col-sm-7">
-                  <select id="simple-colorpicker-1" class="" style="width: 150px;">
+                  <select id="simple-colorpicker-1" class="" style="width: 150px;" onchange="filter_data(this)">
 
                     <?php foreach ($madotdk as $row): ?>
                     
@@ -221,16 +226,18 @@
             </tr>
           </thead>
           <tbody>
+            <?php foreach ($ds_yeucaude as $value) {
+             
+            ?>
+            
             <tr>
-              <th scope="row">MMT</th>
-              <td>Mạng máy tính</td>
-              <td>5</td>
+              <th scope="row"><?php echo $value['mabm'] ?></th>
+              <td><?php echo $value['tenbm'] ?></td>
+              <td><?php echo $value['SLDE'] ?></td>
             </tr>
-            <tr>
-              <th scope="row">CNPM</th>
-              <td>Công nghệ phần mềm</td>
-              <td>5</td>
-            </tr>
+            
+            <?php } ?>
+
           </tbody>
         </table>
       </div>
@@ -464,37 +471,41 @@
             <div class="row">
               <div class="col-sm-12" style="margin-top: 10px">
                <h5><b>Danh sách đề tài</b></h5>
-              <table class="table table-bordered" id="dttb_dsdt">
-                <thead>
-                  <tr>
-                    <th class="color" scope="col">Mã đề tài</th>
-                    <th class="color" scope="col">Tên đề tài</th>
-                    <th class="color" scope="col">Giáo Viên ra đề</th>
-                    <th class="color" scope="col">Bộ môn</th>
-                    <th class="color" scope="col">Kiểm duyệt</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <?php foreach ($ds_detai as $row) {
-                   ?>
+               <form action="<?php echo base_url() ?>index.php/xuly_ad/update_kiemduyet" method="POST">
+                  <table class="table table-bordered" id="dttb_dsdt">
+                    <thead>
+                      <tr>
+                        <th class="color" scope="col">Mã đề tài</th>
+                        <th class="color" scope="col">Tên đề tài</th>
+                        <th class="color" scope="col">Giáo Viên ra đề</th>
+                        <th class="color" scope="col">Bộ môn</th>
+                        <th class="color" scope="col">Kiểm duyệt</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <?php foreach ($ds_detai as $row) {
+                       ?>
 
-                    <tr>
-                      <th scope="row"><?php echo $row['madetai'] ?></th>
-                      <td><?php echo $row['ten_dt'] ?></td>
-                      <td><?php echo $row['tengv'] ?></td>
-                      <td><?php echo $row['tenbm'] ?></td>
-                      <td><input type="checkbox" name="kiemduyet[]" value="$row['madetai']"
-                       <?php if($row['kiemduyet']=='1') echo 'checked="checked"' ?> > </td>
-                    </tr>
+                        <tr>
+                          <th scope="row"><?php echo $row['madetai'] ?></th>
+                          <td><?php echo $row['ten_dt'] ?></td>
+                          <td><?php echo $row['tengv'] ?></td>
+                          <td><?php echo $row['tenbm'] ?></td>
+                          <td><input type="checkbox" name="kiemduyet[]" value="<?php echo $row['madetai'] ?>"
+                           <?php if($row['kiemduyet']=='1') echo 'checked="checked"' ?> > </td>
+                        </tr>
 
-                  <?php } ?>
+                      <?php } ?>
 
-                </tbody>
-              </table>
-            <button class="btn btn-primary" type="button" style="border-radius: 5px;margin-left: 40%">
+                    </tbody>
+                  </table>
+            
+            <button class="btn btn-primary" type="submit" style="border-radius: 5px;margin-left: 40%">
                   <i class="ace-icon fa fa-check bigger-110"></i>
                   Lưu
                 </button>
+            </form>
+
             </div>
           </div>
         </div>
@@ -664,4 +675,15 @@
         console.log("error");
       });
     }
+
+ function filter_data(obj)
+ {
+  var id = obj.value;
+      $.ajax({
+        url: '<?php echo base_url()?>index.php/xuly_ad/filter_data',
+        type: 'POST',
+        dataType: 'JSON',
+        data: {madot : id},
+      })
+ }
 </script>

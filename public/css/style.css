@@ -9,7 +9,7 @@ html,
 body {
 	margin: 0;
 	font-size: 100%;
-	font-family: 'Lato', sans-serif;
+	font-family: 'Slabo 27px', sans-serif;
 	background: #ADD8E6;
 }
 
@@ -42,7 +42,7 @@ h4,
 h5,
 h6 {
 	margin: 0;
-	font-family: 'Raleway', sans-serif;
+	font-family: 'Slabo 27px', sans-serif;
 	font-weight: 600;
 }
 
@@ -453,7 +453,7 @@ img.img-responsive {
 }
 .top {
     padding: 10px 0;
-    background:#1e3953;
+    background:#b0cde8;
 }
 .top-middle {
     text-align: right;
@@ -1194,7 +1194,7 @@ h3.title-txt {
 	letter-spacing: 2px;
 }
 h3.title-txt span {
-    color: #93c83f;
+    color: #e2481c;
 }
 h3.title-txt.two, p.two {
     color: #ffffff;
@@ -1212,9 +1212,6 @@ p.para-w3ls {
     margin-bottom: 2em;
 }
 /*-- services --*/
-.w3-agile-services{
-    padding:5em 0;
-}
 
 .w3l-heading h3,.w3l-heading h2{
 	text-align:center;

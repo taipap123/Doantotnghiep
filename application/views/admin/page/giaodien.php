@@ -146,7 +146,7 @@
               <div class="form-group">
                 <label class="col-sm-3 control-label no-padding-right" for="form-field-1"> Mã đợt đăng ký </label>
                 <div class="col-sm-7">
-                  <select id="simple-colorpicker-1" class="" style="width: 150px;">
+                  <select id="simple-colorpicker-1" class="" style="width: 200px;">
 
                     <?php foreach ($madotdk as $row): ?>
                     

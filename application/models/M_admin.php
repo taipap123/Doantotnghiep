@@ -127,7 +127,7 @@
 				->from('bomon');
 
 			$query = $this->db->get();
-	        return $query->result_array();;
+	        return $query->result_array();
 		}
 
 		//phân công giảng viên
@@ -152,6 +152,29 @@
 
 			$query = $this->db->get();
 			return $query->result_array();
+		}
+		public function sum_SLDeDaYeuCau($mabm)
+		{
+			$this->db->select_sum('SL_DETAI');
+			$this->db->where("MABOMON = '".$mabm."'");
+
+			$query = $this->db->get('yeucautaode');
+			return $query->result_array();
+		}
+		public function insert_phanCong($data)
+		{
+			$this->db->insert('yeucautaode',$data);
+		}
+
+		//tao hội đồng
+
+		public function taoHoiDong($data)
+		{
+			$this->db->insert('hoidong',$data);
+		}
+		public function add_thanhvienHD($data)
+		{
+			$this->db->insert('hoidong',$data);
 		}
 	}
  ?>

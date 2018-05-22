@@ -63,6 +63,17 @@ class Xuly_ad extends CI_Controller {
 		$data['allgv'] = $this->m_admin->getallgv();
 		$data['ds_bomon'] = $this->m_admin->load_DSBoMon();
 		$data['ds_yeucaude'] = $this->m_admin->load_DSYeuCauDe($this->session->userdata('madotdk'));
+
+		$cnpm = (int)$this->m_admin->sum_SLDeDaYeuCau($data['ds_yeucaude'][0]['mabm'])[0]['SL_DETAI'];
+		$mmt = (int)$this->m_admin->sum_SLDeDaYeuCau($data['ds_yeucaude'][1]['mabm'])[0]['SL_DETAI'];
+		$httt = (int)$this->m_admin->sum_SLDeDaYeuCau($data['ds_yeucaude'][2]['mabm'])[0]['SL_DETAI'];
+
+
+		$data['slde_cnpm'] = (int)$data['ds_yeucaude'][0]['SLDE'] - $cnpm;
+		$data['slde_mmt'] = (int)$data['ds_yeucaude'][1]['SLDE'] - $mmt;
+		$data['slde_httt'] = (int)$data['ds_yeucaude'][2]['SLDE'] - $httt;
+
+		$data['ds_hoidong'] = $this->m_quanlydata->loadTableWhere('hoidong', "MADOT = '".$this->session->userdata('madotdk')."'");
 		
 		$this->admin['main'] = $this->load->view('admin/page/giaodien',$data,true);
 		$this->load->view('admin/home/master',$this->admin);
@@ -96,7 +107,6 @@ class Xuly_ad extends CI_Controller {
 
 		if(!empty($kiemduyet)) 
 		{
-			var_dump($kiemduyet);
   			$this->m_admin->update_kiemduyet($kiemduyet);
 		}
 
@@ -135,6 +145,33 @@ class Xuly_ad extends CI_Controller {
 	public function filter_data()
 	{
 		$madot = $this->input->post('madot');
+	}
+
+	public function phanCongGiangVien ()
+	{
+		$dsgv_check = $this->input->post('ckbgiangvien');
+
+		for($i = 0; $i < count($dsgv_check); $i++)
+		{
+			$data['MAGV'] = $dsgv_check[$i];
+			$data['MABOMON'] = $this->input->post('txtbm'.$data['MAGV']);
+			$data['SL_DETAI'] = $this->input->post('txt'.$data['MAGV']);
+			$data['NGAYNOP'] = $this->input->post('date'.$data['MAGV']);
+			$this->m_admin->insert_phanCong($data);
+		}
+
+		header('location:tkpk');
+	}
+
+	public function taoHoiDong()
+	{
+		$data['NoiDung'] = $this->input->post('tenhoidong');
+		$data['MADOT'] = $this->input->post('madot');
+		$data['SLTHANHVIEN'] = $this->input->post('slthanhvien');
+		$this->m_admin->taoHoiDong($data);
+
+
+		header('location:tkpk');
 	}
 }
 ?>

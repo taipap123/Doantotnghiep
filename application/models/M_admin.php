@@ -39,7 +39,6 @@
     		foreach ($ds_made as $row) {
 
     			array_push($data, array($row['madetai'], $row['ten_dt'], $this->load_SinhVien_DeTai($row['madetai'])));
-
     		} 
     		
     		return $data;	
@@ -47,7 +46,7 @@
     	
     	function load_DSDeTai ()
     	{
-    		$this->db->select('detai.madetai, detai.ten_dt, detai.kiemduyet, giangvien.tengv, bomon.tenbm');
+    		$this->db->select('detai.madetai, detai.ten_dt, detai.kiemduyet, giangvien.magv, giangvien.tengv, bomon.tenbm');
 			$this->db->from('detai');
 			$this->db->join('bomon', 'bomon.mabm = detai.mabm');
 			$this->db->join('gv_detai', 'gv_detai.madetai = detai.madetai');
@@ -174,7 +173,54 @@
 		}
 		public function add_thanhvienHD($data)
 		{
-			$this->db->insert('hoidong',$data);
+			$this->db->insert('hd_giangvien',$data);
 		}
+
+		public function load_DSMaHD($madot)
+		{
+			$this->db->select('MAHD, NoiDung')
+				->from('hoidong')
+				->where("MADOT = '".$madot."'");
+
+			$query = $this->db->get();
+			return $query->result_array();
+		}
+
+		public function load_giangvien_HD($mahd)
+		{
+			$this->db->select('giangvien.MAGV, giangvien.TENGV, giangvien.MABM, hd_giangvien.CHUCVU');
+			$this->db->from('hd_giangvien');
+			$this->db->join('hoidong', 'hoidong.MAHD = hd_giangvien.MAHD');
+			$this->db->join('giangvien', 'giangvien.MAGV = hd_giangvien.MAGV');
+			$this->db->where("hd_giangvien.MAHD = '".$mahd."'");
+
+			$query = $this->db->get();
+			return $query->result_array();
+		}
+
+		function load_DSHoiDong($madot)
+    	{
+    		$data = array();
+
+    		$ds_mahd = $this->load_DSMaHD($madot);
+
+    		foreach ($ds_mahd as $row) {
+
+    			array_push($data, array($row['MAHD'], $row['NoiDung'], $this->load_giangvien_HD($row['MAHD'])));
+    		} 
+    		
+    		return $data;	
+    	}
+    	function add_HoiDong_Detai ($madetai, $mahoidong, $tgcham)
+		{
+			$data = array(
+	               'MAHD' => $mahoidong,
+	               'TGCHAMHD' => $tgcham
+	            );
+			$this->db->where('MADETAI', $madetai);
+			$this->db->update('detai', $data); 
+		}
+		
+		
 	}
  ?>

@@ -11,7 +11,7 @@
 								Đợt đăng ký&nbsp&nbsp
 							</td>
 							<td>
-								<select id="simple-colorpicker-1" class="" style="width: 150px;">
+								<select id="simple-colorpicker-1" class="" style="width: 216px; height: 28px">
 									<option value="#ac725e">Đồ án phân tích thiết kế</option>
 									<option value="#d06b64">Đồ án môn học</option>
 								</select>

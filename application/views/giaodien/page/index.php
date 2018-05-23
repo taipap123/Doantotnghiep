@@ -1,126 +1,4 @@
 <!-- services -->
-<style type="text/css">
-	.icon-box-back2 {
-    color: #fff !important;
-    line-height: 67px !important;
-    text-align: center;
-    font-size: 25px;
-    background: none;
-    height: 67px;
-    width: 100%;
-    margin: auto;
-    float: left;
-    -webkit-transform: rotate(40deg);
-    -moz-transform: rotate(40deg);
-    -ms-transform: rotate(40deg);
-    -o-transform: rotate(40deg);
-    transform: rotate(40deg);
-    -webkit-transform-origin: center;
-    -moz-transform-origin: center;
-    -ms-transform-origin: center;
-    -o-transform-origin: center;
-    transform-origin: center;
-    -webkit-transition: .5s;
-    -moz-transition: .5s;
-    -ms-transition: .5s;
-    -o-transition: .5s;
-    transition: .5s;
-}
-.icon-boxwrap2 {
-    margin: 20px auto 0 auto;
-    -webkit-border-radius: 100%;
-    -moz-border-radius: 100%;
-    border-radius: 100%;
-    -moz-background-clip: padding;
-    -webkit-background-clip: padding-box;
-    background-clip: padding-box;
-    height: 67px;
-    width: 67px;
-    float: none;
-    background-color: #128ee1;
-    background: -webkit-gradient(linear, left top, left bottom, color-stop(0, #128ee1), color-stop(50%, #128ee1), color-stop(51%, #107fc9), color-stop(100%, #107fc9));
-    background: -webkit-linear-gradient(top, #128ee1 0, #128ee1 50%, #107fc9 51%, #107fc9 100%);
-    background: -moz-linear-gradient(top, #128ee1 0, #128ee1 50%, #107fc9 51%, #107fc9 100%);
-    background: -ms-linear-gradient(top, #128ee1 0, #128ee1 50%, #107fc9 51%, #107fc9 100%);
-    background: -o-linear-gradient(top, #128ee1 0, #128ee1 50%, #107fc9 51%, #107fc9 100%);
-    background: linear-gradient(top, #128ee1 0, #128ee1 50%, #107fc9 51%, #107fc9 100%);
-    -webkit-transform: rotate(-40deg);
-    -moz-transform: rotate(-40deg);
-    -ms-transform: rotate(-40deg);
-    -o-transform: rotate(-40deg);
-    transform: rotate(-40deg);
-    -webkit-transform-origin: center;
-    -moz-transform-origin: center;
-    -ms-transform-origin: center;
-    -o-transform-origin: center;
-    transform-origin: center;
-    -webkit-transition: .5s;
-    -moz-transition: .5s;
-    -ms-transition: .5s;
-    -o-transition: .5s;
-    transition: .5s;
-}
-[class^="icon-"], [class*=" icon-"] {
-    font-family: 'icomoon';
-    speak: none;
-    font-style: normal;
-    font-weight: normal;
-    font-variant: normal;
-    text-transform: none;
-    content: attr(data-icon);
-    line-height: 1;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-}
-.fa {
-    display: inline-block;
-    font-family: FontAwesome !important;
-    font-style: normal;
-    font-weight: normal;
-    line-height: 1;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-}
-.services-right-grid:hover .icon-boxwrap2 {
-    -webkit-transform: rotate(140deg);
-    -moz-transform: rotate(140deg);
-    -ms-transform: rotate(140deg);
-    -o-transform: rotate(140deg);
-    transform: rotate(140deg);
-    -webkit-transform-origin: center;
-    -moz-transform-origin: center;
-    -ms-transform-origin: center;
-    -o-transform-origin: center;
-    transform-origin: center;
-    -webkit-transition: .5s;
-    -moz-transition: .5s;
-    -ms-transition: .5s;
-    -o-transition: .5s;
-    transition: .5s;
-}
-.services-right-grid:hover .icon-box-back2 {
-    color: #fff;
-    -webkit-transform: rotate(-140deg);
-    -moz-transform: rotate(-140deg);
-    -ms-transform: rotate(-140deg);
-    -o-transform: rotate(-140deg);
-    transform: rotate(-140deg);
-    -webkit-transform-origin: center;
-    -moz-transform-origin: center;
-    -ms-transform-origin: center;
-    -o-transform-origin: center;
-    transform-origin: center;
-    -webkit-transition: .5s;
-    -moz-transition: .5s;
-    -ms-transition: .5s;
-    -o-transition: .5s;
-    transition: .5s;
-}
-.se-top{
-	background: #f8f8f8;
-}
-
-</style>
 <div class="w3-agile-services">
 		<div class="container" style="padding-top: 5px">
 			<h3 class="title-txt"><span>Tin tức-Thông báo</span></h3>
@@ -132,8 +10,7 @@
 								<i class="fa fa-book icon-box-back2" aria-hidden="true"></i>
 							</div>
 							<div class="services-icon-info">
-								<h5>Thông báo chung</h5>
-								
+								<h5>Thông báo chung</h5>								
 							</div>
 						</div>
 					</div>
@@ -143,8 +20,7 @@
 								<i class="fa fa-eye icon-box-back2" aria-hidden="true"></i>
 							</div>
 							<div class="services-icon-info">
-								<h5>Thông báo đăng ký</h5>
-								
+								<h5>Thông báo đăng ký</h5>								
 							</div>
 						</div>
 					</div>
@@ -154,8 +30,7 @@
 								<i class="fa fa-flask icon-box-back2" aria-hidden="true"></i>
 							</div>
 							<div class="services-icon-info">
-								<h5>Thông báo kết quả</h5>
-								
+								<h5>Thông báo kết quả</h5>								
 							</div>
 						</div>
 					</div>
@@ -168,8 +43,8 @@
 	<!-- //services -->
 <!-- Testimonials -->
 	<div class="testimonials">
-		<div class="container">
-			<h3 class="title-txt"><span>T</span>hông báo mới nhất</h3>
+		<div class="container" style="margin-top: -16px">
+			<h3 class="title-txt"><span>Thông báo mới nhất</span></h3>
 			<div class="col-md-6 testimonials-main">
 				<section class="slider">
 					<div class="flexslider">
@@ -213,9 +88,9 @@
 	</div>
 	<!-- //Testimonials -->
 	<center>
-	<div class="experience">
-	<div class="container">
-	<h3 class="title-txt"><span>D</span>anh sách thông báo</h3>
+	<div class="experience" style="padding-bottom: 0px;">
+	<div class="container" style="margin-top: -96px; padding-top: 25px;">
+	<h3 class="title-txt"><span>Danh sách thông báo</span></h3>
 		<div class="experience-info">
 			<div class="col-md-7 exp-matter">
 				<div class="exp-left">

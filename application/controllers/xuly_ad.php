@@ -32,10 +32,10 @@ class Xuly_ad extends CI_Controller {
 			if($this->form_validation->run())
 			{
 				$user = $this->input->post('user');
-				$name_user= $this->m_quanlydata->loadTableWhere("sinhvien","MASV = ".$user);
+				$name_user= $this->m_quanlydata->loadTableWhere("giangvien","MAGV = '".$user."'");
 
-				$this->session->set_userdata('login', $name_user[0]['HOTEN']);
-				$this->session->set_userdata('maso', $name_user[0]['MASV']);
+				$this->session->set_userdata('login', $name_user[0]['TENGV']);
+				$this->session->set_userdata('maso', $name_user[0]['MAGV']);
 				$this->session->set_userdata('madotdk', $this->m_admin->get_MaDot());
 
 				redirect(base_url('index.php/xuly_ad/tkpk'));
@@ -74,13 +74,17 @@ class Xuly_ad extends CI_Controller {
 		$data['slde_httt'] = (int)$data['ds_yeucaude'][2]['SLDE'] - $httt;
 
 		$data['ds_hoidong'] = $this->m_quanlydata->loadTableWhere('hoidong', "MADOT = '".$this->session->userdata('madotdk')."'");
+		$data['ds_gv_hd'] = $this->m_admin->load_DSHoiDong($this->session->userdata('madotdk'));
 		
+
 		$this->admin['main'] = $this->load->view('admin/page/giaodien',$data,true);
 		$this->load->view('admin/home/master',$this->admin);
 	}
 	public function giangvien()
 	{
-		$this->admin['main'] = $this->load->view('admin/page/giangvien',null,true);
+		$data['ds_bomon'] = $this->m_admin->load_DSBoMon();
+
+		$this->admin['main'] = $this->load->view('admin/page/giangvien',$data,true);
 		$this->load->view('admin/home/master',$this->admin);
 	}
 	public function thongbao()
@@ -170,7 +174,32 @@ class Xuly_ad extends CI_Controller {
 		$data['SLTHANHVIEN'] = $this->input->post('slthanhvien');
 		$this->m_admin->taoHoiDong($data);
 
+		header('location:tkpk');
+	}
 
+	public function add_thanhvienHD()
+	{
+		$magv= $this->input->post('ckbthamgia');
+		
+		for($i = 0; $i < count($magv); $i++)
+		{
+			$data['MAHD'] = $this->input->post('rdbmahd');
+			$data['MAGV'] = $magv[$i];
+			$data['CHUCVU'] = $this->input->post('chucvu'.$magv[$i]);
+
+			$this->m_admin->add_thanhvienHD($data);
+		}
+		header('location:tkpk');
+	}
+	public function add_HoiDong_Detai ()
+	{
+		$made= $this->input->post('ckbhoidong_detai');
+		$mahd = $this->input->post('mahd');
+		$tgcham = $this->input->post('tgcham');
+		for($i = 0; $i < count($made); $i++)
+		{
+			$this->m_admin->add_HoiDong_Detai($made[$i], $mahd, $tgcham);
+		}
 		header('location:tkpk');
 	}
 }

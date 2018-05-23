@@ -46,11 +46,13 @@
               <h3><strong>Cập nhật đề tài</strong></h3>
               <form class="form-horizontal" role="form">
                 <div class="form-group">
+                  <!--
                   <label class="col-sm-3 control-label no-padding-right" for="form-field-8"><strong>Mã đề tài</strong></label>
                   <select id="simple-colorpicker-1" class="col-xs-12 col-sm-7" style="margin-left: 10px; width: 479px;">
                     <option value="#ac725e">#ac725e</option>
                     <option value="#d06b64">#d06b64</option>
                   </select>
+                -->
                 </div>
                 <div class="form-group">
                   <label class="col-sm-3 control-label no-padding-right" for="form-field-8"><strong>Nội dung</strong></label>
@@ -67,9 +69,12 @@
                 <div class="form-group">
                   <label class="col-sm-3 control-label no-padding-right" for="form-field-8"><strong>Bộ môn</strong></label>
                   <select id="simple-colorpicker-1" class="col-xs-12 col-sm-7" style="margin-left: 10px; width: 479px;">
-                    <option value="#ac725e">Công nghệ phần mềm</option>
-                    <option value="#d06b64">Mạng máy tính</option>
-                    <option value="#d06b64">Hệ thống thông tin</option>
+                    <?php foreach ($ds_bomon as $value) {
+                     
+                     ?>
+                      <option value="<?php echo $value['MABM'] ?>"><?php echo $value['TENBM'] ?></option>
+                      
+                    <?php  } ?>
                   </select>
                 </div>
                 <div class="col-md-offset-3 col-md-9">

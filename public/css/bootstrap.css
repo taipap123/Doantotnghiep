@@ -6606,28 +6606,15 @@ button.close {
 /*# sourceMappingURL=bootstrap.css.map */
 
 /*# css tự viết */
-.thongtinhsv {
-  float: left;
-  width: 400px;
-  margin-bottom: 20px;
-}
-.dropdown_locdulieu{
 
-  width: 600px;
-  margin-left: 140px;
-  float: left;
-}
 
-.dropdown_locdulieu button {
-  height: 25px;
-}
 
 .table_header{
   background-color: 00BFFF;
   color: FFFFFF;
 }
 .table_background{
-  background-color: DCDCDC;
+  background-color: #6aa9bd54;
   font-weight: 000000;
   color: 000000;
 }
@@ -6640,4 +6627,123 @@ button.close {
     height: 50%;
     margin: auto;
     margin-bottom: -130px;
+}
+.icon-box-back2 {
+    color: #fff !important;
+    line-height: 67px !important;
+    text-align: center;
+    font-size: 25px;
+    background: none;
+    height: 67px;
+    width: 100%;
+    margin: auto;
+    float: left;
+    -webkit-transform: rotate(40deg);
+    -moz-transform: rotate(40deg);
+    -ms-transform: rotate(40deg);
+    -o-transform: rotate(40deg);
+    transform: rotate(40deg);
+    -webkit-transform-origin: center;
+    -moz-transform-origin: center;
+    -ms-transform-origin: center;
+    -o-transform-origin: center;
+    transform-origin: center;
+    -webkit-transition: .5s;
+    -moz-transition: .5s;
+    -ms-transition: .5s;
+    -o-transition: .5s;
+    transition: .5s;
+}
+.icon-boxwrap2 {
+    margin: 20px auto 0 auto;
+    -webkit-border-radius: 100%;
+    -moz-border-radius: 100%;
+    border-radius: 100%;
+    -moz-background-clip: padding;
+    -webkit-background-clip: padding-box;
+    background-clip: padding-box;
+    height: 67px;
+    width: 67px;
+    float: none;
+    background-color: #128ee1;
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0, #128ee1), color-stop(50%, #128ee1), color-stop(51%, #107fc9), color-stop(100%, #107fc9));
+    background: -webkit-linear-gradient(top, #128ee1 0, #128ee1 50%, #107fc9 51%, #107fc9 100%);
+    background: -moz-linear-gradient(top, #128ee1 0, #128ee1 50%, #107fc9 51%, #107fc9 100%);
+    background: -ms-linear-gradient(top, #128ee1 0, #128ee1 50%, #107fc9 51%, #107fc9 100%);
+    background: -o-linear-gradient(top, #128ee1 0, #128ee1 50%, #107fc9 51%, #107fc9 100%);
+    background: linear-gradient(top, #128ee1 0, #128ee1 50%, #107fc9 51%, #107fc9 100%);
+    -webkit-transform: rotate(-40deg);
+    -moz-transform: rotate(-40deg);
+    -ms-transform: rotate(-40deg);
+    -o-transform: rotate(-40deg);
+    transform: rotate(-40deg);
+    -webkit-transform-origin: center;
+    -moz-transform-origin: center;
+    -ms-transform-origin: center;
+    -o-transform-origin: center;
+    transform-origin: center;
+    -webkit-transition: .5s;
+    -moz-transition: .5s;
+    -ms-transition: .5s;
+    -o-transition: .5s;
+    transition: .5s;
+}
+[class^="icon-"], [class*=" icon-"] {
+    font-family: 'icomoon';
+    speak: none;
+    font-style: normal;
+    font-weight: normal;
+    font-variant: normal;
+    text-transform: none;
+    content: attr(data-icon);
+    line-height: 1;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+.fa {
+    display: inline-block;
+    font-family: FontAwesome !important;
+    font-style: normal;
+    font-weight: normal;
+    line-height: 1;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+.services-right-grid:hover .icon-boxwrap2 {
+    -webkit-transform: rotate(140deg);
+    -moz-transform: rotate(140deg);
+    -ms-transform: rotate(140deg);
+    -o-transform: rotate(140deg);
+    transform: rotate(140deg);
+    -webkit-transform-origin: center;
+    -moz-transform-origin: center;
+    -ms-transform-origin: center;
+    -o-transform-origin: center;
+    transform-origin: center;
+    -webkit-transition: .5s;
+    -moz-transition: .5s;
+    -ms-transition: .5s;
+    -o-transition: .5s;
+    transition: .5s;
+}
+.services-right-grid:hover .icon-box-back2 {
+    color: #fff;
+    -webkit-transform: rotate(-140deg);
+    -moz-transform: rotate(-140deg);
+    -ms-transform: rotate(-140deg);
+    -o-transform: rotate(-140deg);
+    transform: rotate(-140deg);
+    -webkit-transform-origin: center;
+    -moz-transform-origin: center;
+    -ms-transform-origin: center;
+    -o-transform-origin: center;
+    transform-origin: center;
+    -webkit-transition: .5s;
+    -moz-transition: .5s;
+    -ms-transition: .5s;
+    -o-transition: .5s;
+    transition: .5s;
+}
+.se-top{
+  background: #f8f8f8;
 }

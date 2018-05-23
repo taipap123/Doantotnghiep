@@ -151,7 +151,7 @@
               <div class="form-group">
                 <label class="col-sm-3 control-label no-padding-right" for="form-field-1"> Mã đợt đăng ký </label>
                 <div class="col-sm-7">
-                  <select id="simple-colorpicker-1" class="" style="width: 150px;" onchange="filter_data(this)">
+                  <select id="simple-colorpicker-1" class="" style="width: 200px;" onchange="filter_data(this)">
 
                     <?php foreach ($madotdk as $row): ?>
                     
@@ -277,85 +277,82 @@
             <div class="row">
               <div class="col-sm-12" style="margin-top: 10px">
                <h5><b>Danh sách đề tài</b></h5>
-              <table class="table table-bordered" id="dttb_dsdt">
-                <thead>
-                  <tr>
-                    <th class="color" scope="col">Mã đề tài</th>
-                    <th class="color" scope="col">Tên đề tài</th>
-                    <th class="color" scope="col">Hội đồng phản Biện</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <th scope="row">DA0001</th>
-                    <td>Phân tích hệ thống đăng ký khóa luận cho sinh viên khoa CNTT</td>
-                    <td>
-                        <input type="checkbox">
-                    </td>
-                  </tr>
-                  <tr>
-                    <th scope="row">DA0004</th>
-                    <td>Xây dựng phần mềm quản lý nhà hàng</td>
-                    <td>
-                        <input type="checkbox">
-                    </td>
-                  </tr>
-                  <tr>
-                    <th scope="row">DA0008</th>
-                    <td>Quản lý siêu thị Điện Máy Xanh</td>
-                    <td>
-                        <input type="checkbox">
-                    </td>
-                  </tr>
-                  <tr>
-                    <th scope="row">DA0009</th>
-                    <td>Xây dựng website bán đồ  dùng trẻ em</td>
-                    <td>
-                        <input type="checkbox">
-                    </td>
-                  </tr>
-                  <tr>
-                    <th scope="row">DA0010</th>
-                    <td>Tìm hiểu ReactJS.NET viết ứng dụng minh họa.</td>
-                    <td>
-                        <input type="checkbox">
-                    </td>
-                  </tr>
-                </tbody>
-              </table>
-            <button class="btn btn-success" data-toggle="modal" data-target="#phanconghd" type="button" style="border-radius: 5px;margin-left: 40%">
-                  <i class="ace-icon fa fa-check bigger-110"></i>
-                 Phân công hội đồng
-                </button>
+
+               <form action="<?php echo base_url() ?>index.php/xuly_ad/add_HoiDong_Detai" method="POST">
+                  <table class="table table-bordered" id="dttb_dsdt">
+                    <thead>
+                      <tr>
+                        <th class="color" scope="col">Mã đề tài</th>
+                        <th class="color" scope="col">Tên đề tài</th>
+                        <th class="color" scope="col">Hội đồng phản Biện</th>
+                        <th class="color" scope="col">Giảng viên phản biện</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+
+                      <?php foreach ($ds_detai as $row) {
+                      ?>
+                      <tr>
+                        <th scope="row"><?php echo $row['madetai'] ?></th>
+                        <td><?php echo $row['ten_dt'] ?></td>
+                        <td>
+                            <input type="checkbox" name="ckbhoidong_detai[]" value="<?php echo $row['madetai'] ?>">
+                        </td>
+                        <td>
+                          <select id="simple-colorpicker-1" class="" style="width: 150px;">
+
+                            <?php foreach ($allgv as $value): ?>
+                            
+                              <option value="<?php echo $value['MAGV'] ?>" <?php if($row['magv']==$value['MAGV']) echo 'selected' ?>><?php echo $value['TENGV'] ?></option>
+
+                            <?php endforeach; ?>
+
+                          </select>
+                        </td>
+                      </tr>
+                      <?php } ?>
+
+                    </tbody>
+                  </table>
+                <button class="btn btn-success" data-toggle="modal" data-target="#phanconghd" type="button" style="border-radius: 5px;margin-left: 40%">
+                      <i class="ace-icon fa fa-check bigger-110"></i>
+                     Phân công hội đồng
+                    </button>
+                    </div>
+                  </div>
+                </div>
+        <!-- Button trigger modal -->
+
+        <!-- Modal -->
+            <div class="modal fade" id="phanconghd" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+              <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="myModalLabel">Hội Đồng Phản Biện</h4>
+                  </div>
+                  <div class="modal-body">
+                      <select class="form-control" name="mahd">
+                        <option disabled="true" selected>--Chọn Hội Đồng--</option>
+                        <?php foreach ($ds_hoidong as $value) {  
+                        ?>
+                            <option value="<?php echo $value['MAHD'] ?>"><?php echo $value['NoiDung']; ?></option>
+
+                        <?php } ?>
+                      </select>
+                      </br>Ngày phản biện: <input type="date" id="form-field-1"  class="col-xs-12 col-sm-12" name="tgcham">
+                  </div>
+
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Đóng</button>
+                    <button type="submit" class="btn btn-primary">Lưu</button>
+                  </div>
+              </form>
+
             </div>
           </div>
         </div>
-        <!-- Button trigger modal -->
 
-<!-- Modal -->
-<div class="modal fade" id="phanconghd" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title" id="myModalLabel">Hội Đồng Phản Biện</h4>
-      </div>
-      <div class="modal-body">
-        <select class="form-control">
-          <option disabled="true" selected>--Chọn Hội Đồng--</option>
-          <option>2</option>
-          <option>3</option>
-          <option>4</option>
-          <option>5</option>
-        </select>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Đóng</button>
-        <button type="button" class="btn btn-primary">Lưu</button>
-      </div>
-    </div>
-  </div>
-</div>
        <!-- het tag 3 -->
        <!-- tab4 -->
        <div class="tab-pane" id="tab_default_4">
@@ -370,11 +367,10 @@
               </div>
             </form>
             <div class="row">
-            <div class="col-sm-5">
-              
+            <form action="<?php echo base_url() ?>index.php/xuly_ad/add_thanhvienHD" method="POST">
+              <div class="col-sm-5">
               <div class="col-sm-12" style="margin-top: 10px">
                <h5><b>Danh sách hội đồng</b></h5>
-             <form action="" method="POST">  
                   <table class="table table-bordered">
                     <thead>
                       <tr>
@@ -396,7 +392,6 @@
                       <?php } ?>
                     </tbody>
                   </table>
-                
                 </div>
             </div>
             <div class="col-sm-7">
@@ -409,6 +404,7 @@
                         <th class="color" scope="col">Tên Giảng viên</th>
                         <th class="color" scope="col"> Mã Bộ môn</th>
                         <th class="color" scope="col">Tham gia</th>
+                        <th class="color" scope="col">Chức vụ</th>
                       </tr>
                     </thead>
                     <tbody>
@@ -417,13 +413,22 @@
                             <th scope="row"><?php echo $item['MAGV'] ?></th>
                             <td><?php echo $item['TENGV'] ?></td>
                             <td><?php echo $item['MABM'] ?></td>
-                            <td><input type="checkbox" name="ckbthamgia[]" value="<?php echo $item['MAGV'] ?>"></td>
+                            <td><input type="checkbox" name="ckbthamgia[]" value="<?php echo $item['MAGV']?>"></td>
+                            <td><select name="chucvu<?php echo $item['MAGV']?>">
+                                  <option>
+                                    Trưởng nhóm
+                                  </option>
+                                  <option selected>
+                                    Thành viên
+                                  </option>
+                                </select>
+                          </td>
                           </tr>
                       <?php }?>
                     </tbody>
                   </table>
                   <div>
-                    <button class="btn btn-success" type="button" style="border-radius: 5px;margin-left: 40%">
+                    <button class="btn btn-success" type="submit" style="border-radius: 5px;margin-left: 40%">
                       <i class="ace-icon fa fa-check bigger-110"></i>
                       Lưu
                     </button>
@@ -436,34 +441,39 @@
               <div class="col-sm-12">
               
               <div class="col-sm-12" style="margin-top: 10px">
-              <table class="table table-bordered" id="dttbtb">
+                <?php
+                  for($i = 0; $i < count($ds_gv_hd); $i++)
+                  {
+                 ?>
+              <table class="table table-bordered" id="dttbtb" width="100%">
                 <thead>
                   <tr>
-                    <th class="color" scope="col">Mã Hội Đồng</th>
+                    <th class="color" scope="col" colspan="5">Mã Hội Đồng: <?php echo $ds_gv_hd[$i][0] ?> Tên: <?php echo $ds_gv_hd[$i][1] ?></th>
+                  </tr>
+                  <tr>
                     <th class="color" scope="col">Mã Giảng Viên</th>
                     <th class="color" scope="col">Tên Giảng Viên</th>
                     <th class="color" scope="col">Mã Bộ Môn</th>
+                    <th class="color" scope="col">Chức vụ</th>
                   </tr>
                 </thead>
                 <tbody>
-                  <tr>
-                    <th scope="row">HDK05</th>
-                    <th scope="row">GV0005</th>
-                    <td>Nguyễn Thị Thúy</td>
-                    <td>MMT</td>
-                  </tr>
-                  <tr>
-                    <th scope="row">HDK06</th>
-                    <th scope="row">GV0001</th>
-                    <td>Nguyễn Văn Hoàng</td>
-                    <td>CNPM</td>
-                  </tr>
+                  <?php for($j = 0; $j < count($ds_gv_hd[$i][2]); $j++)
+                    {
+                   ?>
+                      <tr>
+                        <th scope="row"><?php echo $ds_gv_hd[$i][2][$j]['MAGV'] ?></th>
+                        <td><?php echo $ds_gv_hd[$i][2][$j]['TENGV'] ?></td>
+                        <td><?php echo $ds_gv_hd[$i][2][$j]['MABM'] ?></td>
+                        <td><?php echo $ds_gv_hd[$i][2][$j]['CHUCVU'] ?></td>
+                      </tr>
+                  <?php } ?>
                 </tbody>
               </table>
-            
+              <?php } ?>
             </div>
         </div>
-            </div>
+      </div>
 
       </div>
         <!-- hết tab 4 -->  
@@ -480,6 +490,7 @@
 
                     <?php endforeach; ?>
                   </select>
+
                 </div>
               </div>
             </form>

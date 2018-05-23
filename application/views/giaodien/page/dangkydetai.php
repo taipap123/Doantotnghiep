@@ -3,56 +3,75 @@
 <div class="w3-agile-services">
 		<div class="container">
 			<h3 class="title-txt"><span>Đăng ký đề tài</span></h3>
-				<div class="thongtinhsv">
-					<div class="panel panel-primary">
+				<div class="row">
+				  <div class="col-md-5">
+						<div class="thongtinhsv">
+					<div class="panel panel-primary" style="min-height: 151px">
 					  	<div class="panel-heading">Thông tin tài khoản</div>
 						  <div class="panel-body">
-						    <table>
-									<tr class="masthead">
-										<td>Mã số sinh viên: </td>
-										<td><?php echo $this->session->userdata('maso') ?></td>
-									</tr>
-									<tr class="masthead">
-										<td>Họ và tên: </td>
-										<td colspan="2"><?php echo $this->session->userdata('login') ?></td>
-									</tr>
-							</table>
+						    <div class="row" style="margin-bottom: 10px">
+								<div class="form-group">
+								    <label for="inputEmail3" class="col-sm-3 control-label">Mã số SV: </label>
+								    <div class="col-sm-8">
+								     <?php echo $this->session->userdata('maso') ?>
+								    </div>
+								  </div>
+							</div>
+							<div class="row" style="margin-bottom: 10px">
+								  <div class="form-group">
+								    <label for="inputPassword3" class="col-sm-3 control-label">Họ và tên: </label>
+								    <div class="col-sm-8">
+								      <?php echo $this->session->userdata('login') ?>
+
+								    </div>
+								  </div>
+							</div>
 
 						  </div>
 					</div>			
 				</div>
-
-				<div class="dropdown_locdulieu">
+				  </div>
+				  <div class="col-md-7">
+					<div class="dropdown_locdulieu">
 					<div class="panel panel-primary">
 					  	<div class="panel-heading">Thông tin tùy chọn</div>
 						  <div class="panel-body">
-								<table>
-								<tr>
-									<td>Đợt đăng ký&nbsp&nbsp</td>
-									<td>
-										<select id="simple-colorpicker-1" class="" style="width: 150px;">
+						  	<div class="row" style="margin-bottom: 10px">
+								<div class="form-group">
+								    <label for="inputEmail3" class="col-sm-3 control-label">Đợt đăng ký</label>
+								    <div class="col-sm-9">
+								      <select id="simple-colorpicker-1" class="" style="width: 260px;">
 											<?php foreach ($dotdangky as $row): 
                  								?>
 						                    <option value="<?php echo $row['MADOT']?>"> <?php echo $row['NOIDUNGDT'] ?> </option>
 						                    <?php endforeach;?>
 					                  	</select>
-									</td>
-									<td>&nbsp&nbspBộ môn&nbsp&nbsp</td>
-									<td>
-										<select id="simple-colorpicker-1" class="" style="width: 150px;">
+					                  	<button class="btn btn-primary" style="margin-left: 5%" type="submit">Lọc</button>
+								    </div>
+								  </div>
+							</div>
+							<div class="row" style="margin-bottom: 10px">
+								  <div class="form-group">
+								    <label for="inputPassword3" class="col-sm-3 control-label">Bộ môn</label>
+								    <div class="col-sm-9">
+								      <select id="simple-colorpicker-1" class="" style="width: 260px;">
 						                    <option value="#ac725e">Công nghệ phần mềm</option>
 						                    <option value="#d06b64">Mạng máy tính</option>
 						                    <option value="#d06b64">Hệ thống thông tin</option>
 					                  	</select>
-									</td>
-									<td>&nbsp&nbsp<button class="btn btn-primary" type="button" style="border-radius: 5px">Lọc dữ liệu
-						                </button>
-						            </td>
-								</tr>
-							</table>
+
+								    </div>
+								  </div>
+							</div>
 						</div>
 					</div>
 				</div>
+				  </div>
+				</div>
+
+				
+
+				
 
 				<form action="" method="POST">
 					<table id="tb_detai" class="table table-bordered">
@@ -62,11 +81,11 @@
 						    	
 						    </tr>
 						    <tr class="table_background">
-						    	<th>Tìm kiếm</th>
-						    	<th>Mã đề</th>
-						    	<th>Nội dung đề tài</th>
-						    	<th>Yêu cầu đề tài
-						    	<th>Số lượng thành viên</th>
+						    	<th style="width: 5%">Tìm kiếm</th>
+						    	<th style="width: 10%">Mã đề</th>
+						    	<th style="width: 35%">Nội dung đề tài</th>
+						    	<th style="width: 40%">Yêu cầu đề tài</th>
+						    	<th style="width: 10%">Số lượng thành viên</th>
 						    </tr>
 						    <?php foreach ($detai as $row): 
 		                 	?>

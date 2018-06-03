@@ -111,7 +111,7 @@ class Xuly_ad extends CI_Controller {
 
 		if(!empty($kiemduyet)) 
 		{
-  			$this->m_admin->update_kiemduyet($kiemduyet);
+			$this->m_admin->update_kiemduyet($kiemduyet);
 		}
 
 		header('location:tkpk');
@@ -119,6 +119,7 @@ class Xuly_ad extends CI_Controller {
 
 	public function insert_madotdk() 
 	{
+		
 		$data['MADOT'] =  $this->input->post('madk');
 		$data['NOIDUNGDT'] = $this->input->post('nddk');
 		$data['TGRADE'] = $this->input->post('tgrade');
@@ -129,20 +130,31 @@ class Xuly_ad extends CI_Controller {
 		$data['SLTVNHOM'] = $this->input->post('sltv');
 
 		$data['CHAMHOIDONG'] = $this->input->post('hd');
-		$this->m_admin->insert_madotdk($data);
-
-		$data_bm = $this->m_admin->load_DSBoMon();
-
-		foreach ($data_bm as $value) 
+		if($this->input->post('hd') !=null)
 		{
-			$data_slde['MADOT'] = $data['MADOT'];
-			$data_slde['MABM']  = $value['MABM'];
-			$data_slde['SLDE'] = $this->input->post($value['MABM']);
+			$this->m_admin->insert_madotdk($data);
 
-			$this->m_quanlydata->insertData('dotdangky_bomon', $data_slde);
+			$data_bm = $this->m_admin->load_DSBoMon();
+			
+			foreach ($data_bm as $value) 
+			{
+				$data_slde['MADOT'] = $data['MADOT'];
+				$data_slde['MABM']  = $value['MABM'];
+				$data_slde['SLDE'] = $this->input->post($value['MABM']);
+
+				$this->m_quanlydata->insertData('dotdangky_bomon', $data_slde);
+			}
+			echo '<script type="text/javascript">alert("Thành Công!!")
+			window.location.replace("tkpk");
+			</script>';
 		}
-
-		header('location:tkpk');
+		else
+		{
+			echo '<script type="text/javascript">alert("Thất Bại!!")
+			window.location.replace("tkpk");
+			</script>';
+		}
+		// header('location:tkpk');
 
 	}
 

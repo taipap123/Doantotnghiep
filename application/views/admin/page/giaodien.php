@@ -147,22 +147,30 @@
             <!-- tab2 -->
 
             <div class="tab-pane" id="tab_default_2">
-             <form class="form-horizontal" role="form">
+
+             <form method="post" action="<?php echo base_url() ?>index.php/xuly_ad/setMaDotDK" role="form">
               <div class="form-group">
                 <label class="col-sm-3 control-label no-padding-right" for="form-field-1"> Mã đợt đăng ký </label>
                 <div class="col-sm-7">
-                  <select id="simple-colorpicker-1" class="" style="width: 200px;" onchange="filter_data(this)">
 
-                    <?php foreach ($madotdk as $row): ?>
-                    
-                     <option value="<?php echo $row['MADOT'] ?>"><?php echo $row['NOIDUNGDT'] ?></option>
+                      <select id="simple-colorpicker-1" class="" style="width: 200px;" name="maDotDK">
 
-                    <?php endforeach; ?>
+                        <?php foreach ($madotdk as $row): ?>
+                        
+                         <option value="<?php echo $row['MADOT'] ?>"><?php echo $row['NOIDUNGDT'] ?></option>
 
-                  </select>
+                        <?php endforeach; ?>
+
+                      </select>
+                      <button class="btn btn-primary" type="submit" style="border-radius: 5px">
+                      <i class="ace-icon fa fa-check bigger-110"></i>
+                      Submit
+                    </button>
+
                 </div>
               </div>
             </form>
+            
             <div class="row">
               
               <div class="col-sm-12 dataTables_wrapper form-inline no-footer" style="margin-top: 10px">
@@ -237,6 +245,8 @@
             </tr>
           </thead>
           <tbody>
+
+            <?php if($ds_yeucaude != -1) { ?>
             <tr>
               <th scope="row"><?php echo $ds_yeucaude[0]['mabm'] ?></th>
               <td><?php echo $ds_yeucaude[0]['tenbm']?></td>
@@ -254,6 +264,7 @@
               <td><?php echo $ds_yeucaude[2]['tenbm']?></td>
               <td><?php echo $slde_httt ?></td>
             </tr>
+            <?php } ?>
 
           </tbody>
         </table>
@@ -709,14 +720,4 @@
       });
     }
 
- function filter_data(obj)
- {
-  var id = obj.value;
-      $.ajax({
-        url: '<?php echo base_url()?>index.php/xuly_ad/filter_data',
-        type: 'POST',
-        dataType: 'JSON',
-        data: {madot : id},
-      })
- }
 </script>

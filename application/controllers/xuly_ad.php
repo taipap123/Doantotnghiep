@@ -57,21 +57,29 @@ class Xuly_ad extends CI_Controller {
 	
 	public function tkpk()
 	{
+
 		$data['ds_svdangky'] = $this->m_admin->load_DSDangKyDeTai();
 		$data['madotdk'] = $this->m_quanlydata->loadTable('dotdangky');
 		$data['ds_detai'] = $this->m_admin->load_DSDeTai();
 		$data['allgv'] = $this->m_admin->getallgv();
 		$data['ds_bomon'] = $this->m_admin->load_DSBoMon();
+
 		$data['ds_yeucaude'] = $this->m_admin->load_DSYeuCauDe($this->session->userdata('madotdk'));
 
-		$cnpm = (int)$this->m_admin->sum_SLDeDaYeuCau($data['ds_yeucaude'][0]['mabm'])[0]['SL_DETAI'];
-		$mmt = (int)$this->m_admin->sum_SLDeDaYeuCau($data['ds_yeucaude'][1]['mabm'])[0]['SL_DETAI'];
-		$httt = (int)$this->m_admin->sum_SLDeDaYeuCau($data['ds_yeucaude'][2]['mabm'])[0]['SL_DETAI'];
+		if(empty($data['ds_yeucaude']))
+		{
+			$data['ds_yeucaude'] = -1;
+		}
+		else
+		{
+			$cnpm = (int)$this->m_admin->sum_SLDeDaYeuCau($data['ds_yeucaude'][0]['mabm'])[0]['SL_DETAI'];
+			$mmt = (int)$this->m_admin->sum_SLDeDaYeuCau($data['ds_yeucaude'][1]['mabm'])[0]['SL_DETAI'];
+			$httt = (int)$this->m_admin->sum_SLDeDaYeuCau($data['ds_yeucaude'][2]['mabm'])[0]['SL_DETAI'];
 
-
-		$data['slde_cnpm'] = (int)$data['ds_yeucaude'][0]['SLDE'] - $cnpm;
-		$data['slde_mmt'] = (int)$data['ds_yeucaude'][1]['SLDE'] - $mmt;
-		$data['slde_httt'] = (int)$data['ds_yeucaude'][2]['SLDE'] - $httt;
+			$data['slde_cnpm'] = (int)$data['ds_yeucaude'][0]['SLDE'] - $cnpm;
+			$data['slde_mmt'] = (int)$data['ds_yeucaude'][1]['SLDE'] - $mmt;
+			$data['slde_httt'] = (int)$data['ds_yeucaude'][2]['SLDE'] - $httt;
+		}
 
 		$data['ds_hoidong'] = $this->m_quanlydata->loadTableWhere('hoidong', "MADOT = '".$this->session->userdata('madotdk')."'");
 		$data['ds_gv_hd'] = $this->m_admin->load_DSHoiDong($this->session->userdata('madotdk'));
@@ -146,10 +154,6 @@ class Xuly_ad extends CI_Controller {
 
 	}
 
-	public function filter_data()
-	{
-		$madot = $this->input->post('madot');
-	}
 
 	public function phanCongGiangVien ()
 	{
@@ -200,6 +204,11 @@ class Xuly_ad extends CI_Controller {
 		{
 			$this->m_admin->add_HoiDong_Detai($made[$i], $mahd, $tgcham);
 		}
+		header('location:tkpk');
+	}
+	public function setMaDotDK ()
+	{
+		$this->session->set_userdata('madotdk', $this->input->post('maDotDK'));
 		header('location:tkpk');
 	}
 }

@@ -97,6 +97,38 @@ class M_quanlydata extends CI_Model {
 		else return 0;
 	}
 
+	public function load_Baocaotiendo($mssv)
+	{
+		$this->db->where('MASV',$mssv);
+		$this->db->select('MADETAI');
+		$madetai = $this->db->get('sv_detai')->row_array();
+
+		$this->db->from('sv_detai as svdt');
+		$this->db->join('detai as dt','dt.MADETAI = svdt.MADETAI','left');
+		$this->db->join('dotdangky as ddk','ddk.MADOT = dt.MADOT','left');
+		$this->db->join('sinhvien as sv','sv.MASV = svdt.MASV','left');
+		$this->db->where('dt.MADETAI',$madetai['MADETAI']);
+		
+		return $this->db->get()->result_array();
+	}
+	public function messenger($data)
+	{
+		$this->db->insert('messenger',$data);
+	}
+	public function load_Messenger($madetai)
+	{
+		$this->db->from('messenger as ms');
+		$this->db->join('sinhvien as sv','sv.MASV = ms.NGUOIGUI','left');
+		$this->db->where('ms.MADT',$madetai);
+		return $this->db->get()->result_array();
+	}
+	public function getMadetai($mssv)
+	{
+		$this->db->where('MASV',$mssv);
+		$this->db->select('MADETAI');
+		return $this->db->get('sv_detai')->row_array();
+
+	}
 	
 }
 ?>

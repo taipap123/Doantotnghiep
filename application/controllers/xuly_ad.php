@@ -55,7 +55,7 @@ class Xuly_ad extends CI_Controller {
 			return false;
 	}
 	
-	public function tkpk()
+	public function tkpk($tab='loadpage1')
 	{
 		$data['ds_svdangky'] = $this->m_admin->load_DSDangKyDeTai();
 		$data['madotdk'] = $this->m_quanlydata->loadTable('dotdangky');
@@ -75,7 +75,7 @@ class Xuly_ad extends CI_Controller {
 
 		$data['ds_hoidong'] = $this->m_quanlydata->loadTableWhere('hoidong', "MADOT = '".$this->session->userdata('madotdk')."'");
 		$data['ds_gv_hd'] = $this->m_admin->load_DSHoiDong($this->session->userdata('madotdk'));
-		
+		$data[$tab] = "active";
 
 		$this->admin['main'] = $this->load->view('admin/page/giaodien',$data,true);
 		$this->load->view('admin/home/master',$this->admin);
@@ -114,7 +114,8 @@ class Xuly_ad extends CI_Controller {
 			$this->m_admin->update_kiemduyet($kiemduyet);
 		}
 
-		header('location:tkpk');
+		$tab = "loadpage5";
+		$this->tkpk($tab);
 	}
 
 	public function insert_madotdk() 
@@ -176,7 +177,8 @@ class Xuly_ad extends CI_Controller {
 			$this->m_admin->insert_phanCong($data);
 		}
 
-		header('location:tkpk');
+		$tab = "loadpage3";
+		$this->tkpk($tab);
 	}
 
 	public function taoHoiDong()
@@ -186,7 +188,8 @@ class Xuly_ad extends CI_Controller {
 		$data['SLTHANHVIEN'] = $this->input->post('slthanhvien');
 		$this->m_admin->taoHoiDong($data);
 
-		header('location:tkpk');
+		$tab = "loadpage4";
+		$this->tkpk($tab);
 	}
 
 	public function add_thanhvienHD()
@@ -212,7 +215,8 @@ class Xuly_ad extends CI_Controller {
 		{
 			$this->m_admin->add_HoiDong_Detai($made[$i], $mahd, $tgcham);
 		}
-		header('location:tkpk');
+		$tab = "loadpage4";
+		$this->tkpk($tab);
 	}
 }
 ?>

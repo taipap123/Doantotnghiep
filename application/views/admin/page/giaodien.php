@@ -4,31 +4,31 @@
       <div class="tabbable-panel" style="margin: 10px">
         <div class="tabbable-line">
           <ul class="nav nav-tabs ">
-            <li class="active">
+            <li class="<?php echo isset($loadpage1)? $loadpage1 : ''?>">
               <a href="#tab_default_1" data-toggle="tab">
               Tạo đợt đăng ký</a>
             </li>
-            <li>
+            <li class="<?php echo isset($loadpage2)? $loadpage2 : ''?>">
               <a href="#tab_default_2" data-toggle="tab">
               Yêu cầu tạo đề </a>
             </li>
-            <li>
+            <li class="<?php echo isset($loadpage3)? $loadpage3 : ''?>">
               <a href="#tab_default_3" data-toggle="tab">
               Phân công hội đồng phản biện </a>
             </li>
-            <li>
+            <li class="<?php echo isset($loadpage4)? $loadpage4 : ''?>">
               <a href="#tab_default_4" data-toggle="tab">
               Thành lập hội đồng</a>
             </li>
-            <li>
+            <li class="<?php echo isset($loadpage5)? $loadpage5 : ''?>">
               <a href="#tab_default_5" data-toggle="tab">
               Kiểm duyệt đề tài</a>
             </li>
-             <li>
+             <li class="<?php echo isset($loadpage6)? $loadpage6 : ''?>">
               <a href="#tab_default_6" data-toggle="tab">
               Thông tin đăng ký đề tài</a>
             </li>
-            <li>
+            <li class="<?php echo isset($loadpage7)? $loadpage7 : ''?>">
               <a href="#tab_default_7" data-toggle="tab">
               Cập Nhật điểm SV</a>
             </li>
@@ -36,7 +36,7 @@
           <div class="tab-content">
             <!-- tab1 -->
             
-            <div class="tab-pane active" id="tab_default_1">
+            <div class="tab-pane <?php echo isset($loadpage1)? $loadpage1 : ''?>" id="tab_default_1">
                <form action="<?php echo base_url() ?>index.php/xuly_ad/insert_madotdk" method="post" class="form-horizontal" role="form"> 
                 <div class="row">
                   <div class="col-md-6">
@@ -149,7 +149,7 @@
             </div>
             <!-- hết tab 1 -->
             <!-- tab2 -->
-            <div class="tab-pane" id="tab_default_2">
+            <div class="tab-pane <?php echo isset($loadpage2)? $loadpage2 : ''?>" id="tab_default_2">
              <form class="form-horizontal" role="form">
               <div class="form-group">
                 <label class="col-sm-3 control-label no-padding-right" for="form-field-1"> Mã đợt đăng ký </label>
@@ -256,7 +256,7 @@
         </table>
       </div>
       <!-- tab3 -->
-      <div class="tab-pane" id="tab_default_3">
+      <div class="tab-pane <?php echo isset($loadpage3)? $loadpage3 : ''?>" id="tab_default_3">
          <form class="form-horizontal" role="form">
               <div class="form-group">
                 <label class="col-sm-3 control-label no-padding-right" for="form-field-1"> Mã đợt đăng ký </label>
@@ -342,7 +342,7 @@
 
        <!-- het tag 3 -->
        <!-- tab4 -->
-       <div class="tab-pane" id="tab_default_4">
+       <div class="tab-pane <?php echo isset($loadpage4)? $loadpage4 : ''?>" id="tab_default_4">
          <form class="form-horizontal" role="form">
               <div class="form-group">
                 <div>
@@ -479,7 +479,7 @@
 
       </div>
         <!-- hết tab 4 -->  
-      <div class="tab-pane" id="tab_default_5">
+      <div class="tab-pane <?php echo isset($loadpage5)? $loadpage5 : ''?>" id="tab_default_5">
          <form class="form-horizontal" role="form">
               <div class="form-group">
                 <label class="col-sm-3 control-label no-padding-right" for="form-field-1"> Mã đợt đăng ký </label>
@@ -541,7 +541,7 @@
 
         <!-- hết tab 5 -->
 
-        <div class="tab-pane" id="tab_default_6">
+        <div class="tab-pane <?php echo isset($loadpage6)? $loadpage6 : ''?>" id="tab_default_6">
               <table id="datatable" class="table table-bordered">
                 <thead>
                   <tr>
@@ -586,7 +586,7 @@
               </table>
         </div>
         <!-- hết tab 6 -->
-             <div class="tab-pane" id="tab_default_7">
+             <div class="tab-pane <?php echo isset($loadpage7)? $loadpage7 : ''?>" id="tab_default_7">
               <h3><strong>Danh sách đề tài</strong></h3>
               <table class="table table-bordered" id="datatable_diem">
                 <thead>

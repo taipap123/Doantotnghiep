@@ -55,7 +55,7 @@ class Xuly_ad extends CI_Controller {
 			return false;
 	}
 	
-	public function tkpk()
+	public function tkpk($tab='loadpage1')
 	{
 
 		$data['ds_svdangky'] = $this->m_admin->load_DSDangKyDeTai();
@@ -83,10 +83,11 @@ class Xuly_ad extends CI_Controller {
 
 		$data['ds_hoidong'] = $this->m_quanlydata->loadTableWhere('hoidong', "MADOT = '".$this->session->userdata('madotdk')."'");
 		$data['ds_gv_hd'] = $this->m_admin->load_DSHoiDong($this->session->userdata('madotdk'));
-		
+		$data[$tab] = "active";
 
 		$this->admin['main'] = $this->load->view('admin/page/giaodien',$data,true);
 		$this->load->view('admin/home/master',$this->admin);
+
 	}
 	public function giangvien()
 	{
@@ -119,14 +120,16 @@ class Xuly_ad extends CI_Controller {
 
 		if(!empty($kiemduyet)) 
 		{
-  			$this->m_admin->update_kiemduyet($kiemduyet);
+			$this->m_admin->update_kiemduyet($kiemduyet);
 		}
 
-		header('location:tkpk');
+		$tab = "loadpage5";
+		$this->tkpk($tab);
 	}
 
 	public function insert_madotdk() 
 	{
+		
 		$data['MADOT'] =  $this->input->post('madk');
 		$data['NOIDUNGDT'] = $this->input->post('nddk');
 		$data['TGRADE'] = $this->input->post('tgrade');
@@ -137,20 +140,31 @@ class Xuly_ad extends CI_Controller {
 		$data['SLTVNHOM'] = $this->input->post('sltv');
 
 		$data['CHAMHOIDONG'] = $this->input->post('hd');
-		$this->m_admin->insert_madotdk($data);
-
-		$data_bm = $this->m_admin->load_DSBoMon();
-
-		foreach ($data_bm as $value) 
+		if($this->input->post('hd') !=null)
 		{
-			$data_slde['MADOT'] = $data['MADOT'];
-			$data_slde['MABM']  = $value['MABM'];
-			$data_slde['SLDE'] = $this->input->post($value['MABM']);
+			$this->m_admin->insert_madotdk($data);
 
-			$this->m_quanlydata->insertData('dotdangky_bomon', $data_slde);
+			$data_bm = $this->m_admin->load_DSBoMon();
+			
+			foreach ($data_bm as $value) 
+			{
+				$data_slde['MADOT'] = $data['MADOT'];
+				$data_slde['MABM']  = $value['MABM'];
+				$data_slde['SLDE'] = $this->input->post($value['MABM']);
+
+				$this->m_quanlydata->insertData('dotdangky_bomon', $data_slde);
+			}
+			echo '<script type="text/javascript">alert("Thành Công!!")
+			window.location.replace("tkpk");
+			</script>';
 		}
-
-		header('location:tkpk');
+		else
+		{
+			echo '<script type="text/javascript">alert("Thất Bại!!")
+			window.location.replace("tkpk");
+			</script>';
+		}
+		// header('location:tkpk');
 
 	}
 
@@ -168,7 +182,8 @@ class Xuly_ad extends CI_Controller {
 			$this->m_admin->insert_phanCong($data);
 		}
 
-		header('location:tkpk');
+		$tab = "loadpage3";
+		$this->tkpk($tab);
 	}
 
 	public function taoHoiDong()
@@ -178,7 +193,8 @@ class Xuly_ad extends CI_Controller {
 		$data['SLTHANHVIEN'] = $this->input->post('slthanhvien');
 		$this->m_admin->taoHoiDong($data);
 
-		header('location:tkpk');
+		$tab = "loadpage4";
+		$this->tkpk($tab);
 	}
 
 	public function add_thanhvienHD()
@@ -204,12 +220,14 @@ class Xuly_ad extends CI_Controller {
 		{
 			$this->m_admin->add_HoiDong_Detai($made[$i], $mahd, $tgcham);
 		}
-		header('location:tkpk');
+		$tab = "loadpage4";
+		$this->tkpk($tab);
 	}
 	public function setMaDotDK ()
 	{
 		$this->session->set_userdata('madotdk', $this->input->post('maDotDK'));
-		header('location:tkpk');
+		$tab = "loadpage2";
+		$this->tkpk($tab);
 	}
 }
 ?>

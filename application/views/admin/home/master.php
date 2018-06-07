@@ -25,7 +25,8 @@
 		<![endif]-->
 		<link rel="stylesheet" href="<?php echo base_url() ?>public/ace-skins.min.css" />
 		<link rel="stylesheet" href="<?php echo base_url() ?>public/ace-rtl.min.css" />
-			<script src="<?php echo base_url() ?>public/js/jquery-2.1.4.min.js"></script>
+		<script src="<?php echo base_url() ?>public/js/jquery-2.1.4.min.js"></script>
+		
 
 
 		<!--[if lte IE 9]>
@@ -36,7 +37,6 @@
 
 		<!-- ace settings handler -->
 		<script src="<?php echo base_url() ?>public/js/ace-extra.min.js"></script>
-		
 
 		<!-- HTML5shiv and Respond.js for IE8 to support HTML5 elements and media queries -->
 

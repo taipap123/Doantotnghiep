@@ -54,8 +54,15 @@ class Xuly extends CI_Controller {
 
 	public function ThongBao()
 	{
+		if($this->session->userdata('login'))
+		{
 		$this->design['index'] = $this->load->view('giaodien/page/index',null,true);
 		$this->load->view('giaodien/home/master',$this->design);
+		}
+		else
+		{
+			header('location:login');
+		}
 	}
 
 	//quan ly dang ky de tai
@@ -101,13 +108,31 @@ class Xuly extends CI_Controller {
 	//-----------------------------
 	public function Baocaotiendo()
 	{
-		$this->design['index'] = $this->load->view('giaodien/page/baocaotiendo',null,true);
+		$mssv = $this->session->userdata('maso');
+		$madetai = $this->m_quanlydata->getMadetai($mssv);
+		$data['sinhvien_detai'] = $this->m_quanlydata->load_Baocaotiendo($mssv);
+		$data['messenger'] = $this->m_quanlydata->load_Messenger($madetai['MADETAI']);
+		$this->design['index'] = $this->load->view('giaodien/page/baocaotiendo',$data,true);
 		$this->load->view('giaodien/home/master',$this->design);
 	}
 	public function Taikhoan()
 	{
 		$this->design['index'] = $this->load->view('giaodien/page/taikhoan',null,true);
 		$this->load->view('giaodien/home/master',$this->design);
+	}
+	public function messenger()
+	{
+		$data['NGUOIGUI'] = $this->session->userdata('maso');
+		$data['NOIDUNG'] = $this->input->post('comment');
+		$data['MADT'] = $this->input->post('MADETAI');
+		$this->m_quanlydata->messenger($data);
+		header('location:Baocaotiendo');
+	}
+	public function logout()
+	{
+		$this->session->unset_userdata('login');
+		$this->session->unset_userdata('maso');
+		header('location:login');
 	}
 
 	

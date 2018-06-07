@@ -107,7 +107,7 @@
 							</ul>
 						</div>
 						<div class="btn-group" role="group">
-							<a type="button" class="btn btn-primary " href="#">Đăng xuất</a>
+							<a type="button" class="btn btn-primary " href="<?php echo base_url() ?>index.php/xuly/logout">Đăng xuất</a>
 						</div>
 					</div>
 					<div class="clearfix"> </div>

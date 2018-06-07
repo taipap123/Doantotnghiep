@@ -4,35 +4,39 @@
       <div class="tabbable-panel" style="margin: 10px">
         <div class="tabbable-line">
           <ul class="nav nav-tabs ">
-            <li class="active">
+            <li class="<?php echo isset($loadpage1)? $loadpage1 : ''?>">
               <a href="#tab_default_1" data-toggle="tab">
               Tạo đợt đăng ký</a>
             </li>
-            <li>
+            <li class="<?php echo isset($loadpage2)? $loadpage2 : ''?>">
               <a href="#tab_default_2" data-toggle="tab">
               Yêu cầu tạo đề </a>
             </li>
-            <li>
+            <li class="<?php echo isset($loadpage3)? $loadpage3 : ''?>">
               <a href="#tab_default_3" data-toggle="tab">
               Phân công hội đồng phản biện </a>
             </li>
-            <li>
+            <li class="<?php echo isset($loadpage4)? $loadpage4 : ''?>">
               <a href="#tab_default_4" data-toggle="tab">
               Thành lập hội đồng</a>
             </li>
-            <li>
+            <li class="<?php echo isset($loadpage5)? $loadpage5 : ''?>">
               <a href="#tab_default_5" data-toggle="tab">
               Kiểm duyệt đề tài</a>
             </li>
-             <li>
+             <li class="<?php echo isset($loadpage6)? $loadpage6 : ''?>">
               <a href="#tab_default_6" data-toggle="tab">
               Thông tin đăng ký đề tài</a>
+            </li>
+            <li class="<?php echo isset($loadpage7)? $loadpage7 : ''?>">
+              <a href="#tab_default_7" data-toggle="tab">
+              Cập Nhật điểm SV</a>
             </li>
           </ul>
           <div class="tab-content">
             <!-- tab1 -->
             
-            <div class="tab-pane active" id="tab_default_1">
+            <div class="tab-pane <?php echo isset($loadpage1)? $loadpage1 : ''?>" id="tab_default_1">
                <form action="<?php echo base_url() ?>index.php/xuly_ad/insert_madotdk" method="post" class="form-horizontal" role="form"> 
                 <div class="row">
                   <div class="col-md-6">
@@ -135,7 +139,7 @@
                       Submit
                     </button>
                     &nbsp; &nbsp; &nbsp;
-                    <button class="btn" type="reset"  style="border-radius: 5px">
+                    <button class="btn test" type="reset" style="border-radius: 5px">
                       <i class="ace-icon fa fa-undo bigger-110"></i>
                       Reset
                     </button>
@@ -145,8 +149,7 @@
             </div>
             <!-- hết tab 1 -->
             <!-- tab2 -->
-
-            <div class="tab-pane" id="tab_default_2">
+            <div class="tab-pane <?php echo isset($loadpage2)? $loadpage2 : ''?>" id="tab_default_2">
 
              <form method="post" action="<?php echo base_url() ?>index.php/xuly_ad/setMaDotDK" role="form">
               <div class="form-group">
@@ -200,13 +203,13 @@
 
                         <td><input type="number" id="form-field-1" placeholder="Số lượng đề tài" class="col-xs-12 col-sm-10" name="txt<?php echo $item['MAGV'] ?>"></td>
 
-                        <td><input type="date" id="form-field-1" placeholder="Nhập mã đợt dăng ký" class="col-xs-12 col-sm-12"
+                        <td><input type="date" id="form-field-1" placeholder="" class="col-xs-12 col-sm-12"
                           name="date<?php echo $item['MAGV'] ?>"></td>
 
                         <td><input type="checkbox" class="check" name="ckbgiangvien[]" value="<?php echo $item['MAGV'] ?>"></td>
                         <td>
                           <div class="hidden-sm hidden-xs action-buttons">
-                            <a class="edit" data-target="#myModal" data-id="1" data-name="Honda" data-description="Xe Nhật" data-toggle="modal" href="#">
+                            <a class="edit" data-target="#myModal" data-id="1" data-name="" data-description="" data-toggle="modal" href="#">
                               <i class="ace-icon fa fa-pencil bigger-130"></i>
                             </a>
                             <a class="red" href="#" onclick="delete_hangxe('1','1')">
@@ -230,13 +233,10 @@
                     </button>
                   </div>
             </form>
-
-
             </div>
-        </div>
-        
+        </div>        
         <h5><b>Số lượng đề tài</b></h5>
-        <table class="table table-bordered" id="datatb">
+        <table class="table table-bordered" >
           <thead>
             <tr>
               <th class="color" scope="col">Mã bộ môn</th>
@@ -251,13 +251,11 @@
               <th scope="row"><?php echo $ds_yeucaude[0]['mabm'] ?></th>
               <td><?php echo $ds_yeucaude[0]['tenbm']?></td>
               <td><?php echo $slde_cnpm ?></td>
-
             </tr>
             <tr>
               <th scope="row"><?php echo $ds_yeucaude[1]['mabm'] ?></th>
               <td><?php echo $ds_yeucaude[1]['tenbm']?></td>
               <td><?php echo $slde_mmt ?></td>
-
             </tr>
             <tr>
               <th scope="row"><?php echo $ds_yeucaude[2]['mabm'] ?></th>
@@ -270,16 +268,14 @@
         </table>
       </div>
       <!-- tab3 -->
-      <div class="tab-pane" id="tab_default_3">
+      <div class="tab-pane <?php echo isset($loadpage3)? $loadpage3 : ''?>" id="tab_default_3">
          <form class="form-horizontal" role="form">
               <div class="form-group">
                 <label class="col-sm-3 control-label no-padding-right" for="form-field-1"> Mã đợt đăng ký </label>
                 <div class="col-sm-5">
                   <select id="simple-colorpicker-1" class="" style="width: 150px;">
                     <?php foreach ($madotdk as $row): ?>
-                    
                      <option value="<?php echo $row['MADOT'] ?>"><?php echo $row['NOIDUNGDT'] ?></option>
-
                     <?php endforeach; ?>
                   </select>
                 </div>
@@ -288,7 +284,6 @@
             <div class="row">
               <div class="col-sm-12" style="margin-top: 10px">
                <h5><b>Danh sách đề tài</b></h5>
-
                <form action="<?php echo base_url() ?>index.php/xuly_ad/add_HoiDong_Detai" method="POST">
                   <table class="table table-bordered" id="dttb_dsdt">
                     <thead>
@@ -300,7 +295,6 @@
                       </tr>
                     </thead>
                     <tbody>
-
                       <?php foreach ($ds_detai as $row) {
                       ?>
                       <tr>
@@ -311,18 +305,13 @@
                         </td>
                         <td>
                           <select id="simple-colorpicker-1" class="" style="width: 150px;">
-
-                            <?php foreach ($allgv as $value): ?>
-                            
+                            <?php foreach ($allgv as $value): ?>                           
                               <option value="<?php echo $value['MAGV'] ?>" <?php if($row['magv']==$value['MAGV']) echo 'selected' ?>><?php echo $value['TENGV'] ?></option>
-
                             <?php endforeach; ?>
-
                           </select>
                         </td>
                       </tr>
                       <?php } ?>
-
                     </tbody>
                   </table>
                 <button class="btn btn-success" data-toggle="modal" data-target="#phanconghd" type="button" style="border-radius: 5px;margin-left: 40%">
@@ -348,7 +337,6 @@
                         <?php foreach ($ds_hoidong as $value) {  
                         ?>
                             <option value="<?php echo $value['MAHD'] ?>"><?php echo $value['NoiDung']; ?></option>
-
                         <?php } ?>
                       </select>
                       </br>Ngày phản biện: <input type="date" id="form-field-1"  class="col-xs-12 col-sm-12" name="tgcham">
@@ -366,7 +354,7 @@
 
        <!-- het tag 3 -->
        <!-- tab4 -->
-       <div class="tab-pane" id="tab_default_4">
+       <div class="tab-pane <?php echo isset($loadpage4)? $loadpage4 : ''?>" id="tab_default_4">
          <form class="form-horizontal" role="form">
               <div class="form-group">
                 <div>
@@ -388,6 +376,7 @@
                         <th class="color" scope="col">Mã Hội Đồng</th>
                         <th class="color" scope="col">Tên Hội Đồng</th>
                         <th class="color" scope="col">Số lượng tv</th>
+                        <th class="color" scope="col">Xử lý</th>
                       </tr>
                     </thead>
                     <tbody>
@@ -398,11 +387,25 @@
                         <th scope="row"><input type="radio" name="rdbmahd" value="<?php echo $value['MAHD'] ?>"><?php echo $value['MAHD'] ?></th>
                         <td><?php echo $value['NoiDung'] ?></td>
                         <td><?php echo $value['SLTHANHVIEN'] ?></td>
+                        <td>
+                          <div class="hidden-sm hidden-xs action-buttons">
+                            <a class="edit" data-target="#myModal" data-id="1" data-name="" data-description="" data-toggle="modal" href="#">
+                              <i class="ace-icon fa fa-pencil bigger-130"></i>
+                            </a>
+                            <a class="red" href="#" onclick="">
+                              <i class="ace-icon fa fa-trash-o bigger-130"></i>
+                            </a>
+                          </div>
+                        </td>
                       </tr>
 
                       <?php } ?>
                     </tbody>
                   </table>
+                  <button class="btn btn-primary" data-toggle="modal" data-target="" type="button" style="border-radius: 5px;margin-left: 40%">
+                      <i class=" glyphicon glyphicon-paste"></i>
+                     Xuất danh sách 
+                    </button>
                 </div>
             </div>
             <div class="col-sm-7">
@@ -456,7 +459,7 @@
                   for($i = 0; $i < count($ds_gv_hd); $i++)
                   {
                  ?>
-              <table class="table table-bordered" id="dttbtb" width="100%">
+              <table class="table table-bordered" width="100%">
                 <thead>
                   <tr>
                     <th class="color" scope="col" colspan="5">Mã Hội Đồng: <?php echo $ds_gv_hd[$i][0] ?> Tên: <?php echo $ds_gv_hd[$i][1] ?></th>
@@ -488,7 +491,7 @@
 
       </div>
         <!-- hết tab 4 -->  
-      <div class="tab-pane" id="tab_default_5">
+      <div class="tab-pane <?php echo isset($loadpage5)? $loadpage5 : ''?>" id="tab_default_5">
          <form class="form-horizontal" role="form">
               <div class="form-group">
                 <label class="col-sm-3 control-label no-padding-right" for="form-field-1"> Mã đợt đăng ký </label>
@@ -515,6 +518,7 @@
                         <th class="color" scope="col">Mã đề tài</th>
                         <th class="color" scope="col">Tên đề tài</th>
                         <th class="color" scope="col">Giáo Viên ra đề</th>
+                        <th class="color" scope="col">Giáo Viên hướng dẫn</th>
                         <th class="color" scope="col">Bộ môn</th>
                         <th class="color" scope="col">Kiểm duyệt</th>
                       </tr>
@@ -537,7 +541,7 @@
                     </tbody>
                   </table>
             
-            <button class="btn btn-primary" type="submit" style="border-radius: 5px;margin-left: 40%">
+            <button class="btn btn-success" type="submit" style="border-radius: 5px;margin-left: 40%">
                   <i class="ace-icon fa fa-check bigger-110"></i>
                   Lưu
                 </button>
@@ -549,7 +553,7 @@
 
         <!-- hết tab 5 -->
 
-        <div class="tab-pane" id="tab_default_6">
+        <div class="tab-pane <?php echo isset($loadpage6)? $loadpage6 : ''?>" id="tab_default_6">
               <table id="datatable" class="table table-bordered">
                 <thead>
                   <tr>
@@ -594,6 +598,49 @@
               </table>
         </div>
         <!-- hết tab 6 -->
+             <div class="tab-pane <?php echo isset($loadpage7)? $loadpage7 : ''?>" id="tab_default_7">
+              <h3><strong>Danh sách đề tài</strong></h3>
+              <table class="table table-bordered" id="datatable_diem">
+                <thead>
+                  <tr>
+                    <th class="color" scope="col">Mã đề tài</th>
+                    <th class="color" scope="col">Tên đề tài</th>
+                    <th class="color" scope="col">Mã Nhóm</th>
+                    <th class="color" scope="col">Mã sinh viên</th>
+                    <th class="color" scope="col">Tên sinh viên</th>
+                    <th class="color" scope="col">Điểm GV-HD</th>
+                    <th class="color" scope="col">Điểm GVPB</th>
+                    <th class="color" scope="col">Điểm PK</th>
+                    <th class="color" scope="col">Tổng điểm</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <th scope="row">DA0001</th>
+                    <td>Phân tích hệ thống đăng ký khóa luận cho sinh viên...</td>
+                    <td>N0001</td>
+                    <td>2001140096</td>
+                    <td>Nguyễn Văn A</td>
+                    <td>8</td>
+                    <td>8</td>
+                    <td>0</td>
+                    <td>8</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">DA0001</th>
+                    <td>Phân tích hệ thống đăng ký khóa luận cho sinh viên...</td>
+                    <td>N0001</td>
+                    <td>2001140096</td>
+                    <td>Nguyễn Văn b</td>
+                    <td>8</td>
+                    <td>9</td>
+                    <td>0</td>
+                    <td>8.5</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <!-- hết tab7 -->
     </div>
   </div>
 </div>
@@ -662,13 +709,6 @@
 </script>
 <script type="text/javascript">
   $(document).ready( function () {
-    $('#datatb').DataTable({
-       "bSort": false
-    });
-} );
-</script>
-<script type="text/javascript">
-  $(document).ready( function () {
     $('#dttb_dsdt').DataTable({
        "bSort": false
     });
@@ -684,13 +724,6 @@
 <script type="text/javascript">
   $(document).ready( function () {
     $('#dttb_dsgv').DataTable({
-       "bSort": false
-    });
-} );
-</script>
-<script type="text/javascript">
-  $(document).ready( function () {
-    $('#dttbtb').DataTable({
        "bSort": false
     });
 } );

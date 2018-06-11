@@ -8,7 +8,7 @@ class Xuly extends CI_Controller {
 		
 		$this->load->library(array('form_validation','session'));
 		$this->load->helper('url');
-		$this->load->model(array('m_login', 'm_quanlydata'));
+		$this->load->model(array('m_login', 'm_quanlydata', 'm_admin'));
 
 		//view design
 		$this->design['header'] = $this->load->view('giaodien/home/header', null, true);
@@ -33,6 +33,7 @@ class Xuly extends CI_Controller {
 
 				$this->session->set_userdata('login', $name_user[0]['HOTEN']);
 				$this->session->set_userdata('maso', $name_user[0]['MASV']);
+				$this->session->set_userdata('madotdk', $this->m_admin->get_MaDot());
 				
 				redirect(base_url('index.php/xuly/thongbao'));
 			}
@@ -71,7 +72,7 @@ class Xuly extends CI_Controller {
 		$this->luuDeTaiDangky();
 
 		$data['dotdangky'] = $this->m_quanlydata->loadTable('dotdangky');
-		$data['detai'] = $this->m_quanlydata->loadTableJoinTable('detai','dotdangky','MADOT','MADOT', 'detai.SLTV > 0');
+		$data['detai'] = $this->m_quanlydata->loadTableJoinTable('detai','dotdangky','MADOT','MADOT', "detai.SLTV > 0 AND detai.MADOT = '".$this->session->userdata('madotdk')."'");
 
 		$data['tt_dangky'] = $this->m_quanlydata->load_NhomDeTai($this->session->userdata('maso'));
 
@@ -82,7 +83,7 @@ class Xuly extends CI_Controller {
 
 	public function luuDeTaiDangky ()
 	{
-		if($this->input->post())
+		if($this->input->post('rdb_detai'))
 		{
 			$madetai = $this->input->post('rdb_detai');
 			if($this->m_quanlydata->ktSoLuongTV($this->input->post('rdb_detai')))
@@ -104,6 +105,12 @@ class Xuly extends CI_Controller {
 			}
 
 		}
+	}
+	public function setMaDotDK_dk ()
+	{
+		$this->session->set_userdata('madotdk', $this->input->post('maDotDK'));
+		
+		$this->DangKyDeTai();
 	}
 	//-----------------------------
 	public function Baocaotiendo()

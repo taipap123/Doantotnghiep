@@ -91,8 +91,9 @@ class Xuly_ad extends CI_Controller {
 	}
 	public function giangvien()
 	{
+		$mssv = $this->session->userdata('maso');
 		$data['ds_bomon'] = $this->m_admin->load_DSBoMon();
-
+		$data['ds_detai'] = $this->m_admin->loadDeTaiTheoGV($mssv);
 		$this->admin['main'] = $this->load->view('admin/page/giangvien',$data,true);
 		$this->load->view('admin/home/master',$this->admin);
 	}
@@ -228,6 +229,48 @@ class Xuly_ad extends CI_Controller {
 		$this->session->set_userdata('madotdk', $this->input->post('maDotDK'));
 		$tab = "loadpage2";
 		$this->tkpk($tab);
+	}
+	public function getTimeSpan()
+	{
+		$madetai = $this->input->post('madetai');
+		$data['detail'] = $this->m_admin->getTimeSpan($madetai);
+		// $data['detail'] = $this->m_admin->getTimeSpan('DA0007');
+		$date1=date_create($data['detail']['TGBAOVE']);
+		$date2=date_create($data['detail']['TGBATDAU']);
+		$diff=date_diff($date2,$date1);
+		$datetemp = $diff->format('%a');
+		$data['day'] = (int)$datetemp;
+		echo json_encode($data);
+	}
+	public function getLinknop()
+	{
+		$madetai = $this->input->post('madetai');
+		$data['linknop'] = $this->m_admin->getLinknop($madetai);
+		echo json_encode($data['linknop']);
+	}
+	public function getMessenger()
+	{
+		$madetai = $this->input->post('madetai');
+		$data['detail'] = $this->m_admin->load_Messenger($madetai);
+		// $data['detail'] = $this->m_admin->load_Messenger('DA0007');
+		echo json_encode($data['detail']);
+	}
+	public function messenger()
+	{
+		$mssv = $this->session->userdata('maso');
+		$data['NGUOIGUI'] = $this->session->userdata('maso');
+		$data['NOIDUNG'] = $this->input->post('comment');
+		$data['MADT'] = $this->input->post('MADETAI');
+		$this->m_admin->messenger($data);
+		header('location:giangvien');
+	}
+	public function insert_noidungbaocao()
+	{
+		$data['NOIDUNGBAOCAO'] = $this->input->post('noidungbc');
+		$data['MADETAI'] = $this->input->post('madetaii');
+		$data['TUAN'] = $this->input->post('tuann');
+		$insert = $this->m_admin->insert_noidungbaocao($data);
+		echo json_encode($data); 
 	}
 }
 ?>

@@ -35,7 +35,7 @@ class M_quanlydata extends CI_Model {
 	}
 
 	function insertData($table, $data)
-	{
+	{ 
 		$this->db->insert($table, $data);
 	}
 
@@ -59,6 +59,13 @@ class M_quanlydata extends CI_Model {
         	return false;
         }
         return true;
+	}
+	public function update_password($id,$data)
+	{
+		
+		$this->db->where('IDUser', $id);
+		$this->db->update('user', $data); 
+
 	}
 
 	function update_SLTV ($madetai)
@@ -97,17 +104,18 @@ class M_quanlydata extends CI_Model {
 		else return 0;
 	}
 
-	public function load_Baocaotiendo($mssv)
+	public function load_Baocaotiendo($madetai)
 	{
-		$this->db->where('MASV',$mssv);
-		$this->db->select('MADETAI');
-		$madetai = $this->db->get('sv_detai')->row_array();
+		// $this->db->where('MASV',$mssv);
+		// $this->db->select('MADETAI');
+		// $madetai = $this->db->get('sv_detai')->row_array();
 
-		$this->db->from('sv_detai as svdt');
-		$this->db->join('detai as dt','dt.MADETAI = svdt.MADETAI','left');
+		$this->db->from('baocao as bc');
+		$this->db->join('detai as dt','dt.MADETAI = bc.MADETAI','left');
 		$this->db->join('dotdangky as ddk','ddk.MADOT = dt.MADOT','left');
-		$this->db->join('sinhvien as sv','sv.MASV = svdt.MASV','left');
-		$this->db->where('dt.MADETAI',$madetai['MADETAI']);
+		// $this->db->join('sinhvien as sv','sv.MASV = svdt.MASV','left');
+		// $this->db->join('baocao as bc','bc.MADETAI = svdt.MADETAI','inner');
+		$this->db->where('bc.MADETAI',$madetai['MADETAI']);
 		
 		return $this->db->get()->result_array();
 	}
@@ -117,8 +125,10 @@ class M_quanlydata extends CI_Model {
 	}
 	public function load_Messenger($madetai)
 	{
+		$this->db->select('sv.HOTEN, gv.TENGV, sv.GIOITINH as gtsv, gv.GIOITINH as gtgv,ms.NOIDUNG,ms.NGUOIGUI');
 		$this->db->from('messenger as ms');
 		$this->db->join('sinhvien as sv','sv.MASV = ms.NGUOIGUI','left');
+		$this->db->join('giangvien as gv','gv.MAGV = ms.NGUOIGUI','left');
 		$this->db->where('ms.MADT',$madetai);
 		return $this->db->get()->result_array();
 	}
@@ -127,6 +137,15 @@ class M_quanlydata extends CI_Model {
 		$this->db->where('MASV',$mssv);
 		$this->db->select('MADETAI');
 		return $this->db->get('sv_detai')->row_array();
+	}
+	public function getSVdetai($maDetai)
+	{
+		
+		$this->db->select();
+		$this->db->from('sv_detai as svdt');
+		$this->db->join('sinhvien as sv','sv.MASV = svdt.MASV');
+		$this->db->where('svdt.MADETAI',$maDetai);
+		return $this->db->get()->result_array();
 
 	}
 	

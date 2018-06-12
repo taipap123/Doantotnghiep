@@ -20,7 +20,7 @@ class Xuly extends CI_Controller {
 		
 	}
 
-	public function login()
+	public function login($data = '')
 	{
 
 		if($this->input->post())
@@ -30,21 +30,27 @@ class Xuly extends CI_Controller {
 			{
 				$user = $this->input->post('user');
 				$name_user= $this->m_quanlydata->loadTableWhere("sinhvien","MASV = ".$user);
-
-				$this->session->set_userdata('login', $name_user[0]['HOTEN']);
-				$this->session->set_userdata('maso', $name_user[0]['MASV']);
+				if ($name_user != null) {
+					$this->session->set_userdata('login', $name_user[0]['HOTEN']);
+					$this->session->set_userdata('maso', $name_user[0]['MASV']);
+				}else{
+					$name_user= $this->m_quanlydata->loadTableWhere("giangvien","MAGV = ".$user);
+					$this->session->set_userdata('login', $name_user[0]['TENGV']);
+					$this->session->set_userdata('maso', $name_user[0]['MAGV']);
+				}
+				
 				
 				redirect(base_url('index.php/xuly/thongbao'));
 			}
 		}
 
-		$this->load->view("giaodien/home/login");
+		$this->load->view("giaodien/home/login",$data);
 	}
 
 	function ktDangNhap()
 	{
 		$user = $this->input->post("user");
-		$pass = $this->input->post("pass");
+		$pass = md5($this->input->post("pass"));
 		$where = array('IDUser' => $user, 'MatKhau' => $pass);
 		if($this->m_login->ktDangNhap($where, "user"))
 			return true;
@@ -110,7 +116,8 @@ class Xuly extends CI_Controller {
 	{
 		$mssv = $this->session->userdata('maso');
 		$madetai = $this->m_quanlydata->getMadetai($mssv);
-		$data['sinhvien_detai'] = $this->m_quanlydata->load_Baocaotiendo($mssv);
+		$data['sinhvien'] = $this->m_quanlydata->getSVdetai($madetai['MADETAI']);
+		$data['sinhvien_detai'] = $this->m_quanlydata->load_Baocaotiendo($madetai);
 		$data['messenger'] = $this->m_quanlydata->load_Messenger($madetai['MADETAI']);
 		$this->design['index'] = $this->load->view('giaodien/page/baocaotiendo',$data,true);
 		$this->load->view('giaodien/home/master',$this->design);
@@ -133,6 +140,25 @@ class Xuly extends CI_Controller {
 		$this->session->unset_userdata('login');
 		$this->session->unset_userdata('maso');
 		header('location:login');
+	}
+	public function doimatkhau()
+	{
+		$data['MatKhau'] = md5($this->input->post('pass_new'));
+		$this->m_quanlydata->update_password($this->session->userdata('maso'),$data);
+		$this->session->unset_userdata('login');
+		$this->session->unset_userdata('maso');
+		$data['tb'] = "Đổi mật khẩu thành công, bạn vui lòng đăng nhập lại";
+		$this->login($data);
+
+	}
+	public function checkpass()
+	{
+		$pass =  md5($this->input->post('pass_old'));
+		$where = array('IDUser' => $this->session->userdata('maso'), 'MatKhau' => $pass);
+		if($this->m_login->ktDangNhap($where, "user"))
+			echo "1";
+		else 
+			echo "0";
 	}
 
 	

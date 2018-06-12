@@ -29,7 +29,7 @@
 								Tên thành viên&nbsp&nbsp
 							</td>
 							<td>
-								<?php foreach ($sinhvien_detai as $sv) {
+								<?php foreach ($sinhvien as $sv) {
 									echo $sv['HOTEN'] .'<br>' ;
 								} ?>
 							</td>
@@ -51,9 +51,11 @@
 							</td>
 							<td>
 								<?php
-								$datetgbatdau = new DateTime($sinhvien_detai[0]['TGBATDAU']);
-								$datetgbaove = new DateTime($sinhvien_detai[0]['TGBAOVE']);
-								echo $datetgbatdau->format('d/m/Y').' - '.$datetgbaove->format('d/m/Y') ?>
+								if(count($sinhvien_detai)>0){
+									$datetgbatdau = new DateTime($sinhvien_detai[0]['TGBATDAU']);
+									$datetgbaove = new DateTime($sinhvien_detai[0]['TGBAOVE']);
+									echo $datetgbatdau->format('d/m/Y').' - '.$datetgbaove->format('d/m/Y');
+								} ?>
 							</td>
 						</tr>
 					</table>
@@ -69,32 +71,33 @@
 						<tr class="table_background">
 							<th>Tuần</th>
 							<th>Nội dung- Yêu cầu</th>
-							<?php if (substr(string, start)){ ?>
+							<?php if (substr($this->session->userdata('maso'), 0,3) == '010'){ ?>
 								<th>Nhận file</th>
 							<?php }else{ ?>
 								<th>Nộp file</th>
 							<?php } ?>
-							
 							<th>Nhận xét đánh giá</th>
-							</tr>
-							<?php
-								$date1=date_create($sinhvien_detai[0]['TGBAOVE']);
-								$date2=date_create($sinhvien_detai[0]['TGBATDAU']);
-								$diff=date_diff($date2,$date1);
-								$datetemp = $diff->format('%a');
-								$day = (int)$datetemp;
-								for ($i=0; $i < $day/7 ; $i++) { ?>
-							<tr>
-								<td><?php echo $i+1 ?>
-							</td>
-							<td><textarea rows="1" style="resize: none; height: auto;"></textarea></td>
-							<td><input type="file" name="">
-								<a type="button" class="btn btn-primary" style="float: right;" >Nộp bài</a>
-							</td>
-							<td><textarea rows="1" style="resize: none; height: auto;"></textarea></td>
-							
 						</tr>
-						<?php } ?>
+						<?php
+							if(count($sinhvien_detai)<= 0)
+							{
+								echo "<td></td><td></td><td></td><td></td>";
+							}else{
+							$date1=date_create($sinhvien_detai[0]['TGBAOVE']);
+							$date2=date_create($sinhvien_detai[0]['TGBATDAU']);
+							$diff=date_diff($date2,$date1);
+							$datetemp = $diff->format('%a');
+							$day = (int)$datetemp;
+							for ($i=0; $i < $day/7 ; $i++) { ?>
+								<tr>
+									<td><?php echo $i+1 ?></td>
+									<td><?php echo $sinhvien_detai[$i]['NOIDUNGBAOCAO'] ?></td>
+									<td><input type="file" name="">
+										<a type="button" class="btn btn-primary" style="float: right;" >Nộp bài</a>
+									</td>
+									<td><?php echo $sinhvien_detai[$i]['DANHGIA'] ?></td>
+								</tr>
+						<?php }} ?>
 				</div>
 			</table>
 		</div>
@@ -111,16 +114,25 @@
 							<?php 
 							if(count($messenger)>0)
 							{
-							if($key['GIOITINH'] == 1){?> 
-							<img class="media-object" src="<?php echo base_url() ?>public/images/avatars/avatar4.png" alt="...">
-							<?php } ?>
-							<?php if($key['GIOITINH'] == 0){?> 
-							<img class="media-object" src="<?php echo base_url() ?>public/images/avatars/avatar3.png" alt="...">
-							<?php }} ?>
+							$a = 'avatar3.png';
+							if($key['gtgv'] == 1 || $key['gtsv'] == 1){
+								$a = 'avatar4.png';
+							}
+							} ?>
+							<img class="media-object" src="<?php echo base_url() ?>public/images/avatars/<?php echo $a ?>" alt="...">
 						</a>
 					</div>
 					<div class="media-body">
-						<h4 class="media-heading"><?php echo $key['HOTEN'] ?></h4>
+						<h4 class="media-heading">
+							<?php 
+							if($key['HOTEN']!=null)
+							{
+							echo $key['HOTEN'] ;
+							}
+							else{
+								echo $key['TENGV'];
+							}
+							?></h4>
 						<?php echo $key['NOIDUNG'] ?>
 					</div>
 				</li>

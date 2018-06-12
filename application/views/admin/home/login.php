@@ -20,10 +20,10 @@
 
     </head>
 
-    <body background="<?php echo base_url() ?>public/assets_login/img/backgrounds/login_admin.jpg">
+    <body background="<?php echo base_url() ?>public/assets_login/img/backgrounds/login_giaodien.jpg" style="background-size: cover;">
 
         <!-- Top content -->
-        <div class="top-content">
+        <div class="top-content"> 
             
             <div class="inner-bg">
                 <div class="container">

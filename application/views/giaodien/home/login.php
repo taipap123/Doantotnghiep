@@ -20,7 +20,7 @@
 
     </head>
 
-    <body background="<?php echo base_url() ?>public/assets_login/img/backgrounds/login_giaodien.jpg">
+    <body background="<?php echo base_url() ?>public/assets_login/img/backgrounds/login_giaodien.jpg" style="background-size: cover;">
 
         <!-- Top content -->
         <div class="top-content">
@@ -29,7 +29,7 @@
                 <div class="container">
                     <div class="row">
                         <div class="col-sm-8 col-sm-offset-2 text">
-                            <h1><strong>ITTC-Đăng nhập</strong></h1>
+                            <h1 style="color: red"><strong>ITTC-Đăng nhập</strong></h1>
                         </div>
                     </div>
                     <div class="row">
@@ -43,6 +43,7 @@
                                     <i class="fa fa-lock"></i>
                                 </div>
                             </div>
+                            <?php echo isset($tb)? '<div class="alert alert-success">'.$tb.'</div>' : ""?>
                             <div class="form-bottom">
                                 <form role="form" action="" method="post" class="login-form">
                                     <div class="form-group">

@@ -95,19 +95,19 @@
 							<a type="button" class="btn btn-primary " href="<?php echo base_url()?>index.php/xuly/Baocaotiendo">Báo cáo-tiến độ</a>
 						</div>
 						<div class="btn-group" role="group">
-							<a type="button" class="btn btn-primary " href="<?php echo base_url()?>index.php/xuly/Taikhoan">Tài khoản</a>
-						</div>
-
-						<div class="btn-group" role="group">
 							<a href="#" type="button" class="dropdown-toggle btn btn-primary" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Liên kết<span class="caret"></span></a>
 							<ul class="dropdown-menu">
-								<li><a href="codes.html">Thông tin giảng viên</a></li>
-								<li><a href="icons.html">Sinhvien.hufi.edu.vn</a></li>
-								<li><a href="codes.html">Fit.hufi.edu.vn</a></li>
+								<li><a href="http://sinhvien.hufi.edu.vn/">Trang web sinh viên</a></li>
+								<li><a href="http://fit.hufi.edu.vn/">Website khoa CNTT</a></li>
 							</ul>
 						</div>
 						<div class="btn-group" role="group">
-							<a type="button" class="btn btn-primary " href="<?php echo base_url() ?>index.php/xuly/logout">Đăng xuất</a>
+							<a href="#" type="button" class="dropdown-toggle btn btn-primary" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Tài khoản<span class="caret"></span></a>
+							<ul class="dropdown-menu">
+								<li><a data-toggle="modal" data-target="#doipass">Đổi mật khẩu</a></li>
+								<li><a href="icons.html">Xem Thông Tin Tài Khoản</a></li>
+								<li><a  href="<?php echo base_url() ?>index.php/xuly/logout">Đăng xuất</a></li>
+							</ul>
 						</div>
 					</div>
 					<div class="clearfix"> </div>
@@ -116,3 +116,76 @@
 				<!--//Slider-->
 			</div>
 		</div>
+		<div id="doipass" class="modal fade" role="dialog">
+			<div class="modal-dialog">
+				<!-- Modal content-->
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal">&times;</button>
+						<h4 class="modal-title">Đổi mật khẩu</h4>
+					</div>
+					<div class="modal-body">
+						<div class="alert alert-danger hide"></div>
+						<form class="form" role="form" autocomplete="off" action="<?php echo base_url() ?>index.php/xuly/doimatkhau" method="post" id="ttpass">
+							<div class="form-group">
+								<label for="inputPasswordOld">Mật khẩu cũ</label>
+								<input name="pass_old" type="password" class="form-control" id="pass_old" required="">
+							</div>
+							<div class="form-group">
+								<label for="inputPasswordNew">Mật khẩu mới</label>
+								<input name="pass_new" type="password" class="form-control" id="pass_new" required="">
+								<span class="form-text small text-muted">
+									The password must be 8-20 characters, and must <em>not</em> contain spaces.
+								</span>
+							</div>
+							<div class="form-group">
+								<label for="inputPasswordNewVerify">Nhập lại mật khẩu mới</label>
+								<input name="pass_again" type="password" class="form-control" id="pass_again" required="">
+								<span class="form-text small text-muted">
+									To confirm, type the new password again.
+								</span>
+							</div>
+
+						</form>
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-success btn-lg float-right" id="luu" style="font-size: 12px">Lưu</button>
+						<button type="button" class="btn btn-default" data-dismiss="modal">Đóng</button>
+					</div>
+				</div>
+			</div>
+		</div>
+		<script type="text/javascript">
+			$('#luu').click(function(event) {
+				var  pass_old = $("#pass_old").val();
+				var  pass_new = $("#pass_new").val();
+				var  pass_again = $("#pass_again").val();
+				$.ajax({
+					url: '<?php echo base_url() ?>index.php/xuly/checkpass',
+					type: 'POST',
+					data: {pass_old: pass_old},
+				})
+				.done(function(data) {
+					$(".alert-danger").empty();
+					if (data == "1") {
+						if (pass_new == pass_again) {
+							$("#ttpass").submit();
+						}
+						else{
+							$(".alert-danger").removeClass('hide');
+							$(".alert-danger").text('Mật khẩu không trùng khớp');
+						}
+
+					}else{
+						$(".alert-danger").removeClass('hide');
+						$(".alert-danger").text('Nhập sai mật khẩu');
+					}
+				})
+				.fail(function() {
+					console.log("error");
+				})
+				.always(function() {
+					console.log("complete");
+				});
+			});
+		</script>

@@ -220,7 +220,48 @@
 			$this->db->where('MADETAI', $madetai);
 			$this->db->update('detai', $data); 
 		}
+		public function loadDeTaiTheoGV($msgv)
+		{
+			$this->db->from('gv_detai as gvdt');
+			$this->db->join('detai as dt','dt.MADETAI = gvdt.MADETAI','left');
+			$this->db->where('gvdt.MAGV',$msgv);
+			return $this->db->get()->result_array();
+		}
+
+		public function getTimeSpan($madetai)
+		{
+			// $this->db->select('TGBATDAU,TGBAOVE');
+			$this->db->from('DOTDANGKY as ddk');
+			$this->db->join('DETAI as dt','dt.MADOT = ddk.MADOT','left');
+			$this->db->join('BAOCAO as bc','dt.MADETAI  = bc.MADETAI','left');
+			$this->db->where('dt.MADETAI',$madetai);
+			return $this->db->get()->row_array();
+		}
+		public function getLinknop($madetai)
+		{
+			$this->db->from('BAOCAO');
+			$this->db->where('MADETAI',$madetai);
+			return $this->db->get()->result_array();
+		}
 		
-		
+		public function load_Messenger($madetai)
+		{
+			$this->db->select('sv.HOTEN, gv.TENGV, sv.GIOITINH as gtsv, gv.GIOITINH as gtgv,ms.NOIDUNG,ms.NGUOIGUI');
+			$this->db->from('messenger as ms');
+			$this->db->join('sinhvien as sv','sv.MASV = ms.NGUOIGUI','left');
+			$this->db->join('giangvien as gv','gv.MAGV = ms.NGUOIGUI','left');
+			$this->db->order_by('ms.id_CMT','desc');
+			$this->db->where('ms.MADT',$madetai);
+			return $this->db->get()->result_array();
+		}
+
+		public function insert_noidungbaocao($data)
+		{
+			$this->db->insert('baocao',$data);
+		}
+		public function messenger($data)
+		{
+			$this->db->insert('messenger',$data);
+		}
 	}
  ?>

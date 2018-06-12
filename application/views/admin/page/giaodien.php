@@ -151,7 +151,7 @@
             <!-- tab2 -->
             <div class="tab-pane <?php echo isset($loadpage2)? $loadpage2 : ''?>" id="tab_default_2">
 
-             <form method="post" action="<?php echo base_url() ?>index.php/xuly_ad/setMaDotDK" role="form">
+            <form method="post" action="<?php echo base_url() ?>index.php/xuly_ad/setMaDotDK2" role="form">
               <div class="form-group">
                 <label class="col-sm-3 control-label no-padding-right" for="form-field-1"> Mã đợt đăng ký </label>
                 <div class="col-sm-7">
@@ -160,7 +160,7 @@
 
                         <?php foreach ($madotdk as $row): ?>
                         
-                         <option value="<?php echo $row['MADOT'] ?>"><?php echo $row['NOIDUNGDT'] ?></option>
+                         <option value="<?php echo $row['MADOT'] ?>" <?php if($row['MADOT'] == $this->session->userdata('madotdk')) echo 'selected' ?>><?php echo $row['NOIDUNGDT'] ?></option>
 
                         <?php endforeach; ?>
 
@@ -201,7 +201,15 @@
 
                         <td><input type="text" id="form-field-1" class="col-xs-12 col-sm-10" value="<?php echo $item['MABM'] ?>" name="txtbm<?php echo $item['MAGV'] ?>" readonly></td>
 
-                        <td><input type="number" id="form-field-1" placeholder="Số lượng đề tài" class="col-xs-12 col-sm-10" name="txt<?php echo $item['MAGV'] ?>"></td>
+                        <td><input type="number" id="form-field-1" value="<?php 
+                                  if($item['MABM'] == "CNPM")
+                                      echo $sldemo_cnpm;
+                                  if($item['MABM'] == "MMT")
+                                      echo $sldemo_mmt;
+                                    if($item['MABM'] == "HTTT")
+                                      echo $sldemo_httt;
+
+                        ?>" class="col-xs-12 col-sm-10" name="txt<?php echo $item['MAGV'] ?>"></td>
 
                         <td><input type="date" id="form-field-1" placeholder="" class="col-xs-12 col-sm-12"
                           name="date<?php echo $item['MAGV'] ?>"></td>
@@ -269,15 +277,25 @@
       </div>
       <!-- tab3 -->
       <div class="tab-pane <?php echo isset($loadpage3)? $loadpage3 : ''?>" id="tab_default_3">
-         <form class="form-horizontal" role="form">
+         <form method="post" action="<?php echo base_url() ?>index.php/xuly_ad/setMaDotDK3" role="form">
               <div class="form-group">
                 <label class="col-sm-3 control-label no-padding-right" for="form-field-1"> Mã đợt đăng ký </label>
-                <div class="col-sm-5">
-                  <select id="simple-colorpicker-1" class="" style="width: 150px;">
-                    <?php foreach ($madotdk as $row): ?>
-                     <option value="<?php echo $row['MADOT'] ?>"><?php echo $row['NOIDUNGDT'] ?></option>
-                    <?php endforeach; ?>
-                  </select>
+                <div class="col-sm-7">
+
+                      <select id="simple-colorpicker-1" class="" style="width: 200px;" name="maDotDK">
+
+                        <?php foreach ($madotdk as $row): ?>
+                        
+                         <option value="<?php echo $row['MADOT'] ?>" <?php if($row['MADOT'] == $this->session->userdata('madotdk')) echo 'selected' ?>><?php echo $row['NOIDUNGDT'] ?></option>
+
+                        <?php endforeach; ?>
+
+                      </select>
+                      <button class="btn btn-primary" type="submit" style="border-radius: 5px">
+                      <i class="ace-icon fa fa-check bigger-110"></i>
+                      Submit
+                    </button>
+
                 </div>
               </div>
             </form>
@@ -295,7 +313,7 @@
                       </tr>
                     </thead>
                     <tbody>
-                      <?php foreach ($ds_detai as $row) {
+                      <?php foreach ($ds_detai_kiemduyet as $row) {
                       ?>
                       <tr>
                         <th scope="row"><?php echo $row['madetai'] ?></th>
@@ -355,6 +373,28 @@
        <!-- het tag 3 -->
        <!-- tab4 -->
        <div class="tab-pane <?php echo isset($loadpage4)? $loadpage4 : ''?>" id="tab_default_4">
+        <form method="post" action="<?php echo base_url() ?>index.php/xuly_ad/setMaDotDK4" role="form">
+              <div class="form-group">
+                <label class="col-sm-3 control-label no-padding-right" for="form-field-1"> Mã đợt đăng ký </label>
+                <div class="col-sm-7">
+
+                      <select id="simple-colorpicker-1" class="" style="width: 200px;" name="maDotDK">
+
+                        <?php foreach ($madotdk as $row): ?>
+                        
+                         <option value="<?php echo $row['MADOT'] ?>" <?php if($row['MADOT'] == $this->session->userdata('madotdk')) echo 'selected' ?>><?php echo $row['NOIDUNGDT'] ?></option>
+
+                        <?php endforeach; ?>
+
+                      </select>
+                      <button class="btn btn-primary" type="submit" style="border-radius: 5px">
+                      <i class="ace-icon fa fa-check bigger-110"></i>
+                      Submit
+                    </button>
+
+                </div>
+              </div>
+            </form>
          <form class="form-horizontal" role="form">
               <div class="form-group">
                 <div>
@@ -402,10 +442,12 @@
                       <?php } ?>
                     </tbody>
                   </table>
-                  <button class="btn btn-primary" data-toggle="modal" data-target="" type="button" style="border-radius: 5px;margin-left: 40%">
-                      <i class=" glyphicon glyphicon-paste"></i>
-                     Xuất danh sách 
+                  <a href="<?php echo base_url() ?>index.php/xuly_ad/saveFile">
+                    <button class="btn btn-primary" data-toggle="modal" data-target="" type="button" style="border-radius: 5px;margin-left: 40%">
+                        <i class=" glyphicon glyphicon-paste"></i>
+                        Xuất danh sách 
                     </button>
+                  </a>
                 </div>
             </div>
             <div class="col-sm-7">
@@ -462,7 +504,7 @@
               <table class="table table-bordered" width="100%">
                 <thead>
                   <tr>
-                    <th class="color" scope="col" colspan="5">Mã Hội Đồng: <?php echo $ds_gv_hd[$i][0] ?> Tên: <?php echo $ds_gv_hd[$i][1] ?></th>
+                    <th class="color" scope="col" colspan="5">Mã Hội Đồng: <?php echo $ds_gv_hd[$i][0] ?>&nbsp&nbspNội dung: <?php echo $ds_gv_hd[$i][1] ?></th>
                   </tr>
                   <tr>
                     <th class="color" scope="col">Mã Giảng Viên</th>
@@ -491,23 +533,31 @@
 
       </div>
         <!-- hết tab 4 -->  
+        <!-- tab 5 -->  
       <div class="tab-pane <?php echo isset($loadpage5)? $loadpage5 : ''?>" id="tab_default_5">
-         <form class="form-horizontal" role="form">
+        
+         <form method="post" action="<?php echo base_url() ?>index.php/xuly_ad/setMaDotDK5" role="form">
               <div class="form-group">
                 <label class="col-sm-3 control-label no-padding-right" for="form-field-1"> Mã đợt đăng ký </label>
-                <div class="col-sm-5">
-                  <select id="simple-colorpicker-1" class="" style="width: 150px;">
+                <div class="col-sm-7">
 
-                    <?php foreach ($madotdk as $row): ?>
-                    
-                      <option value="<?php echo $row['MADOT'] ?>"><?php echo $row['NOIDUNGDT'] ?></option>
+                      <select id="simple-colorpicker-1" class="" style="width: 200px;" name="maDotDK">
 
-                    <?php endforeach; ?>
-                  </select>
+                        <?php foreach ($madotdk as $row): ?>
+                        
+                         <option value="<?php echo $row['MADOT'] ?>" <?php if($row['MADOT'] == $this->session->userdata('madotdk')) echo 'selected' ?>><?php echo $row['NOIDUNGDT'] ?></option>
+
+                        <?php endforeach; ?>
+
+                      </select>
+                      <button class="btn btn-primary" type="submit" style="border-radius: 5px">
+                      <i class="ace-icon fa fa-check bigger-110"></i>
+                      Submit
+                    </button>
 
                 </div>
               </div>
-            </form>
+         </form>
             <div class="row">
               <div class="col-sm-12" style="margin-top: 10px">
                <h5><b>Danh sách đề tài</b></h5>
@@ -517,8 +567,7 @@
                       <tr>
                         <th class="color" scope="col">Mã đề tài</th>
                         <th class="color" scope="col">Tên đề tài</th>
-                        <th class="color" scope="col">Giáo Viên ra đề</th>
-                        <th class="color" scope="col">Giáo Viên hướng dẫn</th>
+                        <th class="color" scope="col">Giảng Viên ra đề</th>
                         <th class="color" scope="col">Bộ môn</th>
                         <th class="color" scope="col">Kiểm duyệt</th>
                       </tr>
@@ -554,91 +603,143 @@
         <!-- hết tab 5 -->
 
         <div class="tab-pane <?php echo isset($loadpage6)? $loadpage6 : ''?>" id="tab_default_6">
-              <table id="datatable" class="table table-bordered">
-                <thead>
-                  <tr>
-                    <th class="color" scope="col">Mã đề tài</th>
-                    <th class="color" scope="col">Tên đề tài</th>
-                    <th class="color" scope="col">Thông tin nhóm</th>
-                  </tr>
-                </thead>
-                <tbody>
+            <form method="post" action="<?php echo base_url() ?>index.php/xuly_ad/setMaDotDK6" role="form">
+              <div class="form-group">
+                <label class="col-sm-3 control-label no-padding-right" for="form-field-1"> Mã đợt đăng ký </label>
+                <div class="col-sm-7">
 
-                  <?php 
-                  for($i = 0 ; $i < count($ds_svdangky) ; $i++) 
-                  {
-                   ?>
+                      <select id="simple-colorpicker-1" class="" style="width: 200px;" name="maDotDK">
 
+                        <?php foreach ($madotdk as $row): ?>
+                        
+                         <option value="<?php echo $row['MADOT'] ?>" <?php if($row['MADOT'] == $this->session->userdata('madotdk')) echo 'selected' ?>><?php echo $row['NOIDUNGDT'] ?></option>
+
+                        <?php endforeach; ?>
+
+                      </select>
+                      <button class="btn btn-primary" type="submit" style="border-radius: 5px">
+                      <i class="ace-icon fa fa-check bigger-110"></i>
+                      Submit
+                    </button>
+
+                </div>
+              </div>
+            </form>
+            <div class="row">
+              <div class="col-sm-12" style="margin-top: 10px">
+                <table id="datatable" class="table table-bordered">
+                  <thead>
                     <tr>
-                      <td scope="row"><?php echo $ds_svdangky[$i][0]?></td>
-                      <td scope="row"><?php echo $ds_svdangky[$i][1]?></td>
-                     
-                      <td scope="row">
-                        <table width=100% height = 100%>
-                          <?php for ($j=0; $j < count($ds_svdangky[$i][2]); $j++) 
-                              {  ?>
-                          <tr>
-                            <td>
-                                <?php echo $ds_svdangky[$i][2][$j]['masv'] ?>
-                            </td>
-                            <td>
-                                <?php echo $ds_svdangky[$i][2][$j]['hoten'] ?>
-                            </td>
-                          </tr>
-                           <?php } ?>
-                          
-                        </table>
-        
-                        </td>
+                      <th class="color" scope="col">Mã đề tài</th>
+                      <th class="color" scope="col">Tên đề tài</th>
+                      <th class="color" scope="col">Thông tin nhóm</th>
                     </tr>
-                   
-                  <?php } ?>
+                  </thead>
+                  <tbody>
 
-                </tbody>
-              </table>
+                    <?php 
+                    for($i = 0 ; $i < count($ds_svdangky) ; $i++) 
+                    {
+                     ?>
+
+                      <tr>
+                        <td scope="row"><?php echo $ds_svdangky[$i][0]?></td>
+                        <td scope="row"><?php echo $ds_svdangky[$i][1]?></td>
+                       
+                        <td scope="row">
+                          <table width=100% height = 100%>
+                            <?php for ($j=0; $j < count($ds_svdangky[$i][2]); $j++) 
+                                {  ?>
+                            <tr>
+                              <td>
+                                  <?php echo $ds_svdangky[$i][2][$j]['masv'] ?>
+                              </td>
+                              <td>
+                                  <?php echo $ds_svdangky[$i][2][$j]['hoten'] ?>
+                              </td>
+                            </tr>
+                             <?php } ?>
+                            
+                          </table>
+          
+                          </td>
+                      </tr>
+                     
+                    <?php } ?>
+
+                  </tbody>
+                </table>
+              </div>
+            </div>
         </div>
         <!-- hết tab 6 -->
              <div class="tab-pane <?php echo isset($loadpage7)? $loadpage7 : ''?>" id="tab_default_7">
-              <h3><strong>Danh sách đề tài</strong></h3>
-              <table class="table table-bordered" id="datatable_diem">
-                <thead>
-                  <tr>
-                    <th class="color" scope="col">Mã đề tài</th>
-                    <th class="color" scope="col">Tên đề tài</th>
-                    <th class="color" scope="col">Mã Nhóm</th>
-                    <th class="color" scope="col">Mã sinh viên</th>
-                    <th class="color" scope="col">Tên sinh viên</th>
-                    <th class="color" scope="col">Điểm GV-HD</th>
-                    <th class="color" scope="col">Điểm GVPB</th>
-                    <th class="color" scope="col">Điểm PK</th>
-                    <th class="color" scope="col">Tổng điểm</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <th scope="row">DA0001</th>
-                    <td>Phân tích hệ thống đăng ký khóa luận cho sinh viên...</td>
-                    <td>N0001</td>
-                    <td>2001140096</td>
-                    <td>Nguyễn Văn A</td>
-                    <td>8</td>
-                    <td>8</td>
-                    <td>0</td>
-                    <td>8</td>
-                  </tr>
-                  <tr>
-                    <th scope="row">DA0001</th>
-                    <td>Phân tích hệ thống đăng ký khóa luận cho sinh viên...</td>
-                    <td>N0001</td>
-                    <td>2001140096</td>
-                    <td>Nguyễn Văn b</td>
-                    <td>8</td>
-                    <td>9</td>
-                    <td>0</td>
-                    <td>8.5</td>
-                  </tr>
-                </tbody>
-              </table>
+                <form method="post" action="<?php echo base_url() ?>index.php/xuly_ad/setMaDotDK7" role="form">
+                <div class="form-group">
+                  <label class="col-sm-3 control-label no-padding-right" for="form-field-1"> Mã đợt đăng ký </label>
+                  <div class="col-sm-7">
+
+                        <select id="simple-colorpicker-1" class="" style="width: 200px;" name="maDotDK">
+
+                          <?php foreach ($madotdk as $row): ?>
+                          
+                           <option value="<?php echo $row['MADOT'] ?>" <?php if($row['MADOT'] == $this->session->userdata('madotdk')) echo 'selected' ?>><?php echo $row['NOIDUNGDT'] ?></option>
+
+                          <?php endforeach; ?>
+
+                        </select>
+                        <button class="btn btn-primary" type="submit" style="border-radius: 5px">
+                        <i class="ace-icon fa fa-check bigger-110"></i>
+                        Submit
+                      </button>
+
+                  </div>
+                </div>
+                </form>
+              <div class="row">
+                <div class="col-sm-12" style="margin-top: 10px">
+                  <h3><strong>Danh sách đề tài</strong></h3>
+                  <table class="table table-bordered" id="datatable_diem">
+                    <thead>
+                      <tr>
+                        <th class="color" scope="col">Mã đề tài</th>
+                        <th class="color" scope="col">Tên đề tài</th>
+                        <th class="color" scope="col">Mã Nhóm</th>
+                        <th class="color" scope="col">Mã sinh viên</th>
+                        <th class="color" scope="col">Tên sinh viên</th>
+                        <th class="color" scope="col">Điểm GV-HD</th>
+                        <th class="color" scope="col">Điểm GVPB</th>
+                        <th class="color" scope="col">Điểm PK</th>
+                        <th class="color" scope="col">Tổng điểm</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <th scope="row">DA0001</th>
+                        <td>Phân tích hệ thống đăng ký khóa luận cho sinh viên...</td>
+                        <td>N0001</td>
+                        <td>2001140096</td>
+                        <td>Nguyễn Văn A</td>
+                        <td>8</td>
+                        <td>8</td>
+                        <td>0</td>
+                        <td>8</td>
+                      </tr>
+                      <tr>
+                        <th scope="row">DA0001</th>
+                        <td>Phân tích hệ thống đăng ký khóa luận cho sinh viên...</td>
+                        <td>N0001</td>
+                        <td>2001140096</td>
+                        <td>Nguyễn Văn b</td>
+                        <td>8</td>
+                        <td>9</td>
+                        <td>0</td>
+                        <td>8.5</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+            </div>
             </div>
             <!-- hết tab7 -->
     </div>

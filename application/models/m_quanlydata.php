@@ -35,7 +35,7 @@ class M_quanlydata extends CI_Model {
 	}
 
 	function insertData($table, $data)
-	{ 
+	{
 		$this->db->insert($table, $data);
 	}
 
@@ -137,6 +137,7 @@ class M_quanlydata extends CI_Model {
 		$this->db->where('MASV',$mssv);
 		$this->db->select('MADETAI');
 		return $this->db->get('sv_detai')->row_array();
+
 	}
 	public function getSVdetai($maDetai)
 	{

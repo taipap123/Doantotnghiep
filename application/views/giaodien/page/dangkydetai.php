@@ -36,40 +36,40 @@
 					<div class="panel panel-primary">
 					  	<div class="panel-heading">Thông tin tùy chọn</div>
 						  <div class="panel-body">
-						  	<div class="row" style="margin-bottom: 10px">
-								<div class="form-group">
-								    <label for="inputEmail3" class="col-sm-3 control-label">Đợt đăng ký</label>
-								    <div class="col-sm-9">
-								      <select id="simple-colorpicker-1" class="" style="width: 260px;">
-											<?php foreach ($dotdangky as $row): 
-                 								?>
-						                    <option value="<?php echo $row['MADOT']?>"> <?php echo $row['NOIDUNGDT'] ?> </option>
-						                    <?php endforeach;?>
-					                  	</select>
-					                  	<button class="btn btn-primary" style="margin-left: 5%" type="submit">Lọc</button>
-								    </div>
-								  </div>
-							</div>
-							<div class="row" style="margin-bottom: 10px">
-								  <div class="form-group">
-								    <label for="inputPassword3" class="col-sm-3 control-label">Bộ môn</label>
-								    <div class="col-sm-9">
-								      <select id="simple-colorpicker-1" class="" style="width: 260px;">
-						                    <option value="#ac725e">Công nghệ phần mềm</option>
-						                    <option value="#d06b64">Mạng máy tính</option>
-						                    <option value="#d06b64">Hệ thống thông tin</option>
-					                  	</select>
+						  	<form method="POST" action="<?php echo base_url() ?>index.php/xuly/setMaDotDK_dk">
+							  	<div class="row" style="margin-bottom: 10px">
+									<div class="form-group">
+									    <label for="inputEmail3" class="col-sm-3 control-label">Đợt đăng ký</label>
+									    <div class="col-sm-9">
+									      <select name="maDotDK" id="simple-colorpicker-1" class="" style="width: 260px;">
+												<?php foreach ($dotdangky as $row): 
+	                 								?>
+							                    <option value="<?php echo $row['MADOT']?>" <?php if($row['MADOT']==$this->session->userdata('madotdk')) echo 'selected'?>> <?php echo $row['NOIDUNGDT'] ?> </option>
+							                    <?php endforeach;?>
+						                  	</select>
+						                  	<button class="btn btn-primary" style="margin-left: 5%" type="submit">Lọc</button>
+									    </div>
+									  </div>
+								</div>
+								<div class="row" style="margin-bottom: 10px">
+									  <div class="form-group">
+									    <label for="inputPassword3" class="col-sm-3 control-label">Bộ môn</label>
+									    <div class="col-sm-9">
+									      <select id="simple-colorpicker-1" class="" style="width: 260px;">
+							                    <option value="#ac725e">Công nghệ phần mềm</option>
+							                    <option value="#d06b64">Mạng máy tính</option>
+							                    <option value="#d06b64">Hệ thống thông tin</option>
+						                  	</select>
 
-								    </div>
-								  </div>
-							</div>
+									    </div>
+									  </div>
+								</div>
+							</form>
 						</div>
 					</div>
 				</div>
 				  </div>
 				</div>
-
-				
 
 				
 

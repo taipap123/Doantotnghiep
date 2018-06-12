@@ -4,22 +4,45 @@
       <div class="tabbable-panel" style="margin: 10px">
         <div class="tabbable-line">
           <ul class="nav nav-tabs ">
-            <li class="active">
+            <li class="<?php echo isset($loadpage1)? $loadpage1 : ''?>">
               <a href="#tab_default_1" data-toggle="tab">
               Cập nhật đề tài</a>
             </li>
-            <li>
+            <li class="<?php echo isset($loadpage2)? $loadpage2 : ''?>">
               <a href="#tab_default_2" data-toggle="tab">
               Đề tài hướng dẫn- Phản biện </a>
             </li>
-            <li>
+            <li class="<?php echo isset($loadpage3)? $loadpage3 : ''?>">
               <a href="#tab_default_3" data-toggle="tab">
-              Báo cáo tiến độ</a>
+              Điểm của sinh viên</a>
             </li>
           </ul>
           <div class="tab-content">
-            <div class="tab-pane active" id="tab_default_1">
-              <div>
+            <div class="tab-pane <?php echo isset($loadpage1)? $loadpage1 : ''?>" id="tab_default_1">
+              <form method="post" action="<?php echo base_url() ?>index.php/xuly_ad/setMaDotDK_gv_1" role="form">
+                <div class="form-group">
+                  <label class="col-sm-3 control-label no-padding-right" for="form-field-1"> Mã đợt đăng ký </label>
+                  <div class="col-sm-7">
+
+                        <select id="simple-colorpicker-1" class="" style="width: 200px;" name="maDotDK">
+
+                          <?php foreach ($madotdk as $row): ?>
+                          
+                           <option value="<?php echo $row['MADOT'] ?>" <?php if($row['MADOT'] == $this->session->userdata('madotdk')) echo 'selected' ?>><?php echo $row['NOIDUNGDT'] ?></option>
+
+                          <?php endforeach; ?>
+
+                        </select>
+                        <button class="btn btn-primary" type="submit" style="border-radius: 5px">
+                        <i class="ace-icon fa fa-check bigger-110"></i>
+                        Submit
+                      </button>
+
+                  </div>
+                </div>
+              </form>
+             <div class="row">
+              <div class="col-sm-12" style="margin-top: 10px">
                 <h3><strong>Yêu cầu tạo đề tài</strong></h3>
                 <table class="table table-bordered">
                   <thead>
@@ -37,62 +60,77 @@
                       <td>Công nghệ phần mềm</td>
                       <td>1</td>
                     </tr>
-                    <tr>
+                     <tr>
                       <td>Hệ Thống Thông Tin</td>
                       <td>1</td>
                     </tr>
                   </tbody>
                 </table>
-                <h3><strong>Cập nhật đề tài</strong></h3>
-                <form class="form-horizontal" role="form">
-                  <div class="form-group">
-                  <!--
-                  <label class="col-sm-3 control-label no-padding-right" for="form-field-8"><strong>Mã đề tài</strong></label>
-                  <select id="simple-colorpicker-1" class="col-xs-12 col-sm-7" style="margin-left: 10px; width: 479px;">
-                    <option value="#ac725e">#ac725e</option>
-                    <option value="#d06b64">#d06b64</option>
-                  </select>
-                -->
               </div>
-              <div class="form-group">
-                <label class="col-sm-3 control-label no-padding-right" for="form-field-8"><strong>Nội dung</strong></label>
-                <div class="col-sm-9">
-                  <textarea class="col-xs-12 col-sm-7"  id="form-field-8" placeholder="Nhập nội dung"></textarea>
-                </div>
-              </div>
-              <div class="form-group">
-                <label class="col-sm-3 control-label no-padding-right" for="form-field-8"><strong>Yêu cầu</strong></label>
-                <div class="col-sm-9">
-                  <textarea class="col-xs-12 col-sm-7"  id="form-field-8" placeholder="Nhập yêu cầu"></textarea>
-                </div>
-              </div>
-              <div class="form-group">
-                <label class="col-sm-3 control-label no-padding-right" for="form-field-8"><strong>Bộ môn</strong></label>
-                <select id="simple-colorpicker-1" class="col-xs-12 col-sm-7" style="margin-left: 10px; width: 479px;">
-                  <?php foreach ($ds_bomon as $value) {
-
-                   ?>
-                   <option value="<?php echo $value['MABM'] ?>"><?php echo $value['TENBM'] ?></option>
-
-                 <?php  } ?>
-               </select>
-             </div>
-             <div class="col-md-offset-3 col-md-9">
-              <button class="btn btn-primary" type="button" style="border-radius: 5px">
-                <i class="ace-icon fa fa-check bigger-110"></i>
-                Submit
-              </button>
-
-              &nbsp; &nbsp; &nbsp;
-              <button class="btn" type="reset"  style="border-radius: 5px">
-                <i class="ace-icon fa fa-undo bigger-110"></i>
-                Reset
-              </button>
             </div>
-          </form>
-        </div>
-      </div>
-      <div class="tab-pane" id="tab_default_2">
+
+              <h3><strong>Cập nhật đề tài</strong></h3>
+             
+              <form class="form-horizontal" role="form" action="<?php echo base_url() ?>index.php/xuly_ad/taoDeTai_ThuCong" method="POST">
+                
+                <div class="form-group">
+                  <label class="col-sm-3 control-label no-padding-right" for="form-field-8"><strong>Nội dung</strong></label>
+                  <div class="col-sm-9">
+                    <textarea class="col-xs-12 col-sm-7"  id="form-field-8" placeholder="Nhập nội dung" name="noidungdt" ></textarea>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label class="col-sm-3 control-label no-padding-right" for="form-field-8"><strong>Yêu cầu</strong></label>
+                  <div class="col-sm-9">
+                    <textarea class="col-xs-12 col-sm-7"  id="form-field-8" placeholder="Nhập yêu cầu" name="yeucaudt"></textarea>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label class="col-sm-3 control-label no-padding-right" for="form-field-8"><strong>Bộ môn</strong></label>
+                  <select name="mabomon" id="simple-colorpicker-1" class="col-xs-12 col-sm-7" style="margin-left: 10px; width: 479px;">
+                    <?php foreach ($ds_bomon as $value) {
+                     
+                     ?>
+                      <option value="<?php echo $value['MABM'] ?>"><?php echo $value['TENBM'] ?></option>
+                      
+                    <?php  } ?>
+                  </select>
+                </div>
+                <div class="col-md-offset-3 col-md-9">
+                  <button class="btn btn-primary" type="submit" style="border-radius: 5px">
+                    <i class="ace-icon fa fa-check bigger-110"></i>
+                    Submit
+                  </button>
+
+                  &nbsp; &nbsp; &nbsp;
+                  <button class="btn" type="reset"  style="border-radius: 5px">
+                    <i class="ace-icon fa fa-undo bigger-110"></i>
+                    Reset
+                  </button>
+                </div>
+              </form>
+
+              <form action="<?php echo base_url() ?>index.php/xuly_ad/taoDeTai_file" method="POST" enctype="multipart/form-data">
+                <div class="col-md-offset-3 col-md-9">
+                  </br>
+                  <h3><strong>Nhập dữ liệu từ file</strong></h3></br>
+                  <p><font size="5"><i><a href="<?php echo base_url() ?>index.php/xuly_ad/xuatFileMau">File nhập liệu mẫu</a></i></font></p></br>
+
+                  <input name="filepath" type="file">
+                    <i class="ace-icon fa fa-check bigger-110"></i>
+                    Chọn file
+                 
+                  &nbsp; &nbsp; &nbsp;
+                  <button class="btn btn-primary" type="submit"  style="border-radius: 5px">
+                    Cập nhật
+                  </button>
+                </div>
+              </form>
+
+            </div>
+           
+          <!---tab 2 -->
+        <div class="tab-pane" id="tab_default_2">
         <h3><strong>Danh sách đề tài</strong></h3>
         <table class="table table-bordered" id="datatable">
           <thead>

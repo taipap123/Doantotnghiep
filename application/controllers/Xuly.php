@@ -8,7 +8,7 @@ class Xuly extends CI_Controller {
 		
 		$this->load->library(array('form_validation','session'));
 		$this->load->helper('url');
-		$this->load->model(array('m_login', 'm_quanlydata', 'm_admin'));
+		$this->load->model(array('m_login', 'm_quanlydata'));
 
 		//view design
 		$this->design['header'] = $this->load->view('giaodien/home/header', null, true);
@@ -77,7 +77,7 @@ class Xuly extends CI_Controller {
 		$this->luuDeTaiDangky();
 
 		$data['dotdangky'] = $this->m_quanlydata->loadTable('dotdangky');
-		$data['detai'] = $this->m_quanlydata->loadTableJoinTable('detai','dotdangky','MADOT','MADOT', "detai.SLTV > 0 AND detai.MADOT = '".$this->session->userdata('madotdk')."'");
+		$data['detai'] = $this->m_quanlydata->loadTableJoinTable('detai','dotdangky','MADOT','MADOT', 'detai.SLTV > 0');
 
 		$data['tt_dangky'] = $this->m_quanlydata->load_NhomDeTai($this->session->userdata('maso'));
 
@@ -110,12 +110,6 @@ class Xuly extends CI_Controller {
 			}
 
 		}
-	}
-	public function setMaDotDK_dk ()
-	{
-		$this->session->set_userdata('madotdk', $this->input->post('maDotDK'));
-		
-		$this->DangKyDeTai();
 	}
 	//-----------------------------
 	public function Baocaotiendo()
@@ -166,7 +160,25 @@ class Xuly extends CI_Controller {
 		else 
 			echo "0";
 	}
+
 	
 
+	
+
+
+	// public function themdata()
+	// {
+	// 	$data['IDLOAI'] =  $this->input->post('noidung');
+	// 	$data['TENLOAI'] = $this->input->post('noidung2');	
+	// 	$data['GHICHU'] = $this->input->post('noidung3');
+	// 	$this->load->model('qlkl');
+	// 	$this->qlkl->insertdata($data);
+	// }
+
+	// public function xoadata()
+	// {
+	// 	$this->load->model('qlkl');
+	// 	$this->qlkl->deletedata(1);
+	// }
 }
 ?>

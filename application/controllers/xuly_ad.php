@@ -115,7 +115,9 @@ class Xuly_ad extends CI_Controller {
 	}
 	public function qladmin()
 	{
-		$this->admin['main'] = $this->load->view('admin/page/ad',null,true);
+		$loaitk = $this->uri->segment(3);
+		$data['user'] = $this->m_admin->User($loaitk);
+		$this->admin['main'] = $this->load->view('admin/page/ad',$data,true);
 		$this->load->view('admin/home/master',$this->admin);
 	}
 
@@ -485,7 +487,7 @@ class Xuly_ad extends CI_Controller {
 		//Chọn trang cần truy xuất
 		$sheet  = $objPHPExcel->setActiveSheetIndex(0);
 
-		//Lấy ra số dòng cuối cùng
+		//Lấy ra số dòng cuối cùng 
 		$Totalrow = $sheet->getHighestRow();
 		//Lấy ra tên cột cuối cùng
 		$LastColumn = $sheet->getHighestColumn();
@@ -518,5 +520,70 @@ class Xuly_ad extends CI_Controller {
 		}
 	}
 
+	public function editUser()
+	{
+		$page = '';
+		$data['IDUser'] = $this->input->post('idUser');
+		$data['MatKhau'] = $this->input->post('matkhau');
+		$data['IDQuyenSuDung'] = $this->input->post('quyensd');
+		$this->m_admin->editUser($this->input->post('idUser1'),$data);
+		if(substr($data['IDUser'], 0,3) == '200')
+		{
+			$page = 'sinhvien';
+		}
+		else if(substr($data['IDUser'], 0,3) == '010')
+		{
+			$page = 'giangvien';
+		}
+		else{
+			$page = 'admin';
+		}
+		header('location:qladmin/'.$page.'');
+	}
+
+	public function deleteUser()
+	{
+		$page = '';
+		$data['IDUser'] = $this->input->post('idUser');
+		$this->m_admin->deleteUser($this->input->post('idUser'));
+		if(substr($data['IDUser'], 0,3) == '200')
+		{
+			$page = 'sinhvien';
+		}
+		else if(substr($data['IDUser'], 0,3) == '010')
+		{
+			$page = 'giangvien';
+		}
+		else{
+			$page = 'admin';
+		}
+		header('location:qladmin/'.$page.'');
+	}
+
+	public function insertUser()
+	{
+		$page = '';
+		$data['IDUser'] = $this->input->post('idUser');
+		$data['MatKhau'] = $this->input->post('matkhau');
+		$data['IDQuyenSuDung'] = $this->input->post('quyensd');
+		$data['loaitk']='';
+		if(substr($data['IDUser'], 0,3) == '200')
+		{
+			$page = 'sinhvien';
+			$data['loaitk']='sinhvien';
+		}
+		else if(substr($data['IDUser'], 0,3) == '010')
+		{
+			$page = 'giangvien';
+			$data['loaitk'] = 'giangvien';
+		}
+		else{
+			$page = 'admin';
+			$data['loaitk'] = 'admin';
+		}
+		$this->m_admin->insertUser($data);
+		
+		header('location:qladmin/'.$page.'');
+	}
 }
 ?>

@@ -343,7 +343,28 @@
 		{
 			$this->db->insert('messenger',$data);
 		}
-		
-		
+
+		public function User($loaitk)
+		{
+			$this->db->where('loaitk',$loaitk);
+			return $this->db->get('user')->result_array();
+		}
+
+		public function editUser($idUser,$data)
+		{
+			$this->db->where('IDUser', $idUser);
+			$this->db->update('user', $data); 
+		}
+
+		public function deleteUser($idUser)
+		{
+			$this->db->where('IDUser', $idUser);
+			$this->db->delete('user'); 
+		}
+
+		public function insertUser($data)
+		{
+			$this->db->insert('user', $data);
+		}
 	}
  ?>

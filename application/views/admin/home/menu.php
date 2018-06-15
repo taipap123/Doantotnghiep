@@ -45,7 +45,7 @@
 
 						<ul class="submenu">
 							<li class="">
-								<a href="<?php echo base_url() ?>index.php/xuly_ad/qladmin">
+								<a href="<?php echo base_url() ?>index.php/xuly_ad/qladmin/admin">
 									<i class="menu-icon fa fa-caret-right"></i>
 									Admin
 								</a>
@@ -54,7 +54,7 @@
 							</li>
 
 							<li class="">
-								<a href="jqgrid.html">
+								<a href="<?php echo base_url() ?>index.php/xuly_ad/qladmin/giangvien">
 									<i class="menu-icon fa fa-caret-right"></i>
 									Giảng Viên
 								</a>
@@ -63,7 +63,7 @@
 							</li>
 							
 							<li class="">
-								<a href="jqgrid.html">
+								<a href="<?php echo base_url() ?>index.php/xuly_ad/qladmin/sinhvien">
 									<i class="menu-icon fa fa-caret-right"></i>
 									Sinh Viên
 								</a>
